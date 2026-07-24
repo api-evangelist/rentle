@@ -1,0 +1,3635 @@
+openapi: 3.0.0
+info:
+  title: Twice Admin API Keys Products API
+  description: API documentation for Twice Admin API
+  version: '2023-02-01'
+  contact: {}
+  x-logo:
+    url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/logos%2Ftwice-logo-outline-black-padded.png?alt=media&token=c6731aba-03c9-4ce9-a9f0-a68478924fe0
+servers:
+- url: https://api.twicecommerce.com/admin
+  description: Production API
+tags:
+- name: Products
+  description: Product-related queries
+paths:
+  /products/{id}:
+    get:
+      description: Get a single product by id.
+      operationId: products_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        description: The id of the product to retrieve
+        schema:
+          type: string
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductDTO'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Get product
+      tags:
+      - Products
+    delete:
+      description: Deletes a single product by id.
+      operationId: products_remove
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Delete product
+      tags:
+      - Products
+  /products:
+    get:
+      description: Get all products that belong to a merchant. Filtering by store is supported.
+      operationId: products_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: How many objects to retrieve.
+        schema:
+          minimum: 1
+          maximum: 100
+          type: integer
+      - name: pageToken
+        required: false
+        in: query
+        description: Token to retrieve the next page of results. This is returned in the paged response.
+        schema:
+          minLength: 1
+          type: string
+      - name: storeId
+        required: false
+        in: query
+        description: Comma-separated id of stores to filter by.
+        schema:
+          example: JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO
+          type: string
+      - name: categories
+        required: false
+        in: query
+        description: Comma-separated id of categories to filter by. If multiple values are provided, then the result includes products that belong to any of the provided categories.
+        schema:
+          type: string
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedProductsDTO'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Get all products
+      tags:
+      - Products
+components:
+  schemas:
+    ConflictExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Conflict
+      example:
+        error:
+          status: 409
+          code: CONFLICT
+          message: Conflict error
+    NotFoundExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Not Found
+      example:
+        error:
+          status: 404
+          code: NOT_FOUND
+          message: Object not found
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    ForbiddenExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
+    PagedProductsDTO:
+      type: object
+      properties:
+        data:
+          description: List of returned resources
+          type: array
+          items:
+            title: Product
+            description: Product document
+            example:
+              id: rELTwTSkZ1gpCO1SU06F
+              createdAt: '2026-07-19T01:04:26.264Z'
+              categoryIds:
+              - VWMpQf8qMUdzLICI8cro
+              name:
+                def: Product name
+                en: Product name
+              description:
+                def: Product description
+                en: Product description
+              images:
+              - image_url
+              isPackage: false
+              taxPercentage: 10
+              recommendedProductIds:
+              - wrgaBP5j5zVObPv4x2rm
+              limitations:
+                storeIds:
+                - Gpqp1fYFKUNYIA5MfEDL
+                channels:
+                - online
+                maintenanceTimeMinutes: 60
+                onlineAvailabilityPercentage: 100
+                startTimes:
+                  type: interval
+                  intervalMinutes: 60
+                startTimesConfig:
+                  type: dateAndTime
+                  value:
+                  - type: weekly
+                    value:
+                      weekDays:
+                      - 1
+                      - 2
+                      - 3
+                      - 4
+                      - 5
+                      - 6
+                      - 7
+                      startTimes:
+                        type: interval
+                        value:
+                          intervalMinutes: 60
+                  maxOrdersPerStartTime: null
+                bookingBuffer:
+                  daysBefore: 1
+                  latestTime: 18
+                visibleInListing: true
+              order: 1
+              rentals:
+                enabled: true
+                basePrice: 2000
+                pricing:
+                - timePeriod: days
+                  timeValue: 1
+                  price: 2000
+                deposit: 10000
+              sales:
+                basePrice: 19900
+                enabled: true
+              variantProperties:
+              - id: VgXM1pk0Prj2H1K0E0DU
+                name:
+                  def: Size
+                  en: Size
+              variants:
+              - id: UcdSRxFLJaA3taZQNTzP
+                properties:
+                - name:
+                    def: Variant name
+                    en: Variant name
+                  value:
+                    def: Variant value
+                    en: Variant value
+                  propertyId: VgXM1pk0Prj2H1K0E0DU
+                sales:
+                  enabled: true
+                rentals:
+                  enabled: true
+                inventory:
+                - - skuId: SKU-1
+                    units: 1
+                    type: single
+              - id: vXi9fyNNQwLtRraxapfC
+                properties:
+                - name:
+                    def: Variant name
+                    en: Variant name
+                  value:
+                    def: Variant value
+                    en: Variant value
+                  propertyId: VgXM1pk0Prj2H1K0E0DU
+                sales:
+                  enabled: true
+                rentals:
+                  enabled: true
+                inventory:
+                - - skuId: SKU-2
+                    units: 1
+                    type: single
+            type: object
+            properties:
+              id:
+                description: Unique identifier of the object.
+                type: string
+              createdAt:
+                title: ISO 8601 date-time
+                description: Created date.
+                type: string
+              categoryIds:
+                description: List of category IDs the product belongs to.
+                type: array
+                items:
+                  type: string
+              name:
+                title: Localized field
+                description: Name of the product.
+                allOf:
+                - additionalProperties:
+                    type: string
+                    description: The property name is the locale code, and the value is the translated text in that locale.
+                  type: object
+                - type: object
+                  properties:
+                    def:
+                      description: The value in default locale.
+                      type: string
+                  required:
+                  - def
+              description:
+                description: Product description.
+                title: Localized field
+                allOf:
+                - additionalProperties:
+                    type: string
+                    description: The property name is the locale code, and the value is the translated text in that locale.
+                  type: object
+                - type: object
+                  properties:
+                    def:
+                      description: The value in default locale.
+                      type: string
+                  required:
+                  - def
+              images:
+                description: List of product image URLs.
+                type: array
+                items:
+                  type: string
+                  format: uri
+              isPackage:
+                description: Whether the product is a package or not.
+                type: boolean
+              taxPercentage:
+                description: The tax percentage of the product, in percentages.
+                type: integer
+                minimum: 0
+                maximum: 100
+              recommendedProductIds:
+                description: List of product IDs that are recommended to be bought together with this product.
+                type: array
+                items:
+                  type: string
+              limitations:
+                description: Limitation details of the product.
+                type: object
+                properties:
+                  storeIds:
+                    description: Array of store IDs where the product is visible in. If null, product is visible in all stores.
+                    type: array
+                    items:
+                      type: string
+                  channels:
+                    description: Array of channels where the product is visible in. If null, product is visible in all channels.
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - admin
+                      - check_in
+                      - online
+                  maintenanceTimeMinutes:
+                    description: The time in minutes that the product is unavailable for a new booking after the booking had ended.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  onlineAvailabilityPercentage:
+                    description: The percentage of the total product quantity that is available for online booking.
+                    type: integer
+                    minimum: 0
+                    maximum: 100
+                  startTimes:
+                    description: Start times settings of the product. Deprecated, use 'startTimesConfig' instead.
+                    deprecated: true
+                    anyOf:
+                    - title: Interval start times (Deprecated, use `startTimesConfig` instead)
+                      type: object
+                      properties:
+                        orderLimit:
+                          description: The maximum number of orders that can be placed including this product at the same time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        type:
+                          description: Interval start times means that product has new start times based on the given intervalMinutes value.
+                          type: string
+                          enum:
+                          - interval
+                        intervalMinutes:
+                          description: The time in minutes between each start time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - type
+                    - title: Fixed start times (Deprecated, use `startTimesConfig` instead)
+                      type: object
+                      properties:
+                        orderLimit:
+                          description: The maximum number of orders that can be placed including this product at the same time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        type:
+                          description: Fixed start times means that product has only a fixed set of start times defined.
+                          type: string
+                          enum:
+                          - fixed
+                        fixedTimes:
+                          description: List of the fixed start times.
+                          type: array
+                          items:
+                            anyOf:
+                            - title: Single date
+                              type: object
+                              properties:
+                                day:
+                                  description: Custom day means a specific date defined in `customDate`.
+                                  type: string
+                                  enum:
+                                  - custom
+                                customDate:
+                                  title: ISO 8601 date-time
+                                  description: The custom date in ISO format.
+                                  type: string
+                                time:
+                                  title: HH:MM time
+                                  description: Time of day in 24 hour HH:MM format.
+                                  type: string
+                              required:
+                              - day
+                              - customDate
+                              - time
+                            - title: Repeating day
+                              type: object
+                              properties:
+                                day:
+                                  description: Which day or days the time is valid.
+                                  type: string
+                                  enum:
+                                  - all_days
+                                  - weekdays
+                                  - weekends
+                                  - monday
+                                  - tuesday
+                                  - wednesday
+                                  - thursday
+                                  - friday
+                                  - saturday
+                                  - sunday
+                                time:
+                                  title: HH:MM time
+                                  description: Time of day in 24 hour HH:MM format.
+                                  type: string
+                              required:
+                              - day
+                              - time
+                        allowTimesOutsideOpeningHours:
+                          description: Whether to allow fixed start times that are outside store opening hours.
+                          type: boolean
+                      required:
+                      - type
+                      - fixedTimes
+                      - allowTimesOutsideOpeningHours
+                  startTimesConfig:
+                    description: Start times settings of the product.
+                    type: object
+                    properties:
+                      value:
+                        description: An array of start times configurations
+                        type: array
+                        items:
+                          description: A start times configuration object for either a week's days or a set of dates
+                          anyOf:
+                          - description: Weekly recurring start times
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - weekly
+                              value:
+                                description: Weekly recurring start times
+                                type: object
+                                properties:
+                                  weekDays:
+                                    description: An array of ISO Weekday numbers (1-7) that the start times apply to
+                                    type: array
+                                    items:
+                                      type: number
+                                      enum:
+                                      - 1
+                                      - 2
+                                      - 3
+                                      - 4
+                                      - 5
+                                      - 6
+                                      - 7
+                                  startTimes:
+                                    description: The start times for those weekdays
+                                    anyOf:
+                                    - description: Interval start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - interval
+                                        value:
+                                          description: Interval start times definition
+                                          type: object
+                                          properties:
+                                            intervalMinutes:
+                                              description: The time in minutes between each start time
+                                              type: integer
+                                              exclusiveMinimum: true
+                                              maximum: 9007199254740991
+                                              minimum: 0
+                                          required:
+                                          - intervalMinutes
+                                      required:
+                                      - type
+                                      - value
+                                    - description: Fixed start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - fixed
+                                        value:
+                                          description: Fixed start times definition
+                                          type: object
+                                          properties:
+                                            times:
+                                              description: An array of times in HH:mm format (24 hour format)
+                                              type: array
+                                              items:
+                                                description: A time in HH:mm format
+                                                type: string
+                                            ignoreOpeningHours:
+                                              description: Whether to allow start times outside of opening hours
+                                              type: boolean
+                                          required:
+                                          - times
+                                          - ignoreOpeningHours
+                                      required:
+                                      - type
+                                      - value
+                                    nullable: true
+                                required:
+                                - weekDays
+                                - startTimes
+                            required:
+                            - type
+                            - value
+                          - description: Exception start times (specific dates)
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - exceptional
+                              value:
+                                description: Exception start times
+                                type: object
+                                properties:
+                                  dates:
+                                    description: An array of dates in ('YYYY-MM-DD' format) that the start times apply to
+                                    type: array
+                                    items:
+                                      description: A date in YYYY-MM-DD format
+                                      type: string
+                                  startTimes:
+                                    description: The start times for those dates
+                                    anyOf:
+                                    - description: Interval start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - interval
+                                        value:
+                                          description: Interval start times definition
+                                          type: object
+                                          properties:
+                                            intervalMinutes:
+                                              description: The time in minutes between each start time
+                                              type: integer
+                                              exclusiveMinimum: true
+                                              maximum: 9007199254740991
+                                              minimum: 0
+                                          required:
+                                          - intervalMinutes
+                                      required:
+                                      - type
+                                      - value
+                                    - description: Fixed start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - fixed
+                                        value:
+                                          description: Fixed start times definition
+                                          type: object
+                                          properties:
+                                            times:
+                                              description: An array of times in HH:mm format (24 hour format)
+                                              type: array
+                                              items:
+                                                description: A time in HH:mm format
+                                                type: string
+                                            ignoreOpeningHours:
+                                              description: Whether to allow start times outside of opening hours
+                                              type: boolean
+                                          required:
+                                          - times
+                                          - ignoreOpeningHours
+                                      required:
+                                      - type
+                                      - value
+                                    nullable: true
+                                required:
+                                - dates
+                                - startTimes
+                            required:
+                            - type
+                            - value
+                      maxOrdersPerStartTime:
+                        type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                        description: The maximum number of orders that can be placed for a single start time
+                        nullable: true
+                    required:
+                    - value
+                    - maxOrdersPerStartTime
+                  bookingBuffer:
+                    description: The booking buffer to use for the product - can be either the product's own booking buffer, or the booking buffer of one of the categories the product belongs to, depending on which one is more restrictive.
+                    title: Booking buffer
+                    type: object
+                    properties:
+                      daysBefore:
+                        description: The number of days before a booking can be made
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      minutesBefore:
+                        description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                        type: integer
+                        minimum: 0
+                        maximum: 60
+                      latestTime:
+                        description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                        example: 18
+                        type: integer
+                        minimum: 0
+                        maximum: 23
+                    required:
+                    - daysBefore
+                  ownBookingBuffer:
+                    description: The product's own booking buffer
+                    title: Booking buffer
+                    type: object
+                    properties:
+                      daysBefore:
+                        description: The number of days before a booking can be made
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      minutesBefore:
+                        description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                        type: integer
+                        minimum: 0
+                        maximum: 60
+                      latestTime:
+                        description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                        example: 18
+                        type: integer
+                        minimum: 0
+                        maximum: 23
+                    required:
+                    - daysBefore
+                  visibleInListing:
+                    description: If true, the product will be visible in the store listing. If this is false, product can still be booked as an additional product, as part of a product package, or by visiting the product page via a direct link.
+                    type: boolean
+                required:
+                - visibleInListing
+              order:
+                description: Order of the product compared to other products. Smaller number means higher priority.
+                type: integer
+                minimum: 0
+                maximum: 9007199254740991
+              rentals:
+                description: Rental settings of the product.
+                type: object
+                properties:
+                  enabled:
+                    description: If true, the product can be booked as a rental product.
+                    type: boolean
+                  basePrice:
+                    description: Base price of the product for rentals. In minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  pricing:
+                    description: Pricing of the product. If not set, the product has a fixed base price, defined in `basePrice`.
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        label:
+                          description: Custom label of the pricing option.
+                          title: Localized field
+                          allOf:
+                          - additionalProperties:
+                              type: string
+                              description: The property name is the locale code, and the value is the translated text in that locale.
+                            type: object
+                          - type: object
+                            properties:
+                              def:
+                                description: The value in default locale.
+                                type: string
+                            required:
+                            - def
+                        timePeriod:
+                          description: Time period of the pricing option.
+                          type: string
+                          enum:
+                          - minutes
+                          - hours
+                          - days
+                          - weeks
+                          - months
+                          - days_within_opening_hours
+                          - years
+                        timeValue:
+                          description: Time value of the pricing option.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        price:
+                          description: Price of the pricing option, in minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        channels:
+                          description: List of channels the pricing option is limited to. If not defined, the option is available on all channels.
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                            - admin
+                            - check_in
+                            - online
+                      required:
+                      - timePeriod
+                      - timeValue
+                      - price
+                  deposit:
+                    description: Deposit price of the product. In minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - enabled
+                - basePrice
+              sales:
+                description: Sales settings of the product.
+                type: object
+                properties:
+                  basePrice:
+                    description: Base price of the product for sales. In minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  enabled:
+                    description: If true, the product can be booked as a sales product.
+                    type: boolean
+                required:
+                - basePrice
+                - enabled
+              variantProperties:
+                description: Variant properties define the unique product characteristics that user can select from, such as Color or Size. These are used to define the variants of the product.
+                type: array
+                items:
+                  description: A variant property is used to describe the different product characteristics, such as Size or Color.
+                  example:
+                    id: '123'
+                    name:
+                      def: Size
+                  type: object
+                  properties:
+                    id:
+                      description: ID of the variant property.
+                      type: string
+                    name:
+                      title: Localized field
+                      description: Name of the variant property.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                  required:
+                  - id
+                  - name
+              variants:
+                description: Variants of the product. These define all the possible product options that the user can select from.
+                type: array
+                items:
+                  description: A variant is a specific option for a product. For example, a product could have a variant size with values "Medium" and "Large".
+                  type: object
+                  properties:
+                    id:
+                      description: Unique ID of the variant.
+                      type: string
+                    properties:
+                      description: List of variant properties that describe the variant and their values.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            title: Localized field
+                            description: Value of the variant property.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                          name:
+                            title: Localized field
+                            description: Name of the variant property.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                          propertyId:
+                            description: ID of the variant property.
+                            type: string
+                        required:
+                        - value
+                        - name
+                        - propertyId
+                    sales:
+                      description: Defines if the variant is available for sale and if it has specific configurations.
+                      type: object
+                      properties:
+                        enabled:
+                          description: Defines if the variant is available for sale.
+                          type: boolean
+                        priceOverride:
+                          description: Sales price override of the variant. In minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - enabled
+                    rentals:
+                      description: Defines if the variant is available for rental and if it has specific configurations.
+                      type: object
+                      properties:
+                        enabled:
+                          description: Defines if the variant is available for rental.
+                          type: boolean
+                        priceIncrease:
+                          description: The price increase of the variant. In minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - enabled
+                    inventory:
+                      description: The inventory connection of the variant. It defines the SKUs that should be reserved when a variant is booked. It is defined as two-dimensional array, where the first dimension defines the list of different inventory resources that should be reserved for the variant. The second dimension defines the possible SKU options for the inventory resource. As an example, a bicycle could need both a bike SKU and a helmet SKU from the inventory. This would be the first dimension listing. The bike SKU could have 3 different SKUs that would all be valid for the variant. These would be in the second dimension array.
+                      title: List of inventory resources
+                      type: array
+                      items:
+                        title: List of inventory resource options
+                        description: 'List of SKU objects that can fulfill the single inventory resource need. Example: Bike resource could be any item from SKUs BIK-M-22 or BIK-M-23'
+                        type: array
+                        items:
+                          title: SKU connected to the variant
+                          description: The inventory SKU connected to the variant
+                          type: object
+                          properties:
+                            skuId:
+                              description: The SKU ID this variant is connected to.
+                              type: string
+                            type:
+                              description: The type of the SKU.
+                              type: string
+                              enum:
+                              - single
+                              - bulk
+                            units:
+                              description: The amount of SKU units that should be reserved when this variant is booked.
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                          required:
+                          - skuId
+                          - type
+                          - units
+                  required:
+                  - id
+                  - properties
+              packageProductIds:
+                description: List of product IDs that are included in the package. Only exists if product is a package.
+                deprecated: true
+                type: array
+                items:
+                  type: string
+              packageProducts:
+                description: List of products that are included in the package. Only exists if product is a package.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    createdAt:
+                      title: ISO 8601 date-time
+                      description: Date-time in ISO 8601 format.
+                      type: string
+                    categoryIds:
+                      type: array
+                      items:
+                        type: string
+                    name:
+                      title: Localized field
+                      description: Localized text field.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    description:
+                      title: Localized field
+                      description: Localized text field.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    images:
+                      type: array
+                      items:
+                        type: string
+                        format: uri
+                    isPackage:
+                      type: boolean
+                    taxPercentage:
+                      type: integer
+                      minimum: 0
+                      maximum: 100
+                    recommendedProductIds:
+                      type: array
+                      items:
+                        type: string
+                    limitations:
+                      type: object
+                      properties:
+                        storeIds:
+                          type: array
+                          items:
+                            type: string
+                        channels:
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                            - admin
+                            - check_in
+                            - online
+                        maintenanceTimeMinutes:
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        onlineAvailabilityPercentage:
+                          type: integer
+                          minimum: 0
+                          maximum: 100
+                        startTimes:
+                          anyOf:
+                          - title: Interval start times (Deprecated, use `startTimesConfig` instead)
+                            type: object
+                            properties:
+                              orderLimit:
+                                description: The maximum number of orders that can be placed including this product at the same time.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              type:
+                                description: Interval start times means that product has new start times based on the given intervalMinutes value.
+                                type: string
+                                enum:
+                                - interval
+                              intervalMinutes:
+                                description: The time in minutes between each start time.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - type
+                          - title: Fixed start times (Deprecated, use `startTimesConfig` instead)
+                            type: object
+                            properties:
+                              orderLimit:
+                                description: The maximum number of orders that can be placed including this product at the same time.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              type:
+                                description: Fixed start times means that product has only a fixed set of start times defined.
+                                type: string
+                                enum:
+                                - fixed
+                              fixedTimes:
+                                description: List of the fixed start times.
+                                type: array
+                                items:
+                                  anyOf:
+                                  - title: Single date
+                                    type: object
+                                    properties:
+                                      day:
+                                        description: Custom day means a specific date defined in `customDate`.
+                                        type: string
+                                        enum:
+                                        - custom
+                                      customDate:
+                                        title: ISO 8601 date-time
+                                        description: The custom date in ISO format.
+                                        type: string
+                                      time:
+                                        title: HH:MM time
+                                        description: Time of day in 24 hour HH:MM format.
+                                        type: string
+                                    required:
+                                    - day
+                                    - customDate
+                                    - time
+                                  - title: Repeating day
+                                    type: object
+                                    properties:
+                                      day:
+                                        description: Which day or days the time is valid.
+                                        type: string
+                                        enum:
+                                        - all_days
+                                        - weekdays
+                                        - weekends
+                                        - monday
+                                        - tuesday
+                                        - wednesday
+                                        - thursday
+                                        - friday
+                                        - saturday
+                                        - sunday
+                                      time:
+                                        title: HH:MM time
+                                        description: Time of day in 24 hour HH:MM format.
+                                        type: string
+                                    required:
+                                    - day
+                                    - time
+                              allowTimesOutsideOpeningHours:
+                                description: Whether to allow fixed start times that are outside store opening hours.
+                                type: boolean
+                            required:
+                            - type
+                            - fixedTimes
+                            - allowTimesOutsideOpeningHours
+                        startTimesConfig:
+                          description: A start times configuration object
+                          type: object
+                          properties:
+                            value:
+                              description: An array of start times configurations
+                              type: array
+                              items:
+                                description: A start times configuration object for either a week's days or a set of dates
+                                anyOf:
+                                - description: Weekly recurring start times
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                      - weekly
+                                    value:
+                                      description: Weekly recurring start times
+                                      type: object
+                                      properties:
+                                        weekDays:
+                                          description: An array of ISO Weekday numbers (1-7) that the start times apply to
+                                          type: array
+                                          items:
+                                            type: number
+                                            enum:
+                                            - 1
+                                            - 2
+                                            - 3
+                                            - 4
+                                            - 5
+                                            - 6
+                                            - 7
+                                        startTimes:
+                                          description: The start times for those weekdays
+                                          anyOf:
+                                          - description: Interval start times
+                                            type: object
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                - interval
+                                              value:
+                                                description: Interval start times definition
+                                                type: object
+                                                properties:
+                                                  intervalMinutes:
+                                                    description: The time in minutes between each start time
+                                                    type: integer
+                                                    exclusiveMinimum: true
+                                                    maximum: 9007199254740991
+                                                    minimum: 0
+                                                required:
+                                                - intervalMinutes
+                                            required:
+                                            - type
+                                            - value
+                                          - description: Fixed start times
+                                            type: object
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                - fixed
+                                              value:
+                                                description: Fixed start times definition
+                                                type: object
+                                                properties:
+                                                  times:
+                                                    description: An array of times in HH:mm format (24 hour format)
+                                                    type: array
+                                                    items:
+                                                      description: A time in HH:mm format
+                                                      type: string
+                                                  ignoreOpeningHours:
+                                                    description: Whether to allow start times outside of opening hours
+                                                    type: boolean
+                                                required:
+                                                - times
+                                                - ignoreOpeningHours
+                                            required:
+                                            - type
+                                            - value
+                                          nullable: true
+                                      required:
+                                      - weekDays
+                                      - startTimes
+                                  required:
+                                  - type
+                                  - value
+                                - description: Exception start times (specific dates)
+                                  type: object
+                                  properties:
+                                    type:
+                                      type: string
+                                      enum:
+                                      - exceptional
+                                    value:
+                                      description: Exception start times
+                                      type: object
+                                      properties:
+                                        dates:
+                                          description: An array of dates in ('YYYY-MM-DD' format) that the start times apply to
+                                          type: array
+                                          items:
+                                            description: A date in YYYY-MM-DD format
+                                            type: string
+                                        startTimes:
+                                          description: The start times for those dates
+                                          anyOf:
+                                          - description: Interval start times
+                                            type: object
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                - interval
+                                              value:
+                                                description: Interval start times definition
+                                                type: object
+                                                properties:
+                                                  intervalMinutes:
+                                                    description: The time in minutes between each start time
+                                                    type: integer
+                                                    exclusiveMinimum: true
+                                                    maximum: 9007199254740991
+                                                    minimum: 0
+                                                required:
+                                                - intervalMinutes
+                                            required:
+                                            - type
+                                            - value
+                                          - description: Fixed start times
+                                            type: object
+                                            properties:
+                                              type:
+                                                type: string
+                                                enum:
+                                                - fixed
+                                              value:
+                                                description: Fixed start times definition
+                                                type: object
+                                                properties:
+                                                  times:
+                                                    description: An array of times in HH:mm format (24 hour format)
+                                                    type: array
+                                                    items:
+                                                      description: A time in HH:mm format
+                                                      type: string
+                                                  ignoreOpeningHours:
+                                                    description: Whether to allow start times outside of opening hours
+                                                    type: boolean
+                                                required:
+                                                - times
+                                                - ignoreOpeningHours
+                                            required:
+                                            - type
+                                            - value
+                                          nullable: true
+                                      required:
+                                      - dates
+                                      - startTimes
+                                  required:
+                                  - type
+                                  - value
+                            maxOrdersPerStartTime:
+                              type: integer
+                              minimum: -9007199254740991
+                              maximum: 9007199254740991
+                              description: The maximum number of orders that can be placed for a single start time
+                              nullable: true
+                          required:
+                          - value
+                          - maxOrdersPerStartTime
+                        bookingBuffer:
+                          title: Booking buffer
+                          description: Defines how far in advance a booking can be made.
+                          example:
+                            daysBefore: 1
+                            latestTime: 18
+                          type: object
+                          properties:
+                            daysBefore:
+                              description: The number of days before a booking can be made
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                            minutesBefore:
+                              description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                              type: integer
+                              minimum: 0
+                              maximum: 60
+                            latestTime:
+                              description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                              example: 18
+                              type: integer
+                              minimum: 0
+                              maximum: 23
+                          required:
+                          - daysBefore
+                        ownBookingBuffer:
+                          title: Booking buffer
+                          description: Defines how far in advance a booking can be made.
+                          example:
+                            daysBefore: 1
+                            latestTime: 18
+                          type: object
+                          properties:
+                            daysBefore:
+                              description: The number of days before a booking can be made
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                            minutesBefore:
+                              description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                              type: integer
+                              minimum: 0
+                              maximum: 60
+                            latestTime:
+                              description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                              example: 18
+                              type: integer
+                              minimum: 0
+                              maximum: 23
+                          required:
+                          - daysBefore
+                        visibleInListing:
+                          type: boolean
+                      required:
+                      - visibleInListing
+                    order:
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    rentals:
+                      type: object
+                      properties:
+                        enabled:
+                          type: boolean
+                        basePrice:
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        pricing:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              label:
+                                description: Custom label of the pricing option.
+                                title: Localized field
+                                allOf:
+                                - additionalProperties:
+                                    type: string
+                                    description: The property name is the locale code, and the value is the translated text in that locale.
+                                  type: object
+                                - type: object
+                                  properties:
+                                    def:
+                                      description: The value in default locale.
+                                      type: string
+                                  required:
+                                  - def
+                              timePeriod:
+                                description: Time period of the pricing option.
+                                type: string
+                                enum:
+                                - minutes
+                                - hours
+                                - days
+                                - weeks
+                                - months
+                                - days_within_opening_hours
+                                - years
+                              timeValue:
+                                description: Time value of the pricing option.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              price:
+                                description: Price of the pricing option, in minor units.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              channels:
+                                description: List of channels the pricing option is limited to. If not defined, the option is available on all channels.
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                  - admin
+                                  - check_in
+                                  - online
+                            required:
+                            - timePeriod
+                            - timeValue
+                            - price
+                        deposit:
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - enabled
+                      - basePrice
+                    sales:
+                      type: object
+                      properties:
+                        basePrice:
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        enabled:
+                          type: boolean
+                      required:
+                      - basePrice
+                      - enabled
+                    variantProperties:
+                      type: array
+                      items:
+                        description: A variant property is used to describe the different product characteristics, such as Size or Color.
+                        example:
+                          id: '123'
+                          name:
+                            def: Size
+                        type: object
+                        properties:
+                          id:
+                            description: ID of the variant property.
+                            type: string
+                          name:
+                            title: Localized field
+                            description: Name of the variant property.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                        required:
+                        - id
+                        - name
+                    variants:
+                      type: array
+                      items:
+                        description: A variant is a specific option for a product. For example, a product could have a variant size with values "Medium" and "Large".
+                        type: object
+                        properties:
+                          id:
+                            description: Unique ID of the variant.
+                            type: string
+                          properties:
+                            description: List of variant properties that describe the variant and their values.
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                value:
+                                  title: Localized field
+                                  description: Value of the variant property.
+                                  allOf:
+                                  - additionalProperties:
+                                      type: string
+                                      description: The property name is the locale code, and the value is the translated text in that locale.
+                                    type: object
+                                  - type: object
+                                    properties:
+                                      def:
+                                        description: The value in default locale.
+                                        type: string
+                                    required:
+                                    - def
+                                name:
+                                  title: Localized field
+                                  description: Name of the variant property.
+                                  allOf:
+                                  - additionalProperties:
+                                      type: string
+                                      description: The property name is the locale code, and the value is the translated text in that locale.
+                                    type: object
+                                  - type: object
+                                    properties:
+                                      def:
+                                        description: The value in default locale.
+                                        type: string
+                                    required:
+                                    - def
+                                propertyId:
+                                  description: ID of the variant property.
+                                  type: string
+                              required:
+                              - value
+                              - name
+                              - propertyId
+                          sales:
+                            description: Defines if the variant is available for sale and if it has specific configurations.
+                            type: object
+                            properties:
+                              enabled:
+                                description: Defines if the variant is available for sale.
+                                type: boolean
+                              priceOverride:
+                                description: Sales price override of the variant. In minor units.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - enabled
+                          rentals:
+                            description: Defines if the variant is available for rental and if it has specific configurations.
+                            type: object
+                            properties:
+                              enabled:
+                                description: Defines if the variant is available for rental.
+                                type: boolean
+                              priceIncrease:
+                                description: The price increase of the variant. In minor units.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - enabled
+                          inventory:
+                            description: The inventory connection of the variant. It defines the SKUs that should be reserved when a variant is booked. It is defined as two-dimensional array, where the first dimension defines the list of different inventory resources that should be reserved for the variant. The second dimension defines the possible SKU options for the inventory resource. As an example, a bicycle could need both a bike SKU and a helmet SKU from the inventory. This would be the first dimension listing. The bike SKU could have 3 different SKUs that would all be valid for the variant. These would be in the second dimension array.
+                            title: List of inventory resources
+                            type: array
+                            items:
+                              title: List of inventory resource options
+                              description: 'List of SKU objects that can fulfill the single inventory resource need. Example: Bike resource could be any item from SKUs BIK-M-22 or BIK-M-23'
+                              type: array
+                              items:
+                                title: SKU connected to the variant
+                                description: The inventory SKU connected to the variant
+                                type: object
+                                properties:
+                                  skuId:
+                                    description: The SKU ID this variant is connected to.
+                                    type: string
+                                  type:
+                                    description: The type of the SKU.
+                                    type: string
+                                    enum:
+                                    - single
+                                    - bulk
+                                  units:
+                                    description: The amount of SKU units that should be reserved when this variant is booked.
+                                    type: integer
+                                    minimum: 0
+                                    maximum: 9007199254740991
+                                required:
+                                - skuId
+                                - type
+                                - units
+                        required:
+                        - id
+                        - properties
+                  required:
+                  - id
+                  - createdAt
+                  - categoryIds
+                  - name
+                  - images
+                  - isPackage
+                  - taxPercentage
+                  - recommendedProductIds
+                  - limitations
+                  - order
+                  - rentals
+                  - sales
+                  - variantProperties
+                  - variants
+            required:
+            - id
+            - createdAt
+            - categoryIds
+            - name
+            - images
+            - isPackage
+            - taxPercentage
+            - recommendedProductIds
+            - limitations
+            - order
+            - rentals
+            - sales
+            - variantProperties
+            - variants
+        count:
+          description: Number of returned resources
+          type: number
+        total:
+          description: Total number of resources
+          type: number
+        nextPageToken:
+          description: This can be used in the next request to retrieve the next page of results.
+          type: string
+      required:
+      - data
+      - count
+      - total
+      title: Paginated list of products
+    ProductDTO:
+      type: object
+      properties:
+        id:
+          description: Unique identifier of the object.
+          type: string
+        createdAt:
+          title: ISO 8601 date-time
+          description: Created date.
+          type: string
+        categoryIds:
+          description: List of category IDs the product belongs to.
+          type: array
+          items:
+            type: string
+        name:
+          title: Localized field
+          description: Name of the product.
+          allOf:
+          - additionalProperties:
+              type: string
+              description: The property name is the locale code, and the value is the translated text in that locale.
+            type: object
+          - type: object
+            properties:
+              def:
+                description: The value in default locale.
+                type: string
+            required:
+            - def
+        description:
+          description: Product description.
+          title: Localized field
+          allOf:
+          - additionalProperties:
+              type: string
+              description: The property name is the locale code, and the value is the translated text in that locale.
+            type: object
+          - type: object
+            properties:
+              def:
+                description: The value in default locale.
+                type: string
+            required:
+            - def
+        images:
+          description: List of product image URLs.
+          type: array
+          items:
+            type: string
+            format: uri
+        isPackage:
+          description: Whether the product is a package or not.
+          type: boolean
+        taxPercentage:
+          description: The tax percentage of the product, in percentages.
+          type: integer
+          minimum: 0
+          maximum: 100
+        recommendedProductIds:
+          description: List of product IDs that are recommended to be bought together with this product.
+          type: array
+          items:
+            type: string
+        limitations:
+          description: Limitation details of the product.
+          type: object
+          properties:
+            storeIds:
+              description: Array of store IDs where the product is visible in. If null, product is visible in all stores.
+              type: array
+              items:
+                type: string
+            channels:
+              description: Array of channels where the product is visible in. If null, product is visible in all channels.
+              type: array
+              items:
+                type: string
+                enum:
+                - admin
+                - check_in
+                - online
+            maintenanceTimeMinutes:
+              description: The time in minutes that the product is unavailable for a new booking after the booking had ended.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+            onlineAvailabilityPercentage:
+              description: The percentage of the total product quantity that is available for online booking.
+              type: integer
+              minimum: 0
+              maximum: 100
+            startTimes:
+              description: Start times settings of the product. Deprecated, use 'startTimesConfig' instead.
+              deprecated: true
+              anyOf:
+              - title: Interval start times (Deprecated, use `startTimesConfig` instead)
+                type: object
+                properties:
+                  orderLimit:
+                    description: The maximum number of orders that can be placed including this product at the same time.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  type:
+                    description: Interval start times means that product has new start times based on the given intervalMinutes value.
+                    type: string
+                    enum:
+                    - interval
+                  intervalMinutes:
+                    description: The time in minutes between each start time.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - type
+              - title: Fixed start times (Deprecated, use `startTimesConfig` instead)
+                type: object
+                properties:
+                  orderLimit:
+                    description: The maximum number of orders that can be placed including this product at the same time.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  type:
+                    description: Fixed start times means that product has only a fixed set of start times defined.
+                    type: string
+                    enum:
+                    - fixed
+                  fixedTimes:
+                    description: List of the fixed start times.
+                    type: array
+                    items:
+                      anyOf:
+                      - title: Single date
+                        type: object
+                        properties:
+                          day:
+                            description: Custom day means a specific date defined in `customDate`.
+                            type: string
+                            enum:
+                            - custom
+                          customDate:
+                            title: ISO 8601 date-time
+                            description: The custom date in ISO format.
+                            type: string
+                          time:
+                            title: HH:MM time
+                            description: Time of day in 24 hour HH:MM format.
+                            type: string
+                        required:
+                        - day
+                        - customDate
+                        - time
+                      - title: Repeating day
+                        type: object
+                        properties:
+                          day:
+                            description: Which day or days the time is valid.
+                            type: string
+                            enum:
+                            - all_days
+                            - weekdays
+                            - weekends
+                            - monday
+                            - tuesday
+                            - wednesday
+                            - thursday
+                            - friday
+                            - saturday
+                            - sunday
+                          time:
+                            title: HH:MM time
+                            description: Time of day in 24 hour HH:MM format.
+                            type: string
+                        required:
+                        - day
+                        - time
+                  allowTimesOutsideOpeningHours:
+                    description: Whether to allow fixed start times that are outside store opening hours.
+                    type: boolean
+                required:
+                - type
+                - fixedTimes
+                - allowTimesOutsideOpeningHours
+            startTimesConfig:
+              description: Start times settings of the product.
+              type: object
+              properties:
+                value:
+                  description: An array of start times configurations
+                  type: array
+                  items:
+                    description: A start times configuration object for either a week's days or a set of dates
+                    anyOf:
+                    - description: Weekly recurring start times
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - weekly
+                        value:
+                          description: Weekly recurring start times
+                          type: object
+                          properties:
+                            weekDays:
+                              description: An array of ISO Weekday numbers (1-7) that the start times apply to
+                              type: array
+                              items:
+                                type: number
+                                enum:
+                                - 1
+                                - 2
+                                - 3
+                                - 4
+                                - 5
+                                - 6
+                                - 7
+                            startTimes:
+                              description: The start times for those weekdays
+                              anyOf:
+                              - description: Interval start times
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - interval
+                                  value:
+                                    description: Interval start times definition
+                                    type: object
+                                    properties:
+                                      intervalMinutes:
+                                        description: The time in minutes between each start time
+                                        type: integer
+                                        exclusiveMinimum: true
+                                        maximum: 9007199254740991
+                                        minimum: 0
+                                    required:
+                                    - intervalMinutes
+                                required:
+                                - type
+                                - value
+                              - description: Fixed start times
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - fixed
+                                  value:
+                                    description: Fixed start times definition
+                                    type: object
+                                    properties:
+                                      times:
+                                        description: An array of times in HH:mm format (24 hour format)
+                                        type: array
+                                        items:
+                                          description: A time in HH:mm format
+                                          type: string
+                                      ignoreOpeningHours:
+                                        description: Whether to allow start times outside of opening hours
+                                        type: boolean
+                                    required:
+                                    - times
+                                    - ignoreOpeningHours
+                                required:
+                                - type
+                                - value
+                              nullable: true
+                          required:
+                          - weekDays
+                          - startTimes
+                      required:
+                      - type
+                      - value
+                    - description: Exception start times (specific dates)
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - exceptional
+                        value:
+                          description: Exception start times
+                          type: object
+                          properties:
+                            dates:
+                              description: An array of dates in ('YYYY-MM-DD' format) that the start times apply to
+                              type: array
+                              items:
+                                description: A date in YYYY-MM-DD format
+                                type: string
+                            startTimes:
+                              description: The start times for those dates
+                              anyOf:
+                              - description: Interval start times
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - interval
+                                  value:
+                                    description: Interval start times definition
+                                    type: object
+                                    properties:
+                                      intervalMinutes:
+                                        description: The time in minutes between each start time
+                                        type: integer
+                                        exclusiveMinimum: true
+                                        maximum: 9007199254740991
+                                        minimum: 0
+                                    required:
+                                    - intervalMinutes
+                                required:
+                                - type
+                                - value
+                              - description: Fixed start times
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    enum:
+                                    - fixed
+                                  value:
+                                    description: Fixed start times definition
+                                    type: object
+                                    properties:
+                                      times:
+                                        description: An array of times in HH:mm format (24 hour format)
+                                        type: array
+                                        items:
+                                          description: A time in HH:mm format
+                                          type: string
+                                      ignoreOpeningHours:
+                                        description: Whether to allow start times outside of opening hours
+                                        type: boolean
+                                    required:
+                                    - times
+                                    - ignoreOpeningHours
+                                required:
+                                - type
+                                - value
+                              nullable: true
+                          required:
+                          - dates
+                          - startTimes
+                      required:
+                      - type
+                      - value
+                maxOrdersPerStartTime:
+                  type: integer
+                  minimum: -9007199254740991
+                  maximum: 9007199254740991
+                  description: The maximum number of orders that can be placed for a single start time
+                  nullable: true
+              required:
+              - value
+              - maxOrdersPerStartTime
+            bookingBuffer:
+              description: The booking buffer to use for the product - can be either the product's own booking buffer, or the booking buffer of one of the categories the product belongs to, depending on which one is more restrictive.
+              title: Booking buffer
+              type: object
+              properties:
+                daysBefore:
+                  description: The number of days before a booking can be made
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                minutesBefore:
+                  description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                  type: integer
+                  minimum: 0
+                  maximum: 60
+                latestTime:
+                  description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                  example: 18
+                  type: integer
+                  minimum: 0
+                  maximum: 23
+              required:
+              - daysBefore
+            ownBookingBuffer:
+              description: The product's own booking buffer
+              title: Booking buffer
+              type: object
+              properties:
+                daysBefore:
+                  description: The number of days before a booking can be made
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                minutesBefore:
+                  description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                  type: integer
+                  minimum: 0
+                  maximum: 60
+                latestTime:
+                  description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                  example: 18
+                  type: integer
+                  minimum: 0
+                  maximum: 23
+              required:
+              - daysBefore
+            visibleInListing:
+              description: If true, the product will be visible in the store listing. If this is false, product can still be booked as an additional product, as part of a product package, or by visiting the product page via a direct link.
+              type: boolean
+          required:
+          - visibleInListing
+        order:
+          description: Order of the product compared to other products. Smaller number means higher priority.
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        rentals:
+          description: Rental settings of the product.
+          type: object
+          properties:
+            enabled:
+              description: If true, the product can be booked as a rental product.
+              type: boolean
+            basePrice:
+              description: Base price of the product for rentals. In minor units.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+            pricing:
+              description: Pricing of the product. If not set, the product has a fixed base price, defined in `basePrice`.
+              type: array
+              items:
+                type: object
+                properties:
+                  label:
+                    description: Custom label of the pricing option.
+                    title: Localized field
+                    allOf:
+                    - additionalProperties:
+                        type: string
+                        description: The property name is the locale code, and the value is the translated text in that locale.
+                      type: object
+                    - type: object
+                      properties:
+                        def:
+                          description: The value in default locale.
+                          type: string
+                      required:
+                      - def
+                  timePeriod:
+                    description: Time period of the pricing option.
+                    type: string
+                    enum:
+                    - minutes
+                    - hours
+                    - days
+                    - weeks
+                    - months
+                    - days_within_opening_hours
+                    - years
+                  timeValue:
+                    description: Time value of the pricing option.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  price:
+                    description: Price of the pricing option, in minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  channels:
+                    description: List of channels the pricing option is limited to. If not defined, the option is available on all channels.
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - admin
+                      - check_in
+                      - online
+                required:
+                - timePeriod
+                - timeValue
+                - price
+            deposit:
+              description: Deposit price of the product. In minor units.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+          required:
+          - enabled
+          - basePrice
+        sales:
+          description: Sales settings of the product.
+          type: object
+          properties:
+            basePrice:
+              description: Base price of the product for sales. In minor units.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+            enabled:
+              description: If true, the product can be booked as a sales product.
+              type: boolean
+          required:
+          - basePrice
+          - enabled
+        variantProperties:
+          description: Variant properties define the unique product characteristics that user can select from, such as Color or Size. These are used to define the variants of the product.
+          type: array
+          items:
+            description: A variant property is used to describe the different product characteristics, such as Size or Color.
+            example:
+              id: '123'
+              name:
+                def: Size
+            type: object
+            properties:
+              id:
+                description: ID of the variant property.
+                type: string
+              name:
+                title: Localized field
+                description: Name of the variant property.
+                allOf:
+                - additionalProperties:
+                    type: string
+                    description: The property name is the locale code, and the value is the translated text in that locale.
+                  type: object
+                - type: object
+                  properties:
+                    def:
+                      description: The value in default locale.
+                      type: string
+                  required:
+                  - def
+            required:
+            - id
+            - name
+        variants:
+          description: Variants of the product. These define all the possible product options that the user can select from.
+          type: array
+          items:
+            description: A variant is a specific option for a product. For example, a product could have a variant size with values "Medium" and "Large".
+            type: object
+            properties:
+              id:
+                description: Unique ID of the variant.
+                type: string
+              properties:
+                description: List of variant properties that describe the variant and their values.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      title: Localized field
+                      description: Value of the variant property.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    name:
+                      title: Localized field
+                      description: Name of the variant property.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    propertyId:
+                      description: ID of the variant property.
+                      type: string
+                  required:
+                  - value
+                  - name
+                  - propertyId
+              sales:
+                description: Defines if the variant is available for sale and if it has specific configurations.
+                type: object
+                properties:
+                  enabled:
+                    description: Defines if the variant is available for sale.
+                    type: boolean
+                  priceOverride:
+                    description: Sales price override of the variant. In minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - enabled
+              rentals:
+                description: Defines if the variant is available for rental and if it has specific configurations.
+                type: object
+                properties:
+                  enabled:
+                    description: Defines if the variant is available for rental.
+                    type: boolean
+                  priceIncrease:
+                    description: The price increase of the variant. In minor units.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - enabled
+              inventory:
+                description: The inventory connection of the variant. It defines the SKUs that should be reserved when a variant is booked. It is defined as two-dimensional array, where the first dimension defines the list of different inventory resources that should be reserved for the variant. The second dimension defines the possible SKU options for the inventory resource. As an example, a bicycle could need both a bike SKU and a helmet SKU from the inventory. This would be the first dimension listing. The bike SKU could have 3 different SKUs that would all be valid for the variant. These would be in the second dimension array.
+                title: List of inventory resources
+                type: array
+                items:
+                  title: List of inventory resource options
+                  description: 'List of SKU objects that can fulfill the single inventory resource need. Example: Bike resource could be any item from SKUs BIK-M-22 or BIK-M-23'
+                  type: array
+                  items:
+                    title: SKU connected to the variant
+                    description: The inventory SKU connected to the variant
+                    type: object
+                    properties:
+                      skuId:
+                        description: The SKU ID this variant is connected to.
+                        type: string
+                      type:
+                        description: The type of the SKU.
+                        type: string
+                        enum:
+                        - single
+                        - bulk
+                      units:
+                        description: The amount of SKU units that should be reserved when this variant is booked.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - skuId
+                    - type
+                    - units
+            required:
+            - id
+            - properties
+        packageProductIds:
+          description: List of product IDs that are included in the package. Only exists if product is a package.
+          deprecated: true
+          type: array
+          items:
+            type: string
+        packageProducts:
+          description: List of products that are included in the package. Only exists if product is a package.
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              createdAt:
+                title: ISO 8601 date-time
+                description: Date-time in ISO 8601 format.
+                type: string
+              categoryIds:
+                type: array
+                items:
+                  type: string
+              name:
+                title: Localized field
+                description: Localized text field.
+                allOf:
+                - additionalProperties:
+                    type: string
+                    description: The property name is the locale code, and the value is the translated text in that locale.
+                  type: object
+                - type: object
+                  properties:
+                    def:
+                      description: The value in default locale.
+                      type: string
+                  required:
+                  - def
+              description:
+                title: Localized field
+                description: Localized text field.
+                allOf:
+                - additionalProperties:
+                    type: string
+                    description: The property name is the locale code, and the value is the translated text in that locale.
+                  type: object
+                - type: object
+                  properties:
+                    def:
+                      description: The value in default locale.
+                      type: string
+                  required:
+                  - def
+              images:
+                type: array
+                items:
+                  type: string
+                  format: uri
+              isPackage:
+                type: boolean
+              taxPercentage:
+                type: integer
+                minimum: 0
+                maximum: 100
+              recommendedProductIds:
+                type: array
+                items:
+                  type: string
+              limitations:
+                type: object
+                properties:
+                  storeIds:
+                    type: array
+                    items:
+                      type: string
+                  channels:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - admin
+                      - check_in
+                      - online
+                  maintenanceTimeMinutes:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  onlineAvailabilityPercentage:
+                    type: integer
+                    minimum: 0
+                    maximum: 100
+                  startTimes:
+                    anyOf:
+                    - title: Interval start times (Deprecated, use `startTimesConfig` instead)
+                      type: object
+                      properties:
+                        orderLimit:
+                          description: The maximum number of orders that can be placed including this product at the same time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        type:
+                          description: Interval start times means that product has new start times based on the given intervalMinutes value.
+                          type: string
+                          enum:
+                          - interval
+                        intervalMinutes:
+                          description: The time in minutes between each start time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - type
+                    - title: Fixed start times (Deprecated, use `startTimesConfig` instead)
+                      type: object
+                      properties:
+                        orderLimit:
+                          description: The maximum number of orders that can be placed including this product at the same time.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        type:
+                          description: Fixed start times means that product has only a fixed set of start times defined.
+                          type: string
+                          enum:
+                          - fixed
+                        fixedTimes:
+                          description: List of the fixed start times.
+                          type: array
+                          items:
+                            anyOf:
+                            - title: Single date
+                              type: object
+                              properties:
+                                day:
+                                  description: Custom day means a specific date defined in `customDate`.
+                                  type: string
+                                  enum:
+                                  - custom
+                                customDate:
+                                  title: ISO 8601 date-time
+                                  description: The custom date in ISO format.
+                                  type: string
+                                time:
+                                  title: HH:MM time
+                                  description: Time of day in 24 hour HH:MM format.
+                                  type: string
+                              required:
+                              - day
+                              - customDate
+                              - time
+                            - title: Repeating day
+                              type: object
+                              properties:
+                                day:
+                                  description: Which day or days the time is valid.
+                                  type: string
+                                  enum:
+                                  - all_days
+                                  - weekdays
+                                  - weekends
+                                  - monday
+                                  - tuesday
+                                  - wednesday
+                                  - thursday
+                                  - friday
+                                  - saturday
+                                  - sunday
+                                time:
+                                  title: HH:MM time
+                                  description: Time of day in 24 hour HH:MM format.
+                                  type: string
+                              required:
+                              - day
+                              - time
+                        allowTimesOutsideOpeningHours:
+                          description: Whether to allow fixed start times that are outside store opening hours.
+                          type: boolean
+                      required:
+                      - type
+                      - fixedTimes
+                      - allowTimesOutsideOpeningHours
+                  startTimesConfig:
+                    description: A start times configuration object
+                    type: object
+                    properties:
+                      value:
+                        description: An array of start times configurations
+                        type: array
+                        items:
+                          description: A start times configuration object for either a week's days or a set of dates
+                          anyOf:
+                          - description: Weekly recurring start times
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - weekly
+                              value:
+                                description: Weekly recurring start times
+                                type: object
+                                properties:
+                                  weekDays:
+                                    description: An array of ISO Weekday numbers (1-7) that the start times apply to
+                                    type: array
+                                    items:
+                                      type: number
+                                      enum:
+                                      - 1
+                                      - 2
+                                      - 3
+                                      - 4
+                                      - 5
+                                      - 6
+                                      - 7
+                                  startTimes:
+                                    description: The start times for those weekdays
+                                    anyOf:
+                                    - description: Interval start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - interval
+                                        value:
+                                          description: Interval start times definition
+                                          type: object
+                                          properties:
+                                            intervalMinutes:
+                                              description: The time in minutes between each start time
+                                              type: integer
+                                              exclusiveMinimum: true
+                                              maximum: 9007199254740991
+                                              minimum: 0
+                                          required:
+                                          - intervalMinutes
+                                      required:
+                                      - type
+                                      - value
+                                    - description: Fixed start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - fixed
+                                        value:
+                                          description: Fixed start times definition
+                                          type: object
+                                          properties:
+                                            times:
+                                              description: An array of times in HH:mm format (24 hour format)
+                                              type: array
+                                              items:
+                                                description: A time in HH:mm format
+                                                type: string
+                                            ignoreOpeningHours:
+                                              description: Whether to allow start times outside of opening hours
+                                              type: boolean
+                                          required:
+                                          - times
+                                          - ignoreOpeningHours
+                                      required:
+                                      - type
+                                      - value
+                                    nullable: true
+                                required:
+                                - weekDays
+                                - startTimes
+                            required:
+                            - type
+                            - value
+                          - description: Exception start times (specific dates)
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - exceptional
+                              value:
+                                description: Exception start times
+                                type: object
+                                properties:
+                                  dates:
+                                    description: An array of dates in ('YYYY-MM-DD' format) that the start times apply to
+                                    type: array
+                                    items:
+                                      description: A date in YYYY-MM-DD format
+                                      type: string
+                                  startTimes:
+                                    description: The start times for those dates
+                                    anyOf:
+                                    - description: Interval start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - interval
+                                        value:
+                                          description: Interval start times definition
+                                          type: object
+                                          properties:
+                                            intervalMinutes:
+                                              description: The time in minutes between each start time
+                                              type: integer
+                                              exclusiveMinimum: true
+                                              maximum: 9007199254740991
+                                              minimum: 0
+                                          required:
+                                          - intervalMinutes
+                                      required:
+                                      - type
+                                      - value
+                                    - description: Fixed start times
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          enum:
+                                          - fixed
+                                        value:
+                                          description: Fixed start times definition
+                                          type: object
+                                          properties:
+                                            times:
+                                              description: An array of times in HH:mm format (24 hour format)
+                                              type: array
+                                              items:
+                                                description: A time in HH:mm format
+                                                type: string
+                                            ignoreOpeningHours:
+                                              description: Whether to allow start times outside of opening hours
+                                              type: boolean
+                                          required:
+                                          - times
+                                          - ignoreOpeningHours
+                                      required:
+                                      - type
+                                      - value
+                                    nullable: true
+                                required:
+                                - dates
+                                - startTimes
+                            required:
+                            - type
+                            - value
+                      maxOrdersPerStartTime:
+                        type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                        description: The maximum number of orders that can be placed for a single start time
+                        nullable: true
+                    required:
+                    - value
+                    - maxOrdersPerStartTime
+                  bookingBuffer:
+                    title: Booking buffer
+                    description: Defines how far in advance a booking can be made.
+                    example:
+                      daysBefore: 1
+                      latestTime: 18
+                    type: object
+                    properties:
+                      daysBefore:
+                        description: The number of days before a booking can be made
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      minutesBefore:
+                        description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                        type: integer
+                        minimum: 0
+                        maximum: 60
+                      latestTime:
+                        description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                        example: 18
+                        type: integer
+                        minimum: 0
+                        maximum: 23
+                    required:
+                    - daysBefore
+                  ownBookingBuffer:
+                    title: Booking buffer
+                    description: Defines how far in advance a booking can be made.
+                    example:
+                      daysBefore: 1
+                      latestTime: 18
+                    type: object
+                    properties:
+                      daysBefore:
+                        description: The number of days before a booking can be made
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      minutesBefore:
+                        description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+                        type: integer
+                        minimum: 0
+                        maximum: 60
+                      latestTime:
+                        description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+                        example: 18
+                        type: integer
+                        minimum: 0
+                        maximum: 23
+                    required:
+                    - daysBefore
+                  visibleInListing:
+                    type: boolean
+                required:
+                - visibleInListing
+              order:
+                type: integer
+                minimum: 0
+                maximum: 9007199254740991
+              rentals:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                  basePrice:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  pricing:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        label:
+                          description: Custom label of the pricing option.
+                          title: Localized field
+                          allOf:
+                          - additionalProperties:
+                              type: string
+                              description: The property name is the locale code, and the value is the translated text in that locale.
+                            type: object
+                          - type: object
+                            properties:
+                              def:
+                                description: The value in default locale.
+                                type: string
+                            required:
+                            - def
+                        timePeriod:
+                          description: Time period of the pricing option.
+                          type: string
+                          enum:
+                          - minutes
+                          - hours
+                          - days
+                          - weeks
+                          - months
+                          - days_within_opening_hours
+                          - years
+                        timeValue:
+                          description: Time value of the pricing option.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        price:
+                          description: Price of the pricing option, in minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        channels:
+                          description: List of channels the pricing option is limited to. If not defined, the option is available on all channels.
+                          type: array
+                          items:
+                            type: string
+                            enum:
+                            - admin
+                            - check_in
+                            - online
+                      required:
+                      - timePeriod
+                      - timeValue
+                      - price
+                  deposit:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - enabled
+                - basePrice
+              sales:
+                type: object
+                properties:
+                  basePrice:
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  enabled:
+                    type: boolean
+                required:
+                - basePrice
+                - enabled
+              variantProperties:
+                type: array
+                items:
+                  description: A variant property is used to describe the different product characteristics, such as Size or Color.
+                  example:
+                    id: '123'
+                    name:
+                      def: Size
+                  type: object
+                  properties:
+                    id:
+                      description: ID of the variant property.
+                      type: string
+                    name:
+                      title: Localized field
+                      description: Name of the variant property.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                  required:
+                  - id
+                  - name
+              variants:
+                type: array
+                items:
+                  description: A variant is a specific option for a product. For example, a product could have a variant size with values "Medium" and "Large".
+                  type: object
+                  properties:
+                    id:
+                      description: Unique ID of the variant.
+                      type: string
+                    properties:
+                      description: List of variant properties that describe the variant and their values.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            title: Localized field
+                            description: Value of the variant property.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                          name:
+                            title: Localized field
+                            description: Name of the variant property.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                          propertyId:
+                            description: ID of the variant property.
+                            type: string
+                        required:
+                        - value
+                        - name
+                        - propertyId
+                    sales:
+                      description: Defines if the variant is available for sale and if it has specific configurations.
+                      type: object
+                      properties:
+                        enabled:
+                          description: Defines if the variant is available for sale.
+                          type: boolean
+                        priceOverride:
+                          description: Sales price override of the variant. In minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - enabled
+                    rentals:
+                      description: Defines if the variant is available for rental and if it has specific configurations.
+                      type: object
+                      properties:
+                        enabled:
+                          description: Defines if the variant is available for rental.
+                          type: boolean
+                        priceIncrease:
+                          description: The price increase of the variant. In minor units.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - enabled
+                    inventory:
+                      description: The inventory connection of the variant. It defines the SKUs that should be reserved when a variant is booked. It is defined as two-dimensional array, where the first dimension defines the list of different inventory resources that should be reserved for the variant. The second dimension defines the possible SKU options for the inventory resource. As an example, a bicycle could need both a bike SKU and a helmet SKU from the inventory. This would be the first dimension listing. The bike SKU could have 3 different SKUs that would all be valid for the variant. These would be in the second dimension array.
+                      title: List of inventory resources
+                      type: array
+                      items:
+                        title: List of inventory resource options
+                        description: 'List of SKU objects that can fulfill the single inventory resource need. Example: Bike resource could be any item from SKUs BIK-M-22 or BIK-M-23'
+                        type: array
+                        items:
+                          title: SKU connected to the variant
+                          description: The inventory SKU connected to the variant
+                          type: object
+                          properties:
+                            skuId:
+                              description: The SKU ID this variant is connected to.
+                              type: string
+                            type:
+                              description: The type of the SKU.
+                              type: string
+                              enum:
+                              - single
+                              - bulk
+                            units:
+                              description: The amount of SKU units that should be reserved when this variant is booked.
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                          required:
+                          - skuId
+                          - type
+                          - units
+                  required:
+                  - id
+                  - properties
+            required:
+            - id
+            - createdAt
+            - categoryIds
+            - name
+            - images
+            - isPackage
+            - taxPercentage
+            - recommendedProductIds
+            - limitations
+            - order
+            - rentals
+            - sales
+            - variantProperties
+            - variants
+      required:
+      - id
+      - createdAt
+      - categoryIds
+      - name
+      - images
+      - isPackage
+      - taxPercentage
+      - recommendedProductIds
+      - limitations
+      - order
+      - rentals
+      - sales
+      - variantProperties
+      - variants
+      title: Product
+      description: Product document
+      example:
+        id: rELTwTSkZ1gpCO1SU06F
+        createdAt: '2026-07-19T01:04:26.264Z'
+        categoryIds:
+        - VWMpQf8qMUdzLICI8cro
+        name:
+          def: Product name
+          en: Product name
+        description:
+          def: Product description
+          en: Product description
+        images:
+        - image_url
+        isPackage: false
+        taxPercentage: 10
+        recommendedProductIds:
+        - wrgaBP5j5zVObPv4x2rm
+        limitations:
+          storeIds:
+          - Gpqp1fYFKUNYIA5MfEDL
+          channels:
+          - online
+          maintenanceTimeMinutes: 60
+          onlineAvailabilityPercentage: 100
+          startTimes:
+            type: interval
+            intervalMinutes: 60
+          startTimesConfig:
+            type: dateAndTime
+            value:
+            - type: weekly
+              value:
+                weekDays:
+                - 1
+                - 2
+                - 3
+                - 4
+                - 5
+                - 6
+                - 7
+                startTimes:
+                  type: interval
+                  value:
+                    intervalMinutes: 60
+            maxOrdersPerStartTime: null
+          bookingBuffer:
+            daysBefore: 1
+            latestTime: 18
+          visibleInListing: true
+        order: 1
+        rentals:
+          enabled: true
+          basePrice: 2000
+          pricing:
+          - timePeriod: days
+            timeValue: 1
+            price: 2000
+          deposit: 10000
+        sales:
+          basePrice: 19900
+          enabled: true
+        variantProperties:
+        - id: VgXM1pk0Prj2H1K0E0DU
+          name:
+            def: Size
+            en: Size
+        variants:
+        - id: UcdSRxFLJaA3taZQNTzP
+          properties:
+          - name:
+              def: Variant name
+              en: Variant name
+            value:
+              def: Variant value
+              en: Variant value
+            propertyId: VgXM1pk0Prj2H1K0E0DU
+          sales:
+            enabled: true
+          rentals:
+            enabled: true
+          inventory:
+          - - skuId: SKU-1
+              units: 1
+              type: single
+        - id: vXi9fyNNQwLtRraxapfC
+          properties:
+          - name:
+              def: Variant name
+              en: Variant name
+            value:
+              def: Variant value
+              en: Variant value
+            propertyId: VgXM1pk0Prj2H1K0E0DU
+          sales:
+            enabled: true
+          rentals:
+            enabled: true
+          inventory:
+          - - skuId: SKU-2
+              units: 1
+              type: single
+x-webhooks:
+  productCreated:
+    post:
+      summary: Product created
+      operationId: productCreated
+      tags:
+      - Product
+      description: Occurs when a new product is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productUpdated:
+    post:
+      summary: Product updated
+      operationId: productUpdated
+      tags:
+      - Product
+      description: Occurs when a product is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productDeleted:
+    post:
+      summary: Product deleted
+      operationId: productDeleted
+      tags:
+      - Product
+      description: Occurs when a product is deleted.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderCreated:
+    post:
+      summary: Order created
+      operationId: orderCreated
+      tags:
+      - Order
+      description: Occurs when a new order is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderUpdated:
+    post:
+      summary: Order updated
+      operationId: orderUpdated
+      tags:
+      - Order
+      description: Occurs when an order is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderPrepared:
+    post:
+      summary: Order prepared
+      operationId: orderPrepared
+      tags:
+      - Order
+      description: Occurs when an order is marked as prepared.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderStarted:
+    post:
+      summary: Order started
+      operationId: orderStarted
+      tags:
+      - Order
+      description: Occurs when an order is started.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturned:
+    post:
+      summary: Order returned
+      operationId: orderReturned
+      tags:
+      - Order
+      description: Occurs when an order is marked as returned.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturning-soon:
+    post:
+      summary: Order returning-soon
+      operationId: orderReturning-soon
+      tags:
+      - Order
+      description: Occurs X time before the order should return.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+x-tagGroups:
+- name: Introduction
+  tags:
+  - Introduction
+  - Versioning
+  - Authentication
+  - RateLimiting
+  - Responses
+  - Feedback
+- name: Operations
+  tags:
+  - OperationsOverview
+  - API Keys
+  - Categories
+  - Customers
+  - Discount Codes
+  - Inventory Articles
+  - Inventory SKUs
+  - Merchant
+  - Orders
+  - Products
+  - Stores
+  - Webhooks
+- name: Webhooks
+  tags:
+  - WebhooksOverview
+  - Order
+  - Product
+- name: Models
+  tags:
+  - ModelsOverview
+  - ApiKeyDTO
+  - CategoryDTO
+  - CustomerDTO
+  - DiscountCodeDTO
+  - InventoryArticleDTO
+  - MerchantDTO
+  - OrderDTO
+  - OrderWebhookDTO
+  - PagedCategoriesDTO
+  - PagedCustomersDTO
+  - PagedDiscountCodesDTO
+  - PagedInventoryArticlesDTO
+  - PagedOrdersDTO
+  - PagedProductsDTO
+  - PagedSkusDTO
+  - PagedStoresDTO
+  - PagedWebhooksDTO
+  - ProductDTO
+  - ProductWebhookDTO
+  - SkuDTO
+  - StoreDTO
+- name: Errors
+  tags:
+  - ErrorsOverview
+  - BadRequestExceptionDTO
+  - ConflictExceptionDTO
+  - ForbiddenExceptionDTO
+  - InternalServerErrorExceptionDTO
+  - NotFoundExceptionDTO
+  - QuotaExceededExceptionDTO

@@ -1,0 +1,1178 @@
+openapi: 3.0.0
+info:
+  title: Twice Admin API Keys Inventory Articles API
+  description: API documentation for Twice Admin API
+  version: '2023-02-01'
+  contact: {}
+  x-logo:
+    url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/logos%2Ftwice-logo-outline-black-padded.png?alt=media&token=c6731aba-03c9-4ce9-a9f0-a68478924fe0
+servers:
+- url: https://api.twicecommerce.com/admin
+  description: Production API
+tags:
+- name: Inventory Articles
+  description: Inventory-related queries
+paths:
+  /inventory-articles/{id}:
+    get:
+      description: Get a inventory article by id.
+      operationId: inventoryArticles_get
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Inventory article
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryArticleDTO'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Get inventory article
+      tags:
+      - Inventory Articles
+  /inventory-articles:
+    get:
+      description: Get paged inventory articles
+      operationId: inventoryArticles_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: How many objects to retrieve.
+        x-nestjs_zod-parent-metadata:
+          title: Articles Query Parameters
+        schema:
+          minimum: 1
+          maximum: 100
+          type: integer
+      - name: pageToken
+        required: false
+        in: query
+        x-nestjs_zod-parent-metadata:
+          title: Articles Query Parameters
+        schema:
+          type: string
+      - name: storeId
+        required: false
+        in: query
+        description: Store ID to filter by.
+        x-nestjs_zod-parent-metadata:
+          title: Articles Query Parameters
+        schema:
+          type: string
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of inventory articles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedInventoryArticlesDTO'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Get inventory articles
+      tags:
+      - Inventory Articles
+components:
+  schemas:
+    ConflictExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Conflict
+      example:
+        error:
+          status: 409
+          code: CONFLICT
+          message: Conflict error
+    PagedInventoryArticlesDTO:
+      type: object
+      properties:
+        data:
+          description: List of returned resources
+          type: array
+          items:
+            title: Inventory article
+            anyOf:
+            - title: Single Article
+              example:
+                id: KVl0TrfWiK0dFyBAkL03
+                createdAt: '2026-07-19T01:04:24.929Z'
+                skuId: L17oQ5oAxwJLINRa05eq
+                skuName: Bike S
+                skuCode: BIK-S
+                itemCodes:
+                - B-1
+                storeId: k3iQNSmOjMz47O5ZnBAg
+                usageCount: 5
+                usageSeconds: 18000
+                lastUsed: '2026-07-19T01:04:24.929Z'
+                type: single
+                allocation: rental
+                inStock: true
+                stockStatus: in_stock
+              type: object
+              properties:
+                id:
+                  description: Unique identifier of the object.
+                  type: string
+                createdAt:
+                  title: ISO 8601 date-time
+                  description: Creation date.
+                  type: string
+                skuId:
+                  type: string
+                  description: Sku ID of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                skuName:
+                  type: string
+                  description: Sku name of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                skuCode:
+                  type: string
+                  description: Sku code of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                itemCodes:
+                  description: List of merchant-declared item codes to uniquely identify the item in the system. This can be e.g. the unique serial number or other identifier of the article.
+                  type: array
+                  items:
+                    type: string
+                storeId:
+                  description: Store ID of the article.
+                  type: string
+                usageCount:
+                  description: Number of times the article has been used.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                usageSeconds:
+                  description: Number of seconds the article has been used.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                lastUsed:
+                  description: Date when the article was last used.
+                  title: ISO 8601 date-time
+                  type: string
+                fieldValues:
+                  additionalProperties:
+                    description: The property name is the id of the field.
+                  description: Values for any merchant-created fields.
+                  type: object
+                fixedFieldValues:
+                  description: Values assigned to the article for built-in system fields.
+                  type: object
+                  additionalProperties:
+                    type: string
+                type:
+                  description: Type of the article. Either "single" or "bulk". Single articles are tracked individually, bulk articles are tracked in bulk.
+                  type: string
+                  enum:
+                  - single
+                allocation:
+                  description: Defines if the article is allocated for rentals or sales.
+                  type: string
+                  enum:
+                  - rental
+                  - sales
+                inStock:
+                  description: Is the article currently in stock.
+                  type: boolean
+                stockStatus:
+                  description: Current stock status of an article. Only the in_stock status means that the item is available for booking.
+                  type: string
+                  enum:
+                  - in_stock
+                  - out_of_stock
+                  - lost
+                  - sold
+              required:
+              - id
+              - createdAt
+              - skuId
+              - skuName
+              - skuCode
+              - itemCodes
+              - storeId
+              - usageCount
+              - usageSeconds
+              - type
+              - allocation
+              - inStock
+              - stockStatus
+            - title: Bulk Article
+              example:
+                id: aWne6934pnc5enyIpaNs
+                createdAt: '2026-07-19T01:04:24.930Z'
+                skuId: 9XleoCoNrDPTM85v1T97
+                skuName: Bike S
+                skuCode: BIK-S
+                itemCodes: []
+                storeId: H4MMeilsPdNwIUtLAM2j
+                usageCount: 5
+                usageSeconds: 18000
+                lastUsed: '2026-07-19T01:04:24.930Z'
+                type: bulk
+                allocation:
+                  rental: 5
+                inStock: 4
+                stockStatus:
+                  in_stock: 4
+                  out_of_stock: 1
+              type: object
+              properties:
+                id:
+                  description: Unique identifier of the object.
+                  type: string
+                createdAt:
+                  title: ISO 8601 date-time
+                  description: Creation date.
+                  type: string
+                skuId:
+                  type: string
+                  description: Sku ID of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                skuName:
+                  type: string
+                  description: Sku name of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                skuCode:
+                  type: string
+                  description: Sku code of the article. It is null when the article is not linked to a SKU.
+                  nullable: true
+                itemCodes:
+                  description: List of merchant-declared item codes to uniquely identify the item in the system. This can be e.g. the unique serial number or other identifier of the article.
+                  type: array
+                  items:
+                    type: string
+                storeId:
+                  description: Store ID of the article.
+                  type: string
+                usageCount:
+                  description: Number of times the article has been used.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                usageSeconds:
+                  description: Number of seconds the article has been used.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                lastUsed:
+                  description: Date when the article was last used.
+                  title: ISO 8601 date-time
+                  type: string
+                fieldValues:
+                  additionalProperties:
+                    description: The property name is the id of the field.
+                  description: Values for any merchant-created fields.
+                  type: object
+                fixedFieldValues:
+                  description: Values assigned to the article for built-in system fields.
+                  type: object
+                  additionalProperties:
+                    type: string
+                inStock:
+                  description: Number of items currently in stock.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                stockStatus:
+                  additionalProperties: false
+                  properties:
+                    in_stock:
+                      description: Number of items with this stock status.
+                      type: number
+                    out_of_stock:
+                      description: Number of items with this stock status.
+                      type: number
+                    lost:
+                      description: Number of items with this stock status.
+                      type: number
+                    sold:
+                      description: Number of items with this stock status.
+                      type: number
+                  description: Quantities of different stock statuses of the bulk article.
+                  type: object
+                type:
+                  description: Type of the article. Either "single" or "bulk". Single articles are tracked individually, bulk articles are tracked in bulk.
+                  type: string
+                  enum:
+                  - bulk
+                allocation:
+                  additionalProperties: false
+                  properties:
+                    rental:
+                      description: Number of items allocated for the type.
+                      type: number
+                    sales:
+                      description: Number of items allocated for the type.
+                      type: number
+                  description: Quantities of the bulk article that are allocated for rentals, sales or subscriptions.
+                  type: object
+              required:
+              - id
+              - createdAt
+              - skuId
+              - skuName
+              - skuCode
+              - itemCodes
+              - storeId
+              - usageCount
+              - usageSeconds
+              - inStock
+              - stockStatus
+              - type
+              - allocation
+        count:
+          description: Number of returned resources
+          type: number
+        total:
+          description: Total number of resources
+          type: number
+        nextPageToken:
+          description: This can be used in the next request to retrieve the next page of results.
+          type: string
+      required:
+      - data
+      - count
+      - total
+      title: Paginated list of inventory articles
+    NotFoundExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Not Found
+      example:
+        error:
+          status: 404
+          code: NOT_FOUND
+          message: Object not found
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    ForbiddenExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
+    InventoryArticleDTO:
+      title: Inventory article
+      anyOf:
+      - title: Single Article
+        example:
+          id: KVl0TrfWiK0dFyBAkL03
+          createdAt: '2026-07-19T01:04:24.929Z'
+          skuId: L17oQ5oAxwJLINRa05eq
+          skuName: Bike S
+          skuCode: BIK-S
+          itemCodes:
+          - B-1
+          storeId: k3iQNSmOjMz47O5ZnBAg
+          usageCount: 5
+          usageSeconds: 18000
+          lastUsed: '2026-07-19T01:04:24.929Z'
+          type: single
+          allocation: rental
+          inStock: true
+          stockStatus: in_stock
+        type: object
+        properties:
+          id:
+            description: Unique identifier of the object.
+            type: string
+          createdAt:
+            title: ISO 8601 date-time
+            description: Creation date.
+            type: string
+          skuId:
+            type: string
+            description: Sku ID of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          skuName:
+            type: string
+            description: Sku name of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          skuCode:
+            type: string
+            description: Sku code of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          itemCodes:
+            description: List of merchant-declared item codes to uniquely identify the item in the system. This can be e.g. the unique serial number or other identifier of the article.
+            type: array
+            items:
+              type: string
+          storeId:
+            description: Store ID of the article.
+            type: string
+          usageCount:
+            description: Number of times the article has been used.
+            type: integer
+            minimum: 0
+            maximum: 9007199254740991
+          usageSeconds:
+            description: Number of seconds the article has been used.
+            type: integer
+            minimum: 0
+            maximum: 9007199254740991
+          lastUsed:
+            description: Date when the article was last used.
+            title: ISO 8601 date-time
+            type: string
+          fieldValues:
+            additionalProperties:
+              description: The property name is the id of the field.
+            description: Values for any merchant-created fields.
+            type: object
+          fixedFieldValues:
+            description: Values assigned to the article for built-in system fields.
+            type: object
+            additionalProperties:
+              type: string
+          type:
+            description: Type of the article. Either "single" or "bulk". Single articles are tracked individually, bulk articles are tracked in bulk.
+            type: string
+            enum:
+            - single
+          allocation:
+            description: Defines if the article is allocated for rentals or sales.
+            type: string
+            enum:
+            - rental
+            - sales
+          inStock:
+            description: Is the article currently in stock.
+            type: boolean
+          stockStatus:
+            description: Current stock status of an article. Only the in_stock status means that the item is available for booking.
+            type: string
+            enum:
+            - in_stock
+            - out_of_stock
+            - lost
+            - sold
+        required:
+        - id
+        - createdAt
+        - skuId
+        - skuName
+        - skuCode
+        - itemCodes
+        - storeId
+        - usageCount
+        - usageSeconds
+        - type
+        - allocation
+        - inStock
+        - stockStatus
+      - title: Bulk Article
+        example:
+          id: aWne6934pnc5enyIpaNs
+          createdAt: '2026-07-19T01:04:24.930Z'
+          skuId: 9XleoCoNrDPTM85v1T97
+          skuName: Bike S
+          skuCode: BIK-S
+          itemCodes: []
+          storeId: H4MMeilsPdNwIUtLAM2j
+          usageCount: 5
+          usageSeconds: 18000
+          lastUsed: '2026-07-19T01:04:24.930Z'
+          type: bulk
+          allocation:
+            rental: 5
+          inStock: 4
+          stockStatus:
+            in_stock: 4
+            out_of_stock: 1
+        type: object
+        properties:
+          id:
+            description: Unique identifier of the object.
+            type: string
+          createdAt:
+            title: ISO 8601 date-time
+            description: Creation date.
+            type: string
+          skuId:
+            type: string
+            description: Sku ID of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          skuName:
+            type: string
+            description: Sku name of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          skuCode:
+            type: string
+            description: Sku code of the article. It is null when the article is not linked to a SKU.
+            nullable: true
+          itemCodes:
+            description: List of merchant-declared item codes to uniquely identify the item in the system. This can be e.g. the unique serial number or other identifier of the article.
+            type: array
+            items:
+              type: string
+          storeId:
+            description: Store ID of the article.
+            type: string
+          usageCount:
+            description: Number of times the article has been used.
+            type: integer
+            minimum: 0
+            maximum: 9007199254740991
+          usageSeconds:
+            description: Number of seconds the article has been used.
+            type: integer
+            minimum: 0
+            maximum: 9007199254740991
+          lastUsed:
+            description: Date when the article was last used.
+            title: ISO 8601 date-time
+            type: string
+          fieldValues:
+            additionalProperties:
+              description: The property name is the id of the field.
+            description: Values for any merchant-created fields.
+            type: object
+          fixedFieldValues:
+            description: Values assigned to the article for built-in system fields.
+            type: object
+            additionalProperties:
+              type: string
+          inStock:
+            description: Number of items currently in stock.
+            type: integer
+            minimum: 0
+            maximum: 9007199254740991
+          stockStatus:
+            additionalProperties: false
+            properties:
+              in_stock:
+                description: Number of items with this stock status.
+                type: number
+              out_of_stock:
+                description: Number of items with this stock status.
+                type: number
+              lost:
+                description: Number of items with this stock status.
+                type: number
+              sold:
+                description: Number of items with this stock status.
+                type: number
+            description: Quantities of different stock statuses of the bulk article.
+            type: object
+          type:
+            description: Type of the article. Either "single" or "bulk". Single articles are tracked individually, bulk articles are tracked in bulk.
+            type: string
+            enum:
+            - bulk
+          allocation:
+            additionalProperties: false
+            properties:
+              rental:
+                description: Number of items allocated for the type.
+                type: number
+              sales:
+                description: Number of items allocated for the type.
+                type: number
+            description: Quantities of the bulk article that are allocated for rentals, sales or subscriptions.
+            type: object
+        required:
+        - id
+        - createdAt
+        - skuId
+        - skuName
+        - skuCode
+        - itemCodes
+        - storeId
+        - usageCount
+        - usageSeconds
+        - inStock
+        - stockStatus
+        - type
+        - allocation
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
+x-webhooks:
+  productCreated:
+    post:
+      summary: Product created
+      operationId: productCreated
+      tags:
+      - Product
+      description: Occurs when a new product is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productUpdated:
+    post:
+      summary: Product updated
+      operationId: productUpdated
+      tags:
+      - Product
+      description: Occurs when a product is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productDeleted:
+    post:
+      summary: Product deleted
+      operationId: productDeleted
+      tags:
+      - Product
+      description: Occurs when a product is deleted.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderCreated:
+    post:
+      summary: Order created
+      operationId: orderCreated
+      tags:
+      - Order
+      description: Occurs when a new order is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderUpdated:
+    post:
+      summary: Order updated
+      operationId: orderUpdated
+      tags:
+      - Order
+      description: Occurs when an order is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderPrepared:
+    post:
+      summary: Order prepared
+      operationId: orderPrepared
+      tags:
+      - Order
+      description: Occurs when an order is marked as prepared.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderStarted:
+    post:
+      summary: Order started
+      operationId: orderStarted
+      tags:
+      - Order
+      description: Occurs when an order is started.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturned:
+    post:
+      summary: Order returned
+      operationId: orderReturned
+      tags:
+      - Order
+      description: Occurs when an order is marked as returned.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturning-soon:
+    post:
+      summary: Order returning-soon
+      operationId: orderReturning-soon
+      tags:
+      - Order
+      description: Occurs X time before the order should return.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+x-tagGroups:
+- name: Introduction
+  tags:
+  - Introduction
+  - Versioning
+  - Authentication
+  - RateLimiting
+  - Responses
+  - Feedback
+- name: Operations
+  tags:
+  - OperationsOverview
+  - API Keys
+  - Categories
+  - Customers
+  - Discount Codes
+  - Inventory Articles
+  - Inventory SKUs
+  - Merchant
+  - Orders
+  - Products
+  - Stores
+  - Webhooks
+- name: Webhooks
+  tags:
+  - WebhooksOverview
+  - Order
+  - Product
+- name: Models
+  tags:
+  - ModelsOverview
+  - ApiKeyDTO
+  - CategoryDTO
+  - CustomerDTO
+  - DiscountCodeDTO
+  - InventoryArticleDTO
+  - MerchantDTO
+  - OrderDTO
+  - OrderWebhookDTO
+  - PagedCategoriesDTO
+  - PagedCustomersDTO
+  - PagedDiscountCodesDTO
+  - PagedInventoryArticlesDTO
+  - PagedOrdersDTO
+  - PagedProductsDTO
+  - PagedSkusDTO
+  - PagedStoresDTO
+  - PagedWebhooksDTO
+  - ProductDTO
+  - ProductWebhookDTO
+  - SkuDTO
+  - StoreDTO
+- name: Errors
+  tags:
+  - ErrorsOverview
+  - BadRequestExceptionDTO
+  - ConflictExceptionDTO
+  - ForbiddenExceptionDTO
+  - InternalServerErrorExceptionDTO
+  - NotFoundExceptionDTO
+  - QuotaExceededExceptionDTO

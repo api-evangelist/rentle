@@ -1,0 +1,924 @@
+openapi: 3.0.0
+info:
+  title: Twice Admin API Keys Merchant API
+  description: API documentation for Twice Admin API
+  version: '2023-02-01'
+  contact: {}
+  x-logo:
+    url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/logos%2Ftwice-logo-outline-black-padded.png?alt=media&token=c6731aba-03c9-4ce9-a9f0-a68478924fe0
+servers:
+- url: https://api.twicecommerce.com/admin
+  description: Production API
+tags:
+- name: Merchant
+  description: Merchant-related queries
+paths:
+  /merchant:
+    get:
+      description: Get details of the authenticated merchant.
+      operationId: merchant_get
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Merchant
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MerchantDTO'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestExceptionDTO'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenExceptionDTO'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundExceptionDTO'
+        '409':
+          description: Conflict.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictExceptionDTO'
+        '429':
+          description: Quota exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuotaExceededExceptionDTO'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorExceptionDTO'
+      summary: Get merchant account information
+      tags:
+      - Merchant
+components:
+  schemas:
+    ConflictExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Conflict
+      example:
+        error:
+          status: 409
+          code: CONFLICT
+          message: Conflict error
+    NotFoundExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Not Found
+      example:
+        error:
+          status: 404
+          code: NOT_FOUND
+          message: Object not found
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    MerchantDTO:
+      type: object
+      properties:
+        id:
+          description: Merchant ID.
+          type: string
+        name:
+          description: Merchant name.
+          type: string
+        email:
+          description: Merchant email.
+          type: string
+        phone:
+          description: Merchant phone number.
+          type: string
+        country:
+          description: Merchant country.
+          type: string
+        businessId:
+          description: Merchant business ID.
+          type: string
+        logo:
+          description: URL of the merchant logo
+          type: string
+          format: uri
+        stores:
+          description: List of stores of the merchant.
+          type: array
+          items:
+            title: Store
+            type: object
+            properties:
+              id:
+                description: Store ID.
+                type: string
+              name:
+                description: Store name.
+                type: string
+              address:
+                description: Store address.
+                type: object
+                properties:
+                  address:
+                    description: Street address.
+                    type: string
+                  zipCode:
+                    description: Zip code.
+                    type: string
+                  city:
+                    description: City.
+                    type: string
+                  country:
+                    description: Country.
+                    type: string
+                  state:
+                    description: State.
+                    type: string
+                  details:
+                    description: Additional address details.
+                    type: string
+                required:
+                - address
+              phone:
+                description: Store phone number.
+                type: string
+              email:
+                description: Store email.
+                type: string
+              channels:
+                description: Channels where the store is visible. If not set, the store is visible in all channels.
+                type: array
+                items:
+                  type: string
+                  enum:
+                  - admin
+                  - check_in
+                  - online
+              isDefault:
+                description: True for the default store, i.e., the merchant's primary location. False otherwise.
+                type: boolean
+            required:
+            - id
+            - name
+            - address
+            - isDefault
+        localization:
+          title: Localization information
+          description: Includes details about the merchants localization such as currency, languages, and time zones
+          type: object
+          properties:
+            currency:
+              title: Currency used in the online store.
+              description: Currency display settings.
+              type: object
+              properties:
+                code:
+                  description: The currency identifier
+                  type: string
+                displayAs:
+                  description: A short code used next to numerical quantities
+                  type: string
+                position:
+                  description: Whether to display the short code before or after the amount.
+                  type: string
+                  enum:
+                  - suffix
+                  - prefix
+                spacing:
+                  description: Whether to include a space between the code and the amount
+                  type: boolean
+              required:
+              - code
+              - displayAs
+              - position
+              - spacing
+            dateFormat:
+              title: Date and time display format
+              description: The format used to display dates and times.
+              type: object
+              properties:
+                date:
+                  type: string
+                  enum:
+                  - DD.MM.YYYY
+                  - MM/DD/YYYY
+                  - YYYY-MM-DD
+                time:
+                  type: string
+                  enum:
+                  - HH:mm
+                  - hh:mm A
+                startDay:
+                  description: First day of the week, in ISO Week day format. I.e., Monday=1, Saturday=6, Sunday=7
+                  type: number
+                  enum:
+                  - 6
+                  - 7
+                  - 1
+              required:
+              - date
+              - time
+              - startDay
+            timezone:
+              description: The default time zone of the merchant.
+              type: string
+            languages:
+              description: The languages supported by the merchant.
+              type: array
+              items:
+                type: string
+                enum:
+                - fi
+                - en
+                - ru
+                - de
+                - sk
+                - sv
+                - nl
+                - hu
+                - 'no'
+                - fr
+                - es
+                - it
+                - cs
+                - da
+                - lt
+                - et
+                - pl
+                - sl
+                - hr
+                - pt
+                - br
+                - lv
+                - tr
+                - uk
+            defaultLanguage:
+              type: string
+              enum:
+              - fi
+              - en
+              - ru
+              - de
+              - sk
+              - sv
+              - nl
+              - hu
+              - 'no'
+              - fr
+              - es
+              - it
+              - cs
+              - da
+              - lt
+              - et
+              - pl
+              - sl
+              - hr
+              - pt
+              - br
+              - lv
+              - tr
+              - uk
+          required:
+          - currency
+          - dateFormat
+          - timezone
+          - languages
+          - defaultLanguage
+        branding:
+          description: Custom branding settings.
+          type: object
+          properties:
+            enabled:
+              description: If branding is enabled
+              type: boolean
+            mainColor:
+              description: Main color used
+              type: string
+            buttonBorderRadius:
+              description: Button border radius value in pixels
+              type: number
+            buttonTextTransform:
+              description: If button text should be uppercase
+              anyOf:
+              - type: string
+                enum:
+                - uppercase
+              - type: string
+                enum:
+                - none
+            bodyFont:
+              description: Font name used for body text
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum:
+                  - google
+                fontFamily:
+                  type: string
+              required:
+              - provider
+              - fontFamily
+            titleFont:
+              description: Font name used for titles
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum:
+                  - google
+                fontFamily:
+                  type: string
+              required:
+              - provider
+              - fontFamily
+          required:
+          - enabled
+          - mainColor
+          - buttonBorderRadius
+          - buttonTextTransform
+      required:
+      - id
+      - name
+      - email
+      - stores
+      - localization
+      title: Merchant
+      description: Represents a Twice merchant account.
+      example:
+        id: Ok2QTHGl2U6XVFDVu58S
+        name: ACME rentals
+        email: acme@acme.com
+        phone: '+15555555555'
+        country: US
+        businessId: 12345678-9
+        logo: logo_url
+        stores:
+        - id: RLVNYXMmoTS5MEpDNnsn
+          name: ACME store
+          address:
+            address: 123 Main St
+            zipCode: '12345'
+            city: New York
+            country: United States
+            state: New York
+          phone: '+15555555555'
+          email: acme@acme.com
+          isDefault: true
+          channels:
+          - admin
+          - online
+        localization:
+          currency:
+            code: EUR
+            displayAs: EUR
+            position: prefix
+            spacing: true
+          timezone: Europe/Helsinki
+          dateFormat:
+            date: DD.MM.YYYY
+            time: HH:mm
+            startDay: 1
+          languages:
+          - en
+          - fi
+          - sv
+          defaultLanguage: fi
+        branding:
+          enabled: true
+          mainColor: '#000000'
+          buttonBorderRadius: 0
+          buttonTextTransform: none
+          bodyFont:
+            provider: google
+            fontFamily: Roboto
+          titleFont:
+            provider: google
+            fontFamily: Roboto
+    ForbiddenExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
+x-webhooks:
+  productCreated:
+    post:
+      summary: Product created
+      operationId: productCreated
+      tags:
+      - Product
+      description: Occurs when a new product is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productUpdated:
+    post:
+      summary: Product updated
+      operationId: productUpdated
+      tags:
+      - Product
+      description: Occurs when a product is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  productDeleted:
+    post:
+      summary: Product deleted
+      operationId: productDeleted
+      tags:
+      - Product
+      description: Occurs when a product is deleted.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderCreated:
+    post:
+      summary: Order created
+      operationId: orderCreated
+      tags:
+      - Order
+      description: Occurs when a new order is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderUpdated:
+    post:
+      summary: Order updated
+      operationId: orderUpdated
+      tags:
+      - Order
+      description: Occurs when an order is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderPrepared:
+    post:
+      summary: Order prepared
+      operationId: orderPrepared
+      tags:
+      - Order
+      description: Occurs when an order is marked as prepared.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderStarted:
+    post:
+      summary: Order started
+      operationId: orderStarted
+      tags:
+      - Order
+      description: Occurs when an order is started.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturned:
+    post:
+      summary: Order returned
+      operationId: orderReturned
+      tags:
+      - Order
+      description: Occurs when an order is marked as returned.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+  orderReturning-soon:
+    post:
+      summary: Order returning-soon
+      operationId: orderReturning-soon
+      tags:
+      - Order
+      description: Occurs X time before the order should return.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+x-tagGroups:
+- name: Introduction
+  tags:
+  - Introduction
+  - Versioning
+  - Authentication
+  - RateLimiting
+  - Responses
+  - Feedback
+- name: Operations
+  tags:
+  - OperationsOverview
+  - API Keys
+  - Categories
+  - Customers
+  - Discount Codes
+  - Inventory Articles
+  - Inventory SKUs
+  - Merchant
+  - Orders
+  - Products
+  - Stores
+  - Webhooks
+- name: Webhooks
+  tags:
+  - WebhooksOverview
+  - Order
+  - Product
+- name: Models
+  tags:
+  - ModelsOverview
+  - ApiKeyDTO
+  - CategoryDTO
+  - CustomerDTO
+  - DiscountCodeDTO
+  - InventoryArticleDTO
+  - MerchantDTO
+  - OrderDTO
+  - OrderWebhookDTO
+  - PagedCategoriesDTO
+  - PagedCustomersDTO
+  - PagedDiscountCodesDTO
+  - PagedInventoryArticlesDTO
+  - PagedOrdersDTO
+  - PagedProductsDTO
+  - PagedSkusDTO
+  - PagedStoresDTO
+  - PagedWebhooksDTO
+  - ProductDTO
+  - ProductWebhookDTO
+  - SkuDTO
+  - StoreDTO
+- name: Errors
+  tags:
+  - ErrorsOverview
+  - BadRequestExceptionDTO
+  - ConflictExceptionDTO
+  - ForbiddenExceptionDTO
+  - InternalServerErrorExceptionDTO
+  - NotFoundExceptionDTO
+  - QuotaExceededExceptionDTO
