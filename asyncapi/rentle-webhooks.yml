@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.rentle.io/admin/
+spec_type: Webhooks
+description: >-
+  The Twice Admin API sends webhooks from Rentle/Twice servers to a
+  merchant-configured endpoint when events occur. Webhooks are created via the
+  webhooks API (webhooks_create) or in the Integrations section of account
+  settings. Each event type gets its own webhook. Requests carry an
+  x-rentle-version header matching the version selected at creation, expect a
+  2xx acknowledgement, and time out after 10 seconds.
+delivery:
+  acknowledgement: 2xx status code
+  timeout_seconds: 10
+  version_header: x-rentle-version
+  payload_version: '2023-02-01'
+  management_operations:
+    - webhooks_list
+    - webhooks_get
+    - webhooks_create
+    - webhooks_remove
+events:
+  - event: order/created
+    payload_schema: OrderWebhookDTO
+  - event: order/updated
+    payload_schema: OrderWebhookDTO
+  - event: order/prepared
+    payload_schema: OrderWebhookDTO
+  - event: order/started
+    payload_schema: OrderWebhookDTO
+  - event: order/returned
+    payload_schema: OrderWebhookDTO
+  - event: order/returning-soon
+    payload_schema: OrderWebhookDTO
+    configuration: { triggerBeforeMinutes: required }
+  - event: product/created
+    payload_schema: ProductWebhookDTO
+  - event: product/updated
+    payload_schema: ProductWebhookDTO
+  - event: product/deleted
+    payload_schema: ProductWebhookDTO
+notes: >-
+  No AsyncAPI document is published; this is the webhook catalog derived from
+  the CreateWebhookDTO event enum in the OpenAPI. No fabricated AsyncAPI spec.

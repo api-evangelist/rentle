@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.rentle.io/admin/
+scheme: date-based
+current_version: '2023-02-01'
+release_notes_url: https://api.rentle.io/admin/
+product_updates_url: https://www.twicecommerce.com/updates
+entries:
+  - version: '2023-02-01'
+    date: '2023-02-01'
+    breaking: false
+    highlights:
+      - First version of the merchant Admin API released.
+      - Allows reading resources from a merchant account (categories, customers, inventory, products, orders, stores, discount codes, SKUs) plus creating orders, discount codes and webhooks.
+      - Webhooks migrated to Admin API data models for better versioning support.
+notes: >-
+  The Admin API maintains its changelog under the Versioning section of the
+  reference docs; breaking changes ship as new dated versions. Broader product
+  release notes are published at twicecommerce.com/updates.

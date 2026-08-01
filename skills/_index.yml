@@ -1,0 +1,11 @@
+generated: '2026-07-20'
+method: generated
+skills:
+  - file: rentle-create-order.md
+    name: Create a rental order in Rentle (Twice Commerce)
+    api: openapi/rentle-admin-openapi.json
+    operations: [store_list, products_list, customers_search, orders_create, orders_get]
+  - file: rentle-subscribe-webhooks.md
+    name: Subscribe to Rentle order and product webhooks
+    api: openapi/rentle-admin-openapi.json
+    operations: [webhooks_create, webhooks_list, webhooks_get, webhooks_remove]

@@ -1,0 +1,53 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/rentle-admin-openapi.json
+format: jsend-error-envelope
+envelope:
+  shape: '{ "error": { "status": <number>, "code": "<string>", "message": "<string>", "details": [ { "path": ["..."], "message": "..." } ] } }'
+  fields:
+    status: HTTP status code of the response
+    code: Internal text code representing the type of error
+    message: Human-friendly description of the error
+    details: Per-field validation errors (path + message), present on 400 responses
+  note: >-
+    The Twice Admin API returns errors in a JSend-style envelope under an
+    `error` object (NOT RFC 9457 problem+json). Every error carries status,
+    code and message; 400 responses add a details[] array of field-level
+    validation errors.
+problems:
+  - status: 400
+    code: BadRequest
+    title: Bad request
+    schema: BadRequestExceptionDTO
+    remediation: >-
+      Inspect error.details[] for the offending field paths and messages;
+      correct the request body or query parameters.
+  - status: 403
+    code: Forbidden
+    title: Forbidden
+    schema: ForbiddenExceptionDTO
+    remediation: >-
+      The API key lacks the scope required for this operation, or the resource
+      belongs to another merchant. Grant the required scope on the key.
+  - status: 404
+    code: NotFound
+    title: Not found
+    schema: NotFoundExceptionDTO
+    remediation: Verify the resource id; the resource does not exist in this merchant account.
+  - status: 409
+    code: Conflict
+    title: Conflict
+    schema: ConflictExceptionDTO
+    remediation: The request conflicts with the current state of the resource; reconcile and retry.
+  - status: 429
+    code: RateLimitExceedError
+    title: Quota exceeded
+    schema: QuotaExceededExceptionDTO
+    remediation: >-
+      Leaky-bucket rate limit exceeded (bucket 50, leak 1 req/s). Back off and
+      retry; contact support to raise the quota.
+  - status: 500
+    code: InternalServerError
+    title: Internal server error
+    schema: InternalServerErrorExceptionDTO
+    remediation: Transient server error; retry with backoff and contact support if it persists.

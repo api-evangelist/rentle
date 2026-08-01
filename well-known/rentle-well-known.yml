@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: probed /.well-known/ on API + website hosts
+hosts:
+  - host: https://api.twicecommerce.com/admin
+    documents:
+      - path: /.well-known/security.txt
+        status: 400
+      - path: /.well-known/openid-configuration
+        status: 400
+      - path: /.well-known/oauth-authorization-server
+        status: 400
+      - path: /.well-known/api-catalog
+        status: 400
+      - path: /.well-known/ai-plugin.json
+        status: 400
+  - host: https://www.rentle.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://api.rentle.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 404
+notes: >-
+  No /.well-known/ discovery documents or llms.txt were published on the API
+  or website hosts at probe time. Absence is recorded as expected data.

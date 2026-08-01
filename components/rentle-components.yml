@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/rentle
+description: >-
+  Rentle / Twice Commerce ships client-side embeddable surfaces for adding a
+  rental storefront and booking flow to an existing site, distinct from any
+  server-side SDK.
+components:
+  - family: Storefront embed
+    kind: web-component / iframe embed
+    description: >-
+      Embeddable Rentle/Twice web component (rentle web component) and iframe
+      shop embed that renders the merchant's rental storefront and checkout on
+      any website.
+    official: true
+  - family: WordPress plugin
+    name: Twice Commerce (Rentle) - Easy Rental Booking System
+    kind: WordPress plugin
+    repo: https://github.com/rentle/embed-rentle
+    marketplace: https://wordpress.org/plugins/embed-rentle/
+    description: >-
+      First-party WordPress plugin that embeds the Rentle/Twice rental booking
+      web component / shop into WordPress sites via a block.
+    official: true
+notes: >-
+  No standalone npm-published client SDK was found; these are embeddable UI
+  surfaces rather than API client libraries.

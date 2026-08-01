@@ -1,0 +1,74 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/rentle-admin-openapi.json
+entities:
+  - name: Merchant
+    schema: MerchantDTO
+    note: The account root; every resource belongs to one merchant.
+  - name: Store
+    schema: StoreDTO
+  - name: Category
+    schema: CategoryDTO
+  - name: Product
+    schema: ProductDTO
+  - name: InventoryArticle
+    schema: InventoryArticleDTO
+  - name: Sku
+    schema: SkuDTO
+  - name: Customer
+    schema: CustomerDTO
+  - name: Order
+    schema: OrderDTO
+  - name: DiscountCode
+    schema: DiscountCodeDTO
+  - name: ApiKey
+    schema: ApiKeyDTO
+  - name: Webhook
+    schema: WebhookDTO
+relationships:
+  - from: Product
+    to: Category
+    type: belongs_to
+    via: category
+  - from: Product
+    to: Sku
+    type: has_many
+    via: skus
+  - from: InventoryArticle
+    to: Sku
+    type: belongs_to
+    via: sku
+  - from: Order
+    to: Customer
+    type: belongs_to
+    via: customer
+  - from: Order
+    to: Store
+    type: belongs_to
+    via: store
+  - from: Order
+    to: DiscountCode
+    type: has_one
+    via: discountCode
+  - from: Webhook
+    to: Order
+    type: references
+    via: 'order/* events (OrderWebhookDTO)'
+  - from: Webhook
+    to: Product
+    type: references
+    via: 'product/* events (ProductWebhookDTO)'
+paged_envelopes:
+  - PagedCategoriesDTO
+  - PagedCustomersDTO
+  - PagedDiscountCodesDTO
+  - PagedInventoryArticlesDTO
+  - PagedSkusDTO
+  - PagedOrdersDTO
+  - PagedProductsDTO
+  - PagedStoresDTO
+  - PagedWebhooksDTO
+notes: >-
+  Relationships inferred from schema references and id fields in the Twice
+  Admin API OpenAPI; via names are best-effort from the object model and should
+  be confirmed against the object reference.

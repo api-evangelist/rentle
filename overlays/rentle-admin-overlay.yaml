@@ -1,0 +1,28 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Twice Admin API (Rentle)
+  version: 1.0.0
+extends: openapi/rentle-admin-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: rentle
+      x-apievangelist-auth: http-basic (API key id/secret)
+      x-apievangelist-version-header: X-Rentle-Version
+      x-apievangelist-rate-limit: leaky-bucket capacity 50, 1 req/s, 429 on exceed
+      x-apievangelist-error-format: jsend-error-envelope
+      x-apievangelist-webhooks: 9 order/product events (see asyncapi/rentle-webhooks.yml)
+  - target: $.components
+    update:
+      securitySchemes:
+        apiKeyBasic:
+          type: http
+          scheme: basic
+          description: >-
+            HTTP Basic Authentication documented in the Authentication section
+            of the reference but absent from the harvested OpenAPI. username =
+            API key id, password = API key secret; scoped per merchant.
+notes: >-
+  Non-mutating overlay capturing API Evangelist enhancements. The harvested
+  OpenAPI declares no securityScheme even though the docs require HTTP Basic;
+  this overlay records the real scheme without altering the original spec.

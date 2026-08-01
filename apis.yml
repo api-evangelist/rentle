@@ -1,7 +1,15 @@
 aid: rentle
 name: Rentle
-description: Rentle is a company surfaced as a portfolio company of anthemis and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Rentle, now operating as Twice Commerce, is a Helsinki-founded (2018)
+  circular-commerce platform that lets merchants run rentals, resale, and
+  subscriptions from one system. Its Twice Admin API (OpenAPI 3.0.0, date-based
+  version 2023-02-01) exposes categories, customers, inventory articles, SKUs,
+  products, orders, stores, merchant details, discount codes, API keys, and
+  webhooks over a REST interface authenticated with HTTP Basic API keys.
+  Outbound webhooks cover nine order and product lifecycle events. This profile
+  was enriched by the API Evangelist pipeline from Rentle/Twice Commerce public
+  developer surfaces.
 url: https://raw.githubusercontent.com/api-evangelist/rentle/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +17,347 @@ x-backed-by:
 - anthemis
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.twicecommerce.com/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Rental
+- Commerce
+- E-commerce
+- Circular Economy
+- Resale
+- Subscriptions
+- Bookings
+- Webhooks
+- SaaS
+apis:
+- aid: rentle:rentle-api-keys-api
+  name: Rentle API Keys API
+  description: API Key-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-api-keys-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-categories-api
+  name: Rentle Categories API
+  description: Category-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-categories-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-customers-api
+  name: Rentle Customers API
+  description: Customer-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-customers-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-discount-codes-api
+  name: Rentle Discount Codes API
+  description: Discount code-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Discount Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-discount-codes-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-inventory-articles-api
+  name: Rentle Inventory Articles API
+  description: Inventory-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Inventory Articles
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-inventory-articles-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-inventory-skus-api
+  name: Rentle Inventory SKUs API
+  description: The Inventory SKUs API from Rentle — 2 operation(s) for inventory skus.
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Inventory SKUs
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-inventory-skus-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-merchant-api
+  name: Rentle Merchant API
+  description: Merchant-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Merchant
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-merchant-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-orders-api
+  name: Rentle Orders API
+  description: Order-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-orders-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-products-api
+  name: Rentle Products API
+  description: Product-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-products-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-stores-api
+  name: Rentle Stores API
+  description: Store-related queries
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-stores-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-webhooks-api
+  name: Rentle Webhooks API
+  description: >-
+    This section describes API endpoints you can use to configure webhooks. Check the [webhook events
+    section](#tag/WebhooksOverview) for more inforation regarding the webhooks events that Twice delivers
+    to your system.
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-webhooks-api-openapi.yml
+  - type: APIReference
+    url: https://api.rentle.io/admin/
+  - type: Authentication
+    url: authentication/rentle-authentication.yml
+  - type: Conventions
+    url: conventions/rentle-conventions.yml
+  - type: ErrorCatalog
+    url: errors/rentle-problem-types.yml
+  - type: Webhooks
+    url: asyncapi/rentle-webhooks.yml
+  - type: DataModel
+    url: data-model/rentle-data-model.yml
+  - type: Conformance
+    url: conformance/rentle-conformance.yml
+common:
+- type: AgenticAccess
+  url: agentic-access/rentle-agentic-access.yml
+- type: DomainSecurity
+  url: security/rentle-domain-security.yml
+- type: Website
+  url: https://www.twicecommerce.com/
+- type: DeveloperPortal
+  url: https://www.twicecommerce.com/docs/overview
+- type: Documentation
+  url: https://www.twicecommerce.com/docs/overview
+- type: APIReference
+  url: https://api.rentle.io/admin/
+- type: Support
+  url: https://support.twicecommerce.com
+- type: Blog
+  url: https://www.twicecommerce.com/blog
+- type: GitHubOrganization
+  url: https://github.com/rentle
+- type: Pricing
+  url: https://www.twicecommerce.com/pricing
+- type: SignUp
+  url: https://admin.twicecommerce.com/signup
+- type: Login
+  url: https://admin.twicecommerce.com/login
+- type: TermsOfService
+  url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/rentle-tos-pricing%2Ftos%2FTwice%20Commerce%20Terms%20and%20Conditions%20v.6.4.pdf?alt=media&token=eb7ee536-cb6c-4476-84fd-277e45e4a304
+- type: PrivacyPolicy
+  url: https://www.twicecommerce.com/privacy
+- type: StatusPage
+  url: https://status.twicecommerce.com
+- type: ChangeLog
+  url: changelog/rentle-changelog.yml
+- type: Lifecycle
+  url: lifecycle/rentle-lifecycle.yml
+- type: Components
+  url: components/rentle-components.yml
+- type: LLMsTxt
+  url: llms/rentle-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1

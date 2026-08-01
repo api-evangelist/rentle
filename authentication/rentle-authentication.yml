@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.rentle.io/admin/
+docs: https://api.rentle.io/admin/
+summary:
+  types: [http]
+  http_schemes: [basic]
+  api_key_in: [header]
+  oauth2_flows: []
+  notes: >-
+    All requests authenticate with a standard API key using HTTP Basic
+    Authentication. The API key ID is the Basic username and the API key
+    secret is the Basic password. Keys are generated in the Admin UI
+    Integrations page and are scoped per merchant account. The OpenAPI
+    document does not declare the securityScheme; the model here is captured
+    from the Authentication section of the published docs.
+schemes:
+  - name: apiKeyBasic
+    type: http
+    scheme: basic
+    description: >-
+      HTTP Basic Authentication. username = API key ID, password = API key
+      secret. Each key is limited to the scopes selected when it was created,
+      and only accesses data for its own merchant account.
+    sources: [https://api.rentle.io/admin/]
+scopes:
+  model: >-
+    Scopes are selected per API key in the Admin UI when the key is created;
+    each endpoint documents the scope it requires. Rentle recommends enabling
+    only the scopes a key needs. The scope list is not enumerated in the
+    OpenAPI document.
+key_management:
+  console: https://admin.rentle.io/account/integrations
+  secret_display: shown once at creation; store securely
+  revocation: delete the key from the Admin UI
+required_headers:
+  - name: X-Rentle-Version
+    required: true
+    description: Date-based API version, currently 2023-02-01, required on every request.

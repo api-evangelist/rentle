@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.rentle.io/admin/
+versioning:
+  scheme: date-based
+  format: yyyy-mm-dd
+  current: '2023-02-01'
+  header: X-Rentle-Version
+  required: true
+  policy: >-
+    Backwards-compatible changes and bug fixes stay within the same dated
+    version. Breaking changes are released as a new dated version. The
+    X-Rentle-Version header is required on every request.
+  docs: https://api.rentle.io/admin/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  legacy_api:
+    url: https://api.rentle.io/docs
+    note: >-
+      The legacy Rentle API is documented separately and is superseded by the
+      Twice Admin API; new updates land only on the Admin API. Rentle
+      recommends migrating off the legacy API. No formal RFC 8594
+      Sunset/Deprecation header policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.twicecommerce.com
+status_page_alt: https://status.rentle.io
+deprecated_operations: []

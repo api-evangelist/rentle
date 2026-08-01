@@ -1,0 +1,34 @@
+{
+  "provider": "rentle",
+  "sources": [
+    "rentle-api-keys-api-openapi.yml",
+    "rentle-categories-api-openapi.yml",
+    "rentle-customers-api-openapi.yml",
+    "rentle-discount-codes-api-openapi.yml",
+    "rentle-inventory-articles-api-openapi.yml",
+    "rentle-inventory-skus-api-openapi.yml",
+    "rentle-merchant-api-openapi.yml",
+    "rentle-orders-api-openapi.yml",
+    "rentle-products-api-openapi.yml",
+    "rentle-stores-api-openapi.yml",
+    "rentle-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "rentle-api-keys-api-openapi.yml",
+    "rentle-categories-api-openapi.yml",
+    "rentle-customers-api-openapi.yml",
+    "rentle-discount-codes-api-openapi.yml",
+    "rentle-inventory-articles-api-openapi.yml",
+    "rentle-inventory-skus-api-openapi.yml",
+    "rentle-merchant-api-openapi.yml",
+    "rentle-orders-api-openapi.yml",
+    "rentle-products-api-openapi.yml",
+    "rentle-stores-api-openapi.yml",
+    "rentle-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

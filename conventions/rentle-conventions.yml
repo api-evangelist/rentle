@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.rentle.io/admin/
+authentication:
+  style: http-basic
+  detail: API key ID as username, API key secret as password; scoped per merchant.
+  see: authentication/rentle-authentication.yml
+versioning:
+  style: date-header
+  header: X-Rentle-Version
+  current: '2023-02-01'
+  required: true
+  see: lifecycle/rentle-lifecycle.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key header or parameter is documented for the Twice Admin
+    API. Write operations (orders_create, discountCodes_create,
+    webhooks_create) are not documented as idempotent.
+pagination:
+  style: paged
+  note: >-
+    List endpoints return Paged*DTO envelopes (PagedOrdersDTO,
+    PagedCustomersDTO, PagedProductsDTO, etc.) wrapping the item array with
+    paging metadata.
+  derived_from: openapi/rentle-admin-openapi.json
+request_tracing:
+  request_id_header: null
+error_envelope:
+  shape: '{ "error": { "status, code, message, details[] } }'
+  format: jsend-error-envelope
+  see: errors/rentle-problem-types.yml
+rate_limiting:
+  algorithm: leaky-bucket
+  bucket_capacity: 50
+  leak_rate_per_second: 1
+  hourly_equivalent: 3600
+  exceed_status: 429
+  exceed_code: RateLimitExceedError
+  see: https://api.rentle.io/admin/
+webhooks:
+  ack: 2xx expected within 10 seconds
+  version_header: x-rentle-version
+  see: asyncapi/rentle-webhooks.yml
+content_type: application/json

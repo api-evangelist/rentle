@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/rentle-admin-openapi.json
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: openapi 3.0.0 document published at api.rentle.io/admin/swagger.json
+  - id: http-basic-auth
+    conforms: true
+    evidence: authentication via HTTP Basic Authentication (RFC 7617) with API key id/secret
+  - id: oauth2
+    conforms: false
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: "errors use a JSend-style { error: {...} } envelope, not application/problem+json"
+  - id: webhooks
+    conforms: true
+    evidence: outbound webhooks for 9 order/product events with versioned payloads
+  - id: date-based-versioning
+    conforms: true
+    evidence: X-Rentle-Version yyyy-mm-dd header required on every request
+  - id: rate-limiting
+    conforms: true
+    evidence: documented leaky-bucket rate limit with 429 responses
+  - id: pagination
+    conforms: true
+    evidence: list endpoints return Paged*DTO envelopes
