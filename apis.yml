@@ -313,6 +313,12 @@ apis:
   - type: Conformance
     url: conformance/rentle-conformance.yml
 common:
+- type: AgentSkill
+  url: skills/rentle-create-order.md
+- type: MCPServer
+  url: mcp/rentle-mcp.yml
+- type: Overlay
+  url: overlays/rentle-admin-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/rentle-agentic-access.yml
 - type: DomainSecurity
