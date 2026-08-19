@@ -1,0 +1,1616 @@
+{
+  "item": [
+    {
+      "id": "66ecba60-81ff-449c-b454-9abab5749035",
+      "name": "Discount Codes",
+      "description": {
+        "content": "Discount code-related queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a49d89db-be42-4133-9711-ee604e605282",
+          "name": "Get discount code",
+          "request": {
+            "name": "Get discount code",
+            "description": {},
+            "url": {
+              "path": [
+                "discount-codes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the code to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "620d333d-57ac-4575-98de-3b4fada90c03",
+              "name": "Discount code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageCount\": 6530183734853546,\n  \"usageLimit\": 1088062363772302,\n  \"validity\": {\n    \"productIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"categoryIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"from\": \"string\",\n    \"to\": \"string\",\n    \"bookingStartDateFrom\": \"string\",\n    \"bookingStartDateTo\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bba577f-9cd4-43c1-b6c0-d8e0353228c5",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"INVALID_ARGUMENTS\",\n    \"details\": [\n      {\n        \"path\": [\n          \"startDate\"\n        ],\n        \"message\": \"Required\"\n      },\n      {\n        \"path\": [\n          \"duration\"\n        ],\n        \"message\": \"Required\"\n      }\n    ],\n    \"message\": \"Your request contained invalid arguments\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b0d4960-1e0f-439d-ac61-4bc15bfd514c",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2d75185-10b0-43c2-968f-8771aba19492",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53b208f5-b34c-4be1-bd97-a2bc09e96793",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "783274c7-8514-4e88-a269-ab6886defcf1",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "168d38c8-f7d4-4bf9-a98b-64ba1b785258",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83b5b14a-7265-4448-84a7-cddb34b59896",
+          "name": "Delete discount code",
+          "request": {
+            "name": "Delete discount code",
+            "description": {},
+            "url": {
+              "path": [
+                "discount-codes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the code to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac58f08f-9505-438f-a7bf-b43b0a754662",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f1c645b-66a2-467d-bf44-3209d650cbf0",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 1506.185335840381,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed8b999b-7364-496e-8225-6f8fd8f0cdf1",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9262262c-e521-4882-8e3a-952b692b224c",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f63ebd87-1276-4327-9da6-2f8fc3517737",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1d20831-ff20-49f2-ad9e-d6dd82a83ecc",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34548ff4-d77f-465b-bca3-014c7ee3c850",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the code to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "315ea2d0-3500-475f-9c1c-9af2f6de6725",
+          "name": "Get all discount codes",
+          "request": {
+            "name": "Get all discount codes",
+            "description": {},
+            "url": {
+              "path": [
+                "discount-codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "How many objects to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token to retrieve the next page of results. This is returned in the paged response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b466fd5-deed-472f-8455-ae16aa2bac24",
+              "name": "Paginated list of discount codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"priceRule\": {\n        \"type\": \"percentage\",\n        \"value\": 50\n      },\n      \"usageCount\": 5485298949947655,\n      \"usageLimit\": 1620810728472280,\n      \"validity\": {\n        \"productIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categoryIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"from\": \"string\",\n        \"to\": \"string\",\n        \"bookingStartDateFrom\": \"string\",\n        \"bookingStartDateTo\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"priceRule\": {\n        \"type\": \"percentage\",\n        \"value\": 50\n      },\n      \"usageCount\": 1465508924557372,\n      \"usageLimit\": 613376214576217,\n      \"validity\": {\n        \"productIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categoryIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"from\": \"string\",\n        \"to\": \"string\",\n        \"bookingStartDateFrom\": \"string\",\n        \"bookingStartDateTo\": \"string\"\n      }\n    }\n  ],\n  \"count\": 6986.765731927367,\n  \"total\": 2600.204545996442,\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47cade09-97e9-437b-9ec8-b12940b6d0d1",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 1506.185335840381,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcf09afa-819a-4ad2-8396-b6d4c2e6e6b2",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87c25d16-1010-4248-8121-a11e2fddcdf8",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76011ca8-a966-486a-86d6-f268b9001dcf",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1baf645-2f9d-4344-932a-0f6e9c59ee61",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5663a0ff-aaab-4b92-8aca-005fae91f846",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37f9f19e-98d4-493a-ae66-c9bd938951f3",
+          "name": "Create discount code",
+          "request": {
+            "name": "Create discount code",
+            "description": {},
+            "url": {
+              "path": [
+                "discount-codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b24e7b99-a042-4b3e-af34-4fd96371ff29",
+              "name": "Discount code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageCount\": 2463914572176876,\n  \"usageLimit\": 6897450420907432,\n  \"validity\": {\n    \"productIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"categoryIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"from\": \"string\",\n    \"to\": \"string\",\n    \"bookingStartDateFrom\": \"string\",\n    \"bookingStartDateTo\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d24d6fc5-d7b7-4a46-b335-5243c81f8830",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 1506.185335840381,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf5106fe-acdf-49b1-b147-ed7f87cff3c9",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f5aea86-0b3d-4703-984f-85d1ce7b46fd",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "235a31d5-0b55-4073-a55d-cb7b7e917aa2",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecce0ca7-116e-4646-99d3-65114417539a",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a22d4bca-f2f4-4d1b-bbb7-1d5ae6b4282f",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "discount-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"priceRule\": {\n    \"type\": \"percentage\",\n    \"value\": 50\n  },\n  \"usageLimit\": \"<integer>\",\n  \"validity\": {\n    \"productIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoryIds\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"from\": \"<string>\",\n    \"to\": \"<string>\",\n    \"bookingStartDateFrom\": \"<string>\",\n    \"bookingStartDateTo\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.twicecommerce.com/admin",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc196aed-45b3-4ee4-87a2-d072c32fc080",
+    "name": "Twice Admin API Keys Discount Codes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for Twice Admin API",
+      "type": "text/plain"
+    }
+  }
+}

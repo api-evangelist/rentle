@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Twice Admin API Keys Orders API",
+    "version": "2023-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/orders/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a single order by id."
+        },
+        {
+          "info": {
+            "name": "Update order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.twicecommerce.com/admin/orders/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update fields of an existing order."
+        },
+        {
+          "info": {
+            "name": "Get all orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/orders",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "How many objects to retrieve."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token to retrieve the next page of results. This is returned in the paged response."
+              },
+              {
+                "name": "createdAt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order creation date in ISO 8601 format, e.g., `?createdAt[lt]=2023-04-05T20:00:00.000Z`"
+              },
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated id of stores to filter by."
+              }
+            ]
+          },
+          "docs": "Retrieves all orders of the authenticated merchant."
+        },
+        {
+          "info": {
+            "name": "Create order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.twicecommerce.com/admin/orders",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

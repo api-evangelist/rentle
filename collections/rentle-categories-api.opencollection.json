@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Twice Admin API Keys Categories API",
+    "version": "2023-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/categories/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the category to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a single category by id."
+        },
+        {
+          "info": {
+            "name": "Get all categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/categories",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "How many objects to retrieve."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token to retrieve the next page of results. This is returned in the paged response."
+              }
+            ]
+          },
+          "docs": "Get all categories that belong to a merchant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

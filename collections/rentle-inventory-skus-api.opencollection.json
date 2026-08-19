@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Twice Admin API Keys Inventory SKUs API",
+    "version": "2023-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inventory SKUs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get inventory SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/inventory-skus/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the SKU to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a single SKU by id."
+        },
+        {
+          "info": {
+            "name": "Get inventory SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/inventory-skus",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "How many objects to retrieve."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token to retrieve the next page of results. This is returned in the paged response."
+              }
+            ]
+          },
+          "docs": "Get SKUs that belong to a merchant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

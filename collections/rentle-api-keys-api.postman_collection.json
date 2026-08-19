@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "48352746-e163-47f6-a4b5-433b3e1b7ffb",
+      "name": "API Keys",
+      "description": {
+        "content": "API Key-related queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d290a03d-d217-42cb-be0e-e85c0ab38d9d",
+          "name": "Get API key information",
+          "request": {
+            "name": "Get API key information",
+            "description": {
+              "content": "Get details of the API key in use.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4b71b7f-e421-451e-b688-d44ad457aae9",
+              "name": "API Key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"merchantId\": \"string\",\n  \"createdAt\": \"string\",\n  \"label\": \"string\",\n  \"scopes\": [\n    \"inventory-skus:update\",\n    \"orders:update\"\n  ],\n  \"rateLimit\": 8514891708712763,\n  \"rateLimitUsed\": 7129487920763560,\n  \"rateLimitRemaining\": 1906732593614776\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59ba052e-6f47-4f14-b0c2-573f78c99ef3",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"INVALID_ARGUMENTS\",\n    \"details\": [\n      {\n        \"path\": [\n          \"startDate\"\n        ],\n        \"message\": \"Required\"\n      },\n      {\n        \"path\": [\n          \"duration\"\n        ],\n        \"message\": \"Required\"\n      }\n    ],\n    \"message\": \"Your request contained invalid arguments\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ba78bf7-1fee-4694-ba3e-ad2908b8ec89",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c02ea795-df0d-4456-87cc-bdc96226f7bd",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39476b68-bbc1-42bc-adaa-bb873d1fd90c",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc01b332-3942-43e1-97e3-367a8b5d12d4",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ff83887-8f11-49b1-9797-53352a50321d",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.twicecommerce.com/admin",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e45160b3-5837-4daa-ac87-a001c925c8c4",
+    "name": "Twice Admin API Keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for Twice Admin API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,836 @@
+{
+  "item": [
+    {
+      "id": "e0346279-0781-4807-a829-b4483875466c",
+      "name": "Categories",
+      "description": {
+        "content": "Category-related queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78aaa5ba-8359-4777-b540-30e3d23722c6",
+          "name": "Get category",
+          "request": {
+            "name": "Get category",
+            "description": {
+              "content": "Get a single category by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the category to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cff7e4c5-8638-42d7-b6fb-480e291b6eb2",
+              "name": "Category",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": {\n    \"def\": \"string\"\n  },\n  \"images\": [\n    \"http://PjBdT.pioHqMVlrMn5bCkUvkB9OLpIw9cgFVsJVzH4SbRvIbAqt+pnDNDJ3qYqTg\",\n    \"http://PEKwycC.ezO7iy4DUuAT8MgkJXcytFi2ihPianp8.AHbbnwBQXaN7BOjrmdxMeyLQJI8qliWdqJhHixknz+1\"\n  ],\n  \"order\": 1666220114787461,\n  \"description\": {\n    \"def\": \"string\"\n  },\n  \"bookingBuffer\": {\n    \"daysBefore\": 1,\n    \"latestTime\": 18\n  },\n  \"terms\": {\n    \"name\": \"string\",\n    \"url\": \"https://jMWvvupiqGltRuL.laaM2kBm0A2kn1Ln-1Y\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cdeb515-7f05-463b-894f-31751d1b439c",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"INVALID_ARGUMENTS\",\n    \"details\": [\n      {\n        \"path\": [\n          \"startDate\"\n        ],\n        \"message\": \"Required\"\n      },\n      {\n        \"path\": [\n          \"duration\"\n        ],\n        \"message\": \"Required\"\n      }\n    ],\n    \"message\": \"Your request contained invalid arguments\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad78e3a0-d682-412e-a293-57b28490f742",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31772317-e743-46f1-9b3f-cf35096ccbe2",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ce6a7ad-5f9f-4b9f-aafd-73f42c5532b5",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "917ddb16-c0db-4658-96ab-9297f3d67c38",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7259580-16b2-4a0b-94b4-48b9198f4022",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the category to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31a50051-2528-4f58-a9df-adaf8173f827",
+          "name": "Get all categories",
+          "request": {
+            "name": "Get all categories",
+            "description": {
+              "content": "Get all categories that belong to a merchant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "How many objects to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token to retrieve the next page of results. This is returned in the paged response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ace8130-e69c-422a-b725-38e351497e76",
+              "name": "Paginated list of categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"https://wC.dsDxyvIcmGyOTq723DsPl.18l4+dTqLIKMAW0rUItlfjl1.WHtfrqmhkshmKKF7xa6tH5zs,JGAzY-v1l8rt\",\n        \"http://SfRkrQUKORARBsCYcWpwYcFDSB.dnsffx7tpmvjwld9j.cnAYqoT8+Bhx-lBdNB\"\n      ],\n      \"order\": 5517216454385268,\n      \"description\": {\n        \"def\": \"string\"\n      },\n      \"bookingBuffer\": {\n        \"daysBefore\": 1,\n        \"latestTime\": 18\n      },\n      \"terms\": {\n        \"name\": \"string\",\n        \"url\": \"https://UipI.zsVjEJ1nmN1bP0auIzaxhIyQuGmLxTiAuVXJ\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"https://tDWurwLgqfCvxOuCTkNbNfPeVioyDcVQn.tloqobUcggGsbh5TSrO1JRKqNV.P3TR13b8RS\",\n        \"https://uezrFpYmRqEDFsVlkEPBGJRmzwJLklPe.zfa-UW6ZK9JqSQ,2swKgyHoJW4+eI43zqaArjFN\"\n      ],\n      \"order\": 3755994139018841,\n      \"description\": {\n        \"def\": \"string\"\n      },\n      \"bookingBuffer\": {\n        \"daysBefore\": 1,\n        \"latestTime\": 18\n      },\n      \"terms\": {\n        \"name\": \"string\",\n        \"url\": \"http://pMIjgKzjLoaRekEXMtroqZPTMMXBwLH.bzyyiNYWJImkZP57Xan55goCE4b+,YlZt29ZuRjbAWiIrQ2rFXRI5823RPg2QAQQC.w.oACL,GA55h.jydV1YGHE\"\n      }\n    }\n  ],\n  \"count\": 2697.521840711149,\n  \"total\": 5404.648105342923,\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f57a88f-f507-4453-ba21-2fb27a3cfec1",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 716.6332839933642,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47561461-cb5b-479c-b2f1-f9a41bc6f950",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ac9f592-1b61-46a2-bd12-825f4468353b",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5409eee8-ca3c-4d8c-bfac-273b5c45b988",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e702255-5cb4-46e3-8f55-62099f73dae0",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f33355d9-76d6-4b71-8d89-52a1d9b8b30f",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.twicecommerce.com/admin",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a9890035-78b4-43eb-94fd-2aaefd47c761",
+    "name": "Twice Admin API Keys Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for Twice Admin API",
+      "type": "text/plain"
+    }
+  }
+}

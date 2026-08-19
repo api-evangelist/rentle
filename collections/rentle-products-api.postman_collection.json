@@ -1,0 +1,1299 @@
+{
+  "item": [
+    {
+      "id": "b3022d88-f09a-4a90-87e9-518b477822a4",
+      "name": "Products",
+      "description": {
+        "content": "Product-related queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f8f1051-53dd-4f6e-9b7b-01bb72b8f21f",
+          "name": "Get product",
+          "request": {
+            "name": "Get product",
+            "description": {
+              "content": "Get a single product by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the product to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09e3d204-5c17-4088-8f81-782cce0d6c3d",
+              "name": "Product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"string\",\n  \"categoryIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"name\": {\n    \"def\": \"string\"\n  },\n  \"images\": [\n    \"https://TUvGFeKBfWNwqrcr.hlwbxlcHM2CuEzBtlVTS\",\n    \"https://YZpN.jvkwnoiM,MVAZDaH,0NHR3WvcubQ9p,Nxgg8idpODMVy6sXlufrY,YaxJWe,dAybaS\"\n  ],\n  \"isPackage\": true,\n  \"taxPercentage\": 19,\n  \"recommendedProductIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"limitations\": {\n    \"visibleInListing\": false,\n    \"storeIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"channels\": [\n      \"admin\",\n      \"check_in\"\n    ],\n    \"maintenanceTimeMinutes\": 1696565171927688,\n    \"onlineAvailabilityPercentage\": 23,\n    \"startTimes\": {\n      \"type\": \"interval\",\n      \"orderLimit\": 1109973703286021,\n      \"intervalMinutes\": 4758028580933504\n    },\n    \"startTimesConfig\": {\n      \"value\": [\n        {\n          \"type\": \"weekly\",\n          \"value\": {\n            \"weekDays\": [\n              4,\n              4\n            ],\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"value\": {\n                \"intervalMinutes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          }\n        },\n        {\n          \"type\": \"weekly\",\n          \"value\": {\n            \"weekDays\": [\n              5,\n              7\n            ],\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"value\": {\n                \"intervalMinutes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          }\n        }\n      ],\n      \"maxOrdersPerStartTime\": 8577656651198217\n    },\n    \"bookingBuffer\": {\n      \"daysBefore\": 3187547542219663,\n      \"minutesBefore\": 36,\n      \"latestTime\": 18\n    },\n    \"ownBookingBuffer\": {\n      \"daysBefore\": 1434614130696759,\n      \"minutesBefore\": 44,\n      \"latestTime\": 18\n    }\n  },\n  \"order\": 1721497640042724,\n  \"rentals\": {\n    \"enabled\": true,\n    \"basePrice\": 5322866354510237,\n    \"pricing\": [\n      {\n        \"timePeriod\": \"hours\",\n        \"timeValue\": 1357937567137057,\n        \"price\": 5117156866534355,\n        \"label\": {\n          \"def\": \"string\"\n        },\n        \"channels\": [\n          \"admin\",\n          \"check_in\"\n        ]\n      },\n      {\n        \"timePeriod\": \"hours\",\n        \"timeValue\": 4020826243062743,\n        \"price\": 153176190186264,\n        \"label\": {\n          \"def\": \"string\"\n        },\n        \"channels\": [\n          \"check_in\",\n          \"check_in\"\n        ]\n      }\n    ],\n    \"deposit\": 1118816244799006\n  },\n  \"sales\": {\n    \"basePrice\": 5517714524561434,\n    \"enabled\": true\n  },\n  \"variantProperties\": [\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      }\n    }\n  ],\n  \"variants\": [\n    {\n      \"id\": \"string\",\n      \"properties\": [\n        {\n          \"value\": {\n            \"def\": \"string\"\n          },\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"propertyId\": \"string\"\n        },\n        {\n          \"value\": {\n            \"def\": \"string\"\n          },\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"propertyId\": \"string\"\n        }\n      ],\n      \"sales\": {\n        \"enabled\": false,\n        \"priceOverride\": 4673245202685551\n      },\n      \"rentals\": {\n        \"enabled\": true,\n        \"priceIncrease\": 1409904097896773\n      },\n      \"inventory\": [\n        [\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 5707927617794849\n          },\n          {\n            \"skuId\": \"string\",\n            \"type\": \"bulk\",\n            \"units\": 1394114030598870\n          }\n        ],\n        [\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 881676664161189\n          },\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 2452837552306606\n          }\n        ]\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"properties\": [\n        {\n          \"value\": {\n            \"def\": \"string\"\n          },\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"propertyId\": \"string\"\n        },\n        {\n          \"value\": {\n            \"def\": \"string\"\n          },\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"propertyId\": \"string\"\n        }\n      ],\n      \"sales\": {\n        \"enabled\": false,\n        \"priceOverride\": 1466576035972953\n      },\n      \"rentals\": {\n        \"enabled\": false,\n        \"priceIncrease\": 3460039936584666\n      },\n      \"inventory\": [\n        [\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 8952971814134674\n          },\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 7866299511309056\n          }\n        ],\n        [\n          {\n            \"skuId\": \"string\",\n            \"type\": \"bulk\",\n            \"units\": 3484022102384102\n          },\n          {\n            \"skuId\": \"string\",\n            \"type\": \"single\",\n            \"units\": 365942791910766\n          }\n        ]\n      ]\n    }\n  ],\n  \"description\": {\n    \"def\": \"string\"\n  },\n  \"packageProductIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"packageProducts\": [\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"categoryIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"http://b.cbYtQaGhve-+KuJ3\",\n        \"http://JUXRu.escpEOiQf1mi3uvmMPhbBWqT\"\n      ],\n      \"isPackage\": true,\n      \"taxPercentage\": 31,\n      \"recommendedProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"limitations\": {\n        \"visibleInListing\": false,\n        \"storeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"channels\": [\n          \"check_in\",\n          \"online\"\n        ],\n        \"maintenanceTimeMinutes\": 5216509100730064,\n        \"onlineAvailabilityPercentage\": 17,\n        \"startTimes\": {\n          \"type\": \"interval\",\n          \"orderLimit\": 2122418323472354,\n          \"intervalMinutes\": 5718293591030492\n        },\n        \"startTimesConfig\": {\n          \"value\": [\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"maxOrdersPerStartTime\": -5779790297384800\n        },\n        \"bookingBuffer\": {\n          \"daysBefore\": 1,\n          \"latestTime\": 18\n        },\n        \"ownBookingBuffer\": {\n          \"daysBefore\": 1,\n          \"latestTime\": 18\n        }\n      },\n      \"order\": 7349686978223632,\n      \"rentals\": {\n        \"enabled\": false,\n        \"basePrice\": 1796222157093151,\n        \"pricing\": [\n          {\n            \"timePeriod\": \"days_within_opening_hours\",\n            \"timeValue\": 8218202224184917,\n            \"price\": 554786371284257,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"admin\",\n              \"admin\"\n            ]\n          },\n          {\n            \"timePeriod\": \"weeks\",\n            \"timeValue\": 494735657676947,\n            \"price\": 2112333161844813,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"check_in\",\n              \"check_in\"\n            ]\n          }\n        ],\n        \"deposit\": 3834836241741278\n      },\n      \"sales\": {\n        \"basePrice\": 2547621962909956,\n        \"enabled\": false\n      },\n      \"variantProperties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        }\n      ],\n      \"variants\": [\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 5897980183664981\n          },\n          \"rentals\": {\n            \"enabled\": false,\n            \"priceIncrease\": 3191244703730471\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 1207572132883294\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 6302157066538720\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 8467611400848693\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 956633282613542\n              }\n            ]\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 3528329121266918\n          },\n          \"rentals\": {\n            \"enabled\": true,\n            \"priceIncrease\": 5985759154956348\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 1334922496591175\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 490565528070806\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 8064811483767334\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 6093552552957642\n              }\n            ]\n          ]\n        }\n      ],\n      \"description\": {\n        \"def\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"categoryIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"https://xoYibUgSxwhwAaJOGSnQblWPeVjs.wnbXRLe.\",\n        \"http://kPPNdED.csty9lPFfABN6ByQbf+gY8fkVggm4hUIHGOQUGp4DbOwE-G\"\n      ],\n      \"isPackage\": true,\n      \"taxPercentage\": 82,\n      \"recommendedProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"limitations\": {\n        \"visibleInListing\": true,\n        \"storeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"channels\": [\n          \"online\",\n          \"check_in\"\n        ],\n        \"maintenanceTimeMinutes\": 4281342980515440,\n        \"onlineAvailabilityPercentage\": 36,\n        \"startTimes\": {\n          \"type\": \"interval\",\n          \"orderLimit\": 6252525073305484,\n          \"intervalMinutes\": 2683715187782722\n        },\n        \"startTimesConfig\": {\n          \"value\": [\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"maxOrdersPerStartTime\": 7228319245693367\n        },\n        \"bookingBuffer\": {\n          \"daysBefore\": 1,\n          \"latestTime\": 18\n        },\n        \"ownBookingBuffer\": {\n          \"daysBefore\": 1,\n          \"latestTime\": 18\n        }\n      },\n      \"order\": 5747283746312680,\n      \"rentals\": {\n        \"enabled\": false,\n        \"basePrice\": 648937957421622,\n        \"pricing\": [\n          {\n            \"timePeriod\": \"months\",\n            \"timeValue\": 5874941601824098,\n            \"price\": 5849473097354256,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"check_in\",\n              \"admin\"\n            ]\n          },\n          {\n            \"timePeriod\": \"hours\",\n            \"timeValue\": 345751607743241,\n            \"price\": 6498948145714559,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"admin\",\n              \"admin\"\n            ]\n          }\n        ],\n        \"deposit\": 1052155109175655\n      },\n      \"sales\": {\n        \"basePrice\": 8380280460481465,\n        \"enabled\": true\n      },\n      \"variantProperties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        }\n      ],\n      \"variants\": [\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 4264970297142190\n          },\n          \"rentals\": {\n            \"enabled\": true,\n            \"priceIncrease\": 1682751853540999\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 8744105484938737\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 7925546828963912\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 2011129939908015\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 3977880842632217\n              }\n            ]\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 4303542891182307\n          },\n          \"rentals\": {\n            \"enabled\": true,\n            \"priceIncrease\": 6450245721863178\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 5615738190453940\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 643719413111401\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 8057629323027350\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 600173462157526\n              }\n            ]\n          ]\n        }\n      ],\n      \"description\": {\n        \"def\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd1361d3-eba6-4c78-bd88-8d2ae8e04645",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"INVALID_ARGUMENTS\",\n    \"details\": [\n      {\n        \"path\": [\n          \"startDate\"\n        ],\n        \"message\": \"Required\"\n      },\n      {\n        \"path\": [\n          \"duration\"\n        ],\n        \"message\": \"Required\"\n      }\n    ],\n    \"message\": \"Your request contained invalid arguments\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d55251a-4667-4b1b-aa93-69f948901889",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d8c48e1-d26c-45c4-b3b6-c8089d30276e",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8835b3d3-e3e6-4bd8-bfd3-0fc1218f363c",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59fd3d21-4032-4265-8c43-12e7418a66a0",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fc735c4-daa4-4856-a624-8ad0e26f1ad1",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the product to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1adcd69f-2cb9-4591-be69-83ea3fb3c48e",
+          "name": "Delete product",
+          "request": {
+            "name": "Delete product",
+            "description": {
+              "content": "Deletes a single product by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "244b86dc-07c4-436f-bcb2-aa070196d774",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1bd94637-c132-477e-8e9d-95e1028fd925",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 971.1155269312599,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f2a2cf2-641f-4fee-9494-fee5c5d340b4",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d06e016-b8c3-4230-8746-1fc7b686bc69",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "277feb0e-9a78-4339-845b-40079de2bc5e",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9dfb2ba3-5de4-452a-935d-572ecc0cb866",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6abc7c9-44b3-4603-939a-ea43b5069c80",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "024b9393-2860-460b-8eda-1afb7b78daaf",
+          "name": "Get all products",
+          "request": {
+            "name": "Get all products",
+            "description": {
+              "content": "Get all products that belong to a merchant. Filtering by store is supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "How many objects to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token to retrieve the next page of results. This is returned in the paged response."
+                },
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "Comma-separated id of stores to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "categories",
+                  "value": "<string>",
+                  "description": "Comma-separated id of categories to filter by. If multiple values are provided, then the result includes products that belong to any of the provided categories."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1218b04f-2847-49f1-a518-a609a31e55d3",
+              "name": "Paginated list of products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"categoryIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"https://UAtEGlMpLrt.etibuQ04pelCIasdaKw2iza.BZ0lJ6Fn52ez.GYGPAZN03-cr2ORHE,myypS5x5BI\",\n        \"http://reEENREKGwh.pfepj.G,kFcgr1MpX\"\n      ],\n      \"isPackage\": true,\n      \"taxPercentage\": 19,\n      \"recommendedProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"limitations\": {\n        \"visibleInListing\": false,\n        \"storeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"channels\": [\n          \"online\",\n          \"online\"\n        ],\n        \"maintenanceTimeMinutes\": 2924502118003888,\n        \"onlineAvailabilityPercentage\": 95,\n        \"startTimes\": {\n          \"type\": \"interval\",\n          \"orderLimit\": 6566933344055012,\n          \"intervalMinutes\": 8397269737135439\n        },\n        \"startTimesConfig\": {\n          \"value\": [\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"maxOrdersPerStartTime\": -5969503484472038\n        },\n        \"bookingBuffer\": {\n          \"daysBefore\": 6445929934859717,\n          \"minutesBefore\": 10,\n          \"latestTime\": 18\n        },\n        \"ownBookingBuffer\": {\n          \"daysBefore\": 8042677087402874,\n          \"minutesBefore\": 7,\n          \"latestTime\": 18\n        }\n      },\n      \"order\": 2119098258036353,\n      \"rentals\": {\n        \"enabled\": true,\n        \"basePrice\": 3125616778773499,\n        \"pricing\": [\n          {\n            \"timePeriod\": \"days_within_opening_hours\",\n            \"timeValue\": 1006585918057249,\n            \"price\": 6736160065997856,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"online\",\n              \"admin\"\n            ]\n          },\n          {\n            \"timePeriod\": \"months\",\n            \"timeValue\": 3237869117329311,\n            \"price\": 2426502425236302,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"online\",\n              \"admin\"\n            ]\n          }\n        ],\n        \"deposit\": 1178160146068400\n      },\n      \"sales\": {\n        \"basePrice\": 6242473054584180,\n        \"enabled\": true\n      },\n      \"variantProperties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        }\n      ],\n      \"variants\": [\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 7353424521588597\n          },\n          \"rentals\": {\n            \"enabled\": true,\n            \"priceIncrease\": 277552989253371\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 2695132193956329\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 873054758931563\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 5810954859626134\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 5097822193327623\n              }\n            ]\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": false,\n            \"priceOverride\": 7108705641853058\n          },\n          \"rentals\": {\n            \"enabled\": true,\n            \"priceIncrease\": 764700752711394\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 2916927219193921\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 4374449405517983\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 6342154516287297\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 4396208667060354\n              }\n            ]\n          ]\n        }\n      ],\n      \"description\": {\n        \"def\": \"string\"\n      },\n      \"packageProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"packageProducts\": [\n        {\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"categoryIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"images\": [\n            \"https://jnTo.hnafFV6.F7DgUVHn.2KPdOnfT3jSJAK7+TyA90DDRVz2\",\n            \"https://lmSzGYgXOjQsqFt.ymvUiziP\"\n          ],\n          \"isPackage\": true,\n          \"taxPercentage\": 88,\n          \"recommendedProductIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"limitations\": {\n            \"visibleInListing\": false,\n            \"storeIds\": [\n              \"string\",\n              \"string\"\n            ],\n            \"channels\": [\n              \"admin\",\n              \"check_in\"\n            ],\n            \"maintenanceTimeMinutes\": 1562213491622319,\n            \"onlineAvailabilityPercentage\": 51,\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"orderLimit\": 7083185929634792,\n              \"intervalMinutes\": 2852636408538609\n            },\n            \"startTimesConfig\": {\n              \"value\": [\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                }\n              ],\n              \"maxOrdersPerStartTime\": -381362884739834\n            },\n            \"bookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            },\n            \"ownBookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            }\n          },\n          \"order\": 2514825336739610,\n          \"rentals\": {\n            \"enabled\": false,\n            \"basePrice\": 8105153482515279,\n            \"pricing\": [\n              {\n                \"timePeriod\": \"weeks\",\n                \"timeValue\": 8023488786085477,\n                \"price\": 2801326574909782,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"admin\",\n                  \"admin\"\n                ]\n              },\n              {\n                \"timePeriod\": \"days\",\n                \"timeValue\": 4620111928349977,\n                \"price\": 3009896444683201,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"online\",\n                  \"online\"\n                ]\n              }\n            ],\n            \"deposit\": 1910182665102802\n          },\n          \"sales\": {\n            \"basePrice\": 4343439959918130,\n            \"enabled\": true\n          },\n          \"variantProperties\": [\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            }\n          ],\n          \"variants\": [\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": false,\n                \"priceOverride\": 3822028084841615\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 1492430288663902\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            },\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": false,\n                \"priceOverride\": 4308727948837422\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 433468177897748\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            }\n          ],\n          \"description\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"categoryIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"images\": [\n            \"http://kQjJHgGiMJrOblRkddmy.clnIMsGPjxW7Itv7WyV6\",\n            \"https://sZRAKzDZLJ.eapmHb,lavLZKqU-mKGWLDIotjJetCoJ0MEp+dEPMX\"\n          ],\n          \"isPackage\": true,\n          \"taxPercentage\": 87,\n          \"recommendedProductIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"limitations\": {\n            \"visibleInListing\": true,\n            \"storeIds\": [\n              \"string\",\n              \"string\"\n            ],\n            \"channels\": [\n              \"check_in\",\n              \"admin\"\n            ],\n            \"maintenanceTimeMinutes\": 6753002234325588,\n            \"onlineAvailabilityPercentage\": 21,\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"orderLimit\": 4935446584300282,\n              \"intervalMinutes\": 3551304789281507\n            },\n            \"startTimesConfig\": {\n              \"value\": [\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                }\n              ],\n              \"maxOrdersPerStartTime\": -8623129290573517\n            },\n            \"bookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            },\n            \"ownBookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            }\n          },\n          \"order\": 575394020961651,\n          \"rentals\": {\n            \"enabled\": false,\n            \"basePrice\": 6980737625697988,\n            \"pricing\": [\n              {\n                \"timePeriod\": \"days_within_opening_hours\",\n                \"timeValue\": 6076057013451306,\n                \"price\": 6317502978285648,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"online\",\n                  \"check_in\"\n                ]\n              },\n              {\n                \"timePeriod\": \"weeks\",\n                \"timeValue\": 8080423304251094,\n                \"price\": 3676459703291351,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"check_in\",\n                  \"admin\"\n                ]\n              }\n            ],\n            \"deposit\": 2382706765341901\n          },\n          \"sales\": {\n            \"basePrice\": 7476701338143059,\n            \"enabled\": false\n          },\n          \"variantProperties\": [\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            }\n          ],\n          \"variants\": [\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": true,\n                \"priceOverride\": 6119447403549823\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 6627434613641114\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            },\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": true,\n                \"priceOverride\": 3842014544741231\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 1121831830636908\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            }\n          ],\n          \"description\": {\n            \"def\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"categoryIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"images\": [\n        \"http://Spgir.nnnu-5NNSX9elri01tIWUGWLMPzpKvSTTJwVVbxrzHu\",\n        \"https://hWbdFStOjUGymOdhhCqH.birYxWHEtbkIURqvL6nA6wL.wlBUgTXCA\"\n      ],\n      \"isPackage\": false,\n      \"taxPercentage\": 71,\n      \"recommendedProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"limitations\": {\n        \"visibleInListing\": true,\n        \"storeIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"channels\": [\n          \"online\",\n          \"online\"\n        ],\n        \"maintenanceTimeMinutes\": 7026463307177013,\n        \"onlineAvailabilityPercentage\": 54,\n        \"startTimes\": {\n          \"type\": \"interval\",\n          \"orderLimit\": 3729802874449085,\n          \"intervalMinutes\": 4569185418196637\n        },\n        \"startTimesConfig\": {\n          \"value\": [\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"type\": \"weekly\",\n              \"value\": {\n                \"weekDays\": [\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                ],\n                \"startTimes\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ],\n          \"maxOrdersPerStartTime\": 2913942214245709\n        },\n        \"bookingBuffer\": {\n          \"daysBefore\": 7000909751708557,\n          \"minutesBefore\": 33,\n          \"latestTime\": 18\n        },\n        \"ownBookingBuffer\": {\n          \"daysBefore\": 658006005849302,\n          \"minutesBefore\": 58,\n          \"latestTime\": 18\n        }\n      },\n      \"order\": 940258909035293,\n      \"rentals\": {\n        \"enabled\": true,\n        \"basePrice\": 4117997819108295,\n        \"pricing\": [\n          {\n            \"timePeriod\": \"weeks\",\n            \"timeValue\": 4152266005865875,\n            \"price\": 6145399316407338,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"online\",\n              \"admin\"\n            ]\n          },\n          {\n            \"timePeriod\": \"days_within_opening_hours\",\n            \"timeValue\": 234721995458171,\n            \"price\": 3091876982809187,\n            \"label\": {\n              \"def\": \"string\"\n            },\n            \"channels\": [\n              \"check_in\",\n              \"admin\"\n            ]\n          }\n        ],\n        \"deposit\": 5662217426529610\n      },\n      \"sales\": {\n        \"basePrice\": 4427173142491933,\n        \"enabled\": false\n      },\n      \"variantProperties\": [\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          }\n        }\n      ],\n      \"variants\": [\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": false,\n            \"priceOverride\": 5336118820382928\n          },\n          \"rentals\": {\n            \"enabled\": false,\n            \"priceIncrease\": 188588343474841\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 3945645166840100\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 5643920812847480\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 516448589093268\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 4220652985081383\n              }\n            ]\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"properties\": [\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            },\n            {\n              \"value\": {\n                \"def\": \"string\"\n              },\n              \"name\": {\n                \"def\": \"string\"\n              },\n              \"propertyId\": \"string\"\n            }\n          ],\n          \"sales\": {\n            \"enabled\": true,\n            \"priceOverride\": 8389633230441641\n          },\n          \"rentals\": {\n            \"enabled\": false,\n            \"priceIncrease\": 1201251734267117\n          },\n          \"inventory\": [\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 2861296081107058\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 5823440298064740\n              }\n            ],\n            [\n              {\n                \"skuId\": \"string\",\n                \"type\": \"bulk\",\n                \"units\": 2109797564568454\n              },\n              {\n                \"skuId\": \"string\",\n                \"type\": \"single\",\n                \"units\": 4447411142889621\n              }\n            ]\n          ]\n        }\n      ],\n      \"description\": {\n        \"def\": \"string\"\n      },\n      \"packageProductIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"packageProducts\": [\n        {\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"categoryIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"images\": [\n            \"http://eodCMiRlZnFkodFRmBiz.lewMuw7yKfrRyr4ciSdiz93bUoerZ\",\n            \"https://bgFM.etsJF+WPy4gdJzN9IoCPjh0MkrzJprVql1bmjtGxFiupN5u72B\"\n          ],\n          \"isPackage\": true,\n          \"taxPercentage\": 7,\n          \"recommendedProductIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"limitations\": {\n            \"visibleInListing\": true,\n            \"storeIds\": [\n              \"string\",\n              \"string\"\n            ],\n            \"channels\": [\n              \"admin\",\n              \"check_in\"\n            ],\n            \"maintenanceTimeMinutes\": 6196939641814528,\n            \"onlineAvailabilityPercentage\": 83,\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"orderLimit\": 4948982018186426,\n              \"intervalMinutes\": 1197128054470315\n            },\n            \"startTimesConfig\": {\n              \"value\": [\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                }\n              ],\n              \"maxOrdersPerStartTime\": -6517082370282206\n            },\n            \"bookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            },\n            \"ownBookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            }\n          },\n          \"order\": 1561795871010372,\n          \"rentals\": {\n            \"enabled\": false,\n            \"basePrice\": 4741155661757746,\n            \"pricing\": [\n              {\n                \"timePeriod\": \"hours\",\n                \"timeValue\": 4677915325739317,\n                \"price\": 1439144982149996,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"online\",\n                  \"check_in\"\n                ]\n              },\n              {\n                \"timePeriod\": \"years\",\n                \"timeValue\": 8026728425737778,\n                \"price\": 825944385753016,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"check_in\",\n                  \"online\"\n                ]\n              }\n            ],\n            \"deposit\": 7935201058193860\n          },\n          \"sales\": {\n            \"basePrice\": 1032296181188165,\n            \"enabled\": false\n          },\n          \"variantProperties\": [\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            }\n          ],\n          \"variants\": [\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": true,\n                \"priceOverride\": 2744355842045335\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 4620044967731104\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            },\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": false,\n                \"priceOverride\": 6873683470463408\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 8356726721594932\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            }\n          ],\n          \"description\": {\n            \"def\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"categoryIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"images\": [\n            \"https://iVgUZ.tkhzsSX+7Bzc-lhBWgfeUP9DpaPnzb8XhQ9WKHDaEn46N-MM\",\n            \"http://NUIQEZBLMrIPjj.itsSCFWilVVlqxPvKuTjYyEA4RBoZu3Bg6-RmATcjaDrseEhUnQ\"\n          ],\n          \"isPackage\": true,\n          \"taxPercentage\": 97,\n          \"recommendedProductIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"limitations\": {\n            \"visibleInListing\": false,\n            \"storeIds\": [\n              \"string\",\n              \"string\"\n            ],\n            \"channels\": [\n              \"online\",\n              \"admin\"\n            ],\n            \"maintenanceTimeMinutes\": 1375677778567866,\n            \"onlineAvailabilityPercentage\": 96,\n            \"startTimes\": {\n              \"type\": \"interval\",\n              \"orderLimit\": 3824856236303617,\n              \"intervalMinutes\": 1065328927239653\n            },\n            \"startTimesConfig\": {\n              \"value\": [\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                {\n                  \"type\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                }\n              ],\n              \"maxOrdersPerStartTime\": -822768967665502\n            },\n            \"bookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            },\n            \"ownBookingBuffer\": {\n              \"daysBefore\": 1,\n              \"latestTime\": 18\n            }\n          },\n          \"order\": 6568036360234826,\n          \"rentals\": {\n            \"enabled\": false,\n            \"basePrice\": 8192872171204295,\n            \"pricing\": [\n              {\n                \"timePeriod\": \"days_within_opening_hours\",\n                \"timeValue\": 1489585372731185,\n                \"price\": 5050705108493485,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"online\",\n                  \"online\"\n                ]\n              },\n              {\n                \"timePeriod\": \"years\",\n                \"timeValue\": 6563657422873691,\n                \"price\": 6790799803915371,\n                \"label\": {\n                  \"def\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  }\n                },\n                \"channels\": [\n                  \"check_in\",\n                  \"check_in\"\n                ]\n              }\n            ],\n            \"deposit\": 1594824908587595\n          },\n          \"sales\": {\n            \"basePrice\": 6592976621151342,\n            \"enabled\": false\n          },\n          \"variantProperties\": [\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            },\n            {\n              \"id\": \"string\",\n              \"name\": {\n                \"def\": \"string\"\n              }\n            }\n          ],\n          \"variants\": [\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": false,\n                \"priceOverride\": 3232532001866578\n              },\n              \"rentals\": {\n                \"enabled\": true,\n                \"priceIncrease\": 8050649719290777\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            },\n            {\n              \"id\": \"string\",\n              \"properties\": [\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                },\n                {\n                  \"value\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"name\": {\n                    \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                  },\n                  \"propertyId\": \"string\"\n                }\n              ],\n              \"sales\": {\n                \"enabled\": true,\n                \"priceOverride\": 8965656108895906\n              },\n              \"rentals\": {\n                \"enabled\": false,\n                \"priceIncrease\": 5451747395948396\n              },\n              \"inventory\": [\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ],\n                [\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  },\n                  {\n                    \"skuId\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"type\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    },\n                    \"units\": {\n                      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                    }\n                  }\n                ]\n              ]\n            }\n          ],\n          \"description\": {\n            \"def\": \"string\"\n          }\n        }\n      ]\n    }\n  ],\n  \"count\": 4047.653918211378,\n  \"total\": 2410.948853320315,\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2862af5-5a48-429c-befa-a5fb1255d8ec",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 971.1155269312599,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22fdf16e-884a-43f4-995b-a1941c61ea48",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6dd0113-1a9b-46ea-83ff-c3aabfbb2257",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a576db8-61bf-4ce3-b34b-3acff7e858d6",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb4359cc-9748-423b-b816-e5606476aef6",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7385de1-0b42-46ea-ba75-d9a8f144d260",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "JnoqPQEcef82SSe3JknH,v9P9INmo8fLiKkHfmgzO"
+                    },
+                    {
+                      "key": "categories",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.twicecommerce.com/admin",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dfcfd614-efb1-476e-b45b-3fab7347bfae",
+    "name": "Twice Admin API Keys Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for Twice Admin API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Twice Admin API Keys Discount Codes API",
+    "version": "2023-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discount Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get discount code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/discount-codes/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the code to retrieve"
+              }
+            ]
+          },
+          "docs": "Get discount code"
+        },
+        {
+          "info": {
+            "name": "Delete discount code",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.twicecommerce.com/admin/discount-codes/:id",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the code to delete"
+              }
+            ]
+          },
+          "docs": "Delete discount code"
+        },
+        {
+          "info": {
+            "name": "Get all discount codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/discount-codes",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "How many objects to retrieve."
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "Token to retrieve the next page of results. This is returned in the paged response."
+              }
+            ]
+          },
+          "docs": "Get all discount codes"
+        },
+        {
+          "info": {
+            "name": "Create discount code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.twicecommerce.com/admin/discount-codes",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create discount code"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -6,92 +6,97 @@ server:
   name: rentle-admin
   transport: http
   url: null
-  note: >-
-    No official hosted/remote MCP server was found for Rentle / Twice Commerce.
-    This is a derived candidate tool list, one tool per OpenAPI operation, that
-    a generated MCP server could expose over the Twice Admin API.
+  note: No official hosted/remote MCP server was found for Rentle / Twice Commerce. This is a derived
+    candidate tool list, one tool per OpenAPI operation, that a generated MCP server could expose over
+    the Twice Admin API.
 tools:
-  - name: list_categories
-    description: List product categories
-    source_operation: openapi/rentle-admin-openapi.json#categories_list
-  - name: get_category
-    description: Get a category by id
-    source_operation: openapi/rentle-admin-openapi.json#categories_get
-  - name: list_customers
-    description: List customers
-    source_operation: openapi/rentle-admin-openapi.json#customers_list
-  - name: search_customers
-    description: Search customers
-    source_operation: openapi/rentle-admin-openapi.json#customers_search
-  - name: get_customer
-    description: Get a customer by id
-    source_operation: openapi/rentle-admin-openapi.json#customers_get
-  - name: list_discount_codes
-    description: List discount codes
-    source_operation: openapi/rentle-admin-openapi.json#discountCodes_list
-  - name: get_discount_code
-    description: Get a discount code by id
-    source_operation: openapi/rentle-admin-openapi.json#discountCodes_get
-  - name: create_discount_code
-    description: Create a discount code
-    source_operation: openapi/rentle-admin-openapi.json#discountCodes_create
-  - name: remove_discount_code
-    description: Delete a discount code
-    source_operation: openapi/rentle-admin-openapi.json#discountCodes_remove
-  - name: list_inventory_articles
-    description: List inventory articles
-    source_operation: openapi/rentle-admin-openapi.json#inventoryArticles_list
-  - name: get_inventory_article
-    description: Get an inventory article by id
-    source_operation: openapi/rentle-admin-openapi.json#inventoryArticles_get
-  - name: list_inventory_skus
-    description: List inventory SKUs
-    source_operation: openapi/rentle-admin-openapi.json#skus_list
-  - name: get_inventory_sku
-    description: Get an inventory SKU by id
-    source_operation: openapi/rentle-admin-openapi.json#skus_get
-  - name: list_orders
-    description: List orders
-    source_operation: openapi/rentle-admin-openapi.json#orders_list
-  - name: get_order
-    description: Get an order by id
-    source_operation: openapi/rentle-admin-openapi.json#orders_get
-  - name: create_order
-    description: Create an order
-    source_operation: openapi/rentle-admin-openapi.json#orders_create
-  - name: update_order
-    description: Update an order
-    source_operation: openapi/rentle-admin-openapi.json#orders_update
-  - name: list_products
-    description: List products
-    source_operation: openapi/rentle-admin-openapi.json#products_list
-  - name: get_product
-    description: Get a product by id
-    source_operation: openapi/rentle-admin-openapi.json#products_get
-  - name: remove_product
-    description: Delete a product
-    source_operation: openapi/rentle-admin-openapi.json#products_remove
-  - name: list_stores
-    description: List stores
-    source_operation: openapi/rentle-admin-openapi.json#store_list
-  - name: get_store
-    description: Get a store by id
-    source_operation: openapi/rentle-admin-openapi.json#store_get
-  - name: get_merchant
-    description: Get the merchant account
-    source_operation: openapi/rentle-admin-openapi.json#merchant_get
-  - name: list_api_keys
-    description: List API keys
-    source_operation: openapi/rentle-admin-openapi.json#key_list
-  - name: list_webhooks
-    description: List webhooks
-    source_operation: openapi/rentle-admin-openapi.json#webhooks_list
-  - name: get_webhook
-    description: Get a webhook by id
-    source_operation: openapi/rentle-admin-openapi.json#webhooks_get
-  - name: create_webhook
-    description: Create a webhook
-    source_operation: openapi/rentle-admin-openapi.json#webhooks_create
-  - name: remove_webhook
-    description: Delete a webhook
-    source_operation: openapi/rentle-admin-openapi.json#webhooks_remove
+- name: list_categories
+  description: List product categories
+  source_operation: openapi/rentle-admin-openapi.json#categories_list
+- name: get_category
+  description: Get a category by id
+  source_operation: openapi/rentle-admin-openapi.json#categories_get
+- name: list_customers
+  description: List customers
+  source_operation: openapi/rentle-admin-openapi.json#customers_list
+- name: search_customers
+  description: Search customers
+  source_operation: openapi/rentle-admin-openapi.json#customers_search
+- name: get_customer
+  description: Get a customer by id
+  source_operation: openapi/rentle-admin-openapi.json#customers_get
+- name: list_discount_codes
+  description: List discount codes
+  source_operation: openapi/rentle-admin-openapi.json#discountCodes_list
+- name: get_discount_code
+  description: Get a discount code by id
+  source_operation: openapi/rentle-admin-openapi.json#discountCodes_get
+- name: create_discount_code
+  description: Create a discount code
+  source_operation: openapi/rentle-admin-openapi.json#discountCodes_create
+- name: remove_discount_code
+  description: Delete a discount code
+  source_operation: openapi/rentle-admin-openapi.json#discountCodes_remove
+- name: list_inventory_articles
+  description: List inventory articles
+  source_operation: openapi/rentle-admin-openapi.json#inventoryArticles_list
+- name: get_inventory_article
+  description: Get an inventory article by id
+  source_operation: openapi/rentle-admin-openapi.json#inventoryArticles_get
+- name: list_inventory_skus
+  description: List inventory SKUs
+  source_operation: openapi/rentle-admin-openapi.json#skus_list
+- name: get_inventory_sku
+  description: Get an inventory SKU by id
+  source_operation: openapi/rentle-admin-openapi.json#skus_get
+- name: list_orders
+  description: List orders
+  source_operation: openapi/rentle-admin-openapi.json#orders_list
+- name: get_order
+  description: Get an order by id
+  source_operation: openapi/rentle-admin-openapi.json#orders_get
+- name: create_order
+  description: Create an order
+  source_operation: openapi/rentle-admin-openapi.json#orders_create
+- name: update_order
+  description: Update an order
+  source_operation: openapi/rentle-admin-openapi.json#orders_update
+- name: list_products
+  description: List products
+  source_operation: openapi/rentle-admin-openapi.json#products_list
+- name: get_product
+  description: Get a product by id
+  source_operation: openapi/rentle-admin-openapi.json#products_get
+- name: remove_product
+  description: Delete a product
+  source_operation: openapi/rentle-admin-openapi.json#products_remove
+- name: list_stores
+  description: List stores
+  source_operation: openapi/rentle-admin-openapi.json#store_list
+- name: get_store
+  description: Get a store by id
+  source_operation: openapi/rentle-admin-openapi.json#store_get
+- name: get_merchant
+  description: Get the merchant account
+  source_operation: openapi/rentle-admin-openapi.json#merchant_get
+- name: list_api_keys
+  description: List API keys
+  source_operation: openapi/rentle-admin-openapi.json#key_list
+- name: list_webhooks
+  description: List webhooks
+  source_operation: openapi/rentle-admin-openapi.json#webhooks_list
+- name: get_webhook
+  description: Get a webhook by id
+  source_operation: openapi/rentle-admin-openapi.json#webhooks_get
+- name: create_webhook
+  description: Create a webhook
+  source_operation: openapi/rentle-admin-openapi.json#webhooks_create
+- name: remove_webhook
+  description: Delete a webhook
+  source_operation: openapi/rentle-admin-openapi.json#webhooks_remove
+deployment:
+  mode: none
+  verified: derived
+  tools: 28
+  checked: '2026-08-12'
+  source: catalog MCP census

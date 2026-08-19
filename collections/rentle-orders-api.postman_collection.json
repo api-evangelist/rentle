@@ -1,0 +1,1872 @@
+{
+  "item": [
+    {
+      "id": "dc9f421c-2611-4b81-9b62-6d4599fa0a38",
+      "name": "Orders",
+      "description": {
+        "content": "Order-related queries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "716ff5d2-1278-4ba5-920b-f8de92585da4",
+          "name": "Get order",
+          "request": {
+            "name": "Get order",
+            "description": {
+              "content": "Retrieves a single order by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "781b3c89-f354-4cf0-ab4a-4c5ba066ceea",
+              "name": "Order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"string\",\n  \"startDate\": \"string\",\n  \"initialStartDate\": \"string\",\n  \"endDate\": \"string\",\n  \"payment\": {\n    \"paid\": 1155706049619666,\n    \"refunded\": 6964382773538797,\n    \"authorised\": 4025199375580410,\n    \"cancelled\": 5294811652235406,\n    \"captured\": 2082448861647837\n  },\n  \"deposit\": {\n    \"paid\": 8863125550044705,\n    \"refunded\": 4912544939524555,\n    \"authorised\": 6687577658476535,\n    \"cancelled\": 7920931583747557,\n    \"captured\": 8894029967771562\n  },\n  \"channel\": \"wix\",\n  \"state\": \"booked\",\n  \"store\": {\n    \"name\": \"string\",\n    \"storeId\": \"string\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    }\n  },\n  \"customerDetails\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"marketingConsent\": false,\n    \"customerId\": \"string\",\n    \"language\": \"et\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    },\n    \"metafields\": {\n      \"key_0\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"key_1\": {\n        \"key_0\": {}\n      }\n    }\n  },\n  \"terms\": {\n    \"accepted\": true,\n    \"timestamp\": \"string\"\n  },\n  \"prepared\": true,\n  \"pricing\": {\n    \"currency\": \"string\",\n    \"total\": 2610992160550912,\n    \"subtotal\": 725692096854308,\n    \"totalTaxes\": 1535286585412618,\n    \"totalDiscounts\": 7823713809850377,\n    \"taxExcluded\": false,\n    \"taxLines\": [\n      {\n        \"price\": 8662889005689779,\n        \"rate\": 5371.572702993155\n      },\n      {\n        \"price\": -1266077362068038,\n        \"rate\": 830.6459477509464\n      }\n    ],\n    \"manualDiscount\": {\n      \"value\": 3258753402339878,\n      \"percentage\": 79\n    },\n    \"discountCodes\": [\n      {\n        \"code\": \"string\",\n        \"quantity\": 4465014929234884,\n        \"value\": 3709397660932641\n      },\n      {\n        \"code\": \"string\",\n        \"quantity\": 1841911120600209,\n        \"value\": 1339117671495878\n      }\n    ],\n    \"deposit\": {\n      \"value\": 2178173426711049,\n      \"type\": \"payment\"\n    }\n  },\n  \"persons\": [\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": true,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": true,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"lt\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {}\n        }\n      },\n      \"segment\": \"senior\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    },\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": true,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": true,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"hr\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"key_2\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"segment\": \"senior\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    }\n  ],\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 761598386391089,\n        \"refunded\": 3025573843744082,\n        \"authorised\": 8478277794993382,\n        \"cancelled\": 3481402443712322,\n        \"captured\": 1641200992178835\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 5251476245766051,\n        \"subtotal\": 865223694985501,\n        \"totalTaxes\": 1365557295435978,\n        \"totalDiscounts\": 1500073531442853,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 7563622229602591,\n            \"rate\": 3913.2754502545354\n          },\n          {\n            \"price\": -2725145595019772,\n            \"rate\": 7409.447729715673\n          }\n        ],\n        \"listPrice\": 6542891385166718,\n        \"originalListPrice\": 1872159123234165,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 7526716349694123,\n            \"value\": 3916502952416908\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 1293323647462084,\n            \"value\": 3240803487752460\n          }\n        ],\n        \"manualDiscount\": 5819490701492167,\n        \"deposit\": 1083046019186492\n      },\n      \"purchaseType\": \"subscription\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": false,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 4425863154444702,\n        \"refunded\": 6132239462384843,\n        \"authorised\": 3685041774349110,\n        \"cancelled\": 6010490620408643,\n        \"captured\": 8163718114448062\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 6099486950467294,\n        \"subtotal\": 7164157416987225,\n        \"totalTaxes\": 5621828103121166,\n        \"totalDiscounts\": 255677005182284,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 1657488313038297,\n            \"rate\": 8380.397145094134\n          },\n          {\n            \"price\": -1323714232294948,\n            \"rate\": 1133.72868140174\n          }\n        ],\n        \"listPrice\": 1729075391663303,\n        \"originalListPrice\": 2587059169869669,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 7084991705152176,\n            \"value\": 2651761264453968\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 2709231702837771,\n            \"value\": 5616145238804276\n          }\n        ],\n        \"manualDiscount\": 8926660622520087,\n        \"deposit\": 7950399544935085\n      },\n      \"purchaseType\": \"sales\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": true,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": true\n        }\n      ]\n    }\n  ],\n  \"returnedDate\": \"string\",\n  \"cancellationPolicy\": [\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    },\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    }\n  ],\n  \"customCheckoutFields\": [\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    },\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    }\n  ],\n  \"staffComment\": \"string\",\n  \"orderNumber\": 1910503766807444,\n  \"externalOrderNumber\": \"string\",\n  \"bookingComment\": {\n    \"label\": {\n      \"def\": \"string\"\n    },\n    \"value\": \"string\"\n  },\n  \"metafields\": {\n    \"skiData\": {\n      \"confirmationNumber\": \"string\"\n    },\n    \"key_0\": {\n      \"key_0\": {}\n    }\n  },\n  \"delivery\": {\n    \"name\": {\n      \"def\": \"string\"\n    },\n    \"pricing\": {\n      \"currency\": \"string\",\n      \"total\": 2049636958957405,\n      \"subtotal\": 3600893724256865,\n      \"totalTaxes\": 4168005186149913,\n      \"totalDiscounts\": 1153827849313664,\n      \"taxExcluded\": true,\n      \"taxLines\": [\n        {\n          \"price\": -7584467146240159,\n          \"rate\": 1673.1547384888368\n        },\n        {\n          \"price\": 4342154159113373,\n          \"rate\": 314.94790891378966\n        }\n      ],\n      \"listPrice\": 1246238049967244,\n      \"originalListPrice\": 6850807466017936,\n      \"discountCodes\": [\n        {\n          \"code\": \"string\",\n          \"quantity\": 3300905603971100,\n          \"value\": 4060285810420862\n        },\n        {\n          \"code\": \"string\",\n          \"quantity\": 7220296302465276,\n          \"value\": 7420084180475564\n        }\n      ],\n      \"manualDiscount\": 293026009834266,\n      \"deposit\": 5255162320013095\n    },\n    \"payment\": {\n      \"paid\": 8705126158223210,\n      \"refunded\": 5054654772919960,\n      \"authorised\": 8765376254703121,\n      \"cancelled\": 1265019347732660,\n      \"captured\": 7997643060260130\n    },\n    \"deliveryOptionId\": \"string\",\n    \"to\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 7101407959912722,\n        \"subtotal\": 2179316175489983,\n        \"totalTaxes\": 7820008374357618,\n        \"totalDiscounts\": 3232477621190531,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": 2929767909282415,\n            \"rate\": 8271.47403089622\n          },\n          {\n            \"price\": 6293944445724535,\n            \"rate\": 5556.981471787452\n          }\n        ],\n        \"listPrice\": 8188724924082280,\n        \"originalListPrice\": 8953464151085463,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 4449054484992340,\n            \"value\": 2476723241832681\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 6407778658209542,\n            \"value\": 6799760977334983\n          }\n        ],\n        \"manualDiscount\": 4314438750888909,\n        \"deposit\": 4667928379349876\n      },\n      \"handlingTimeMinutes\": 7150554213840286,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"from\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 444025483496099,\n        \"subtotal\": 3634861261954934,\n        \"totalTaxes\": 1007265537866847,\n        \"totalDiscounts\": 1714946727136515,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": -309038090300444,\n            \"rate\": 8029.545917094787\n          },\n          {\n            \"price\": 5970261877826149,\n            \"rate\": 4659.178539277989\n          }\n        ],\n        \"listPrice\": 6587458164079754,\n        \"originalListPrice\": 2250434080430068,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 7118459946984887,\n            \"value\": 6115625672128537\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 7021866331497947,\n            \"value\": 2516366794130762\n          }\n        ],\n        \"manualDiscount\": 8197947288508599,\n        \"deposit\": 8624834284357238\n      },\n      \"handlingTimeMinutes\": 2196134416872124,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"returnInstructions\": {\n      \"def\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b0100b2-8bc4-4909-9ef4-c236e9efb69a",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 400,\n    \"code\": \"INVALID_ARGUMENTS\",\n    \"details\": [\n      {\n        \"path\": [\n          \"startDate\"\n        ],\n        \"message\": \"Required\"\n      },\n      {\n        \"path\": [\n          \"duration\"\n        ],\n        \"message\": \"Required\"\n      }\n    ],\n    \"message\": \"Your request contained invalid arguments\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "553b1cad-5863-4de3-926c-744b467e8d03",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "989d0ca7-5a65-4a51-8349-b10c894de811",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "480b4910-d06c-4cac-ba44-46077fcbb4ab",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ed3ebf4-f53d-4ebe-b8f8-b65e482dc855",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d271d5b-14f5-47f8-ada6-51fe2788b780",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "995c823f-cc60-43a2-a456-050ea6e1970b",
+          "name": "Update order",
+          "request": {
+            "name": "Update order",
+            "description": {
+              "content": "Update fields of an existing order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"staffComment\": \"<string>\",\n  \"prepared\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bf474f3-564c-44b8-ab55-37862b1b2ad4",
+              "name": "Order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"string\",\n  \"startDate\": \"string\",\n  \"initialStartDate\": \"string\",\n  \"endDate\": \"string\",\n  \"payment\": {\n    \"paid\": 2068874777765172,\n    \"refunded\": 3583145125117057,\n    \"authorised\": 8987611647170802,\n    \"cancelled\": 8520610587978319,\n    \"captured\": 7120270412262129\n  },\n  \"deposit\": {\n    \"paid\": 1229449295038524,\n    \"refunded\": 7915424909433670,\n    \"authorised\": 8017068480043411,\n    \"cancelled\": 883666604322476,\n    \"captured\": 4728731787243843\n  },\n  \"channel\": \"wix\",\n  \"state\": \"active\",\n  \"store\": {\n    \"name\": \"string\",\n    \"storeId\": \"string\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    }\n  },\n  \"customerDetails\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"marketingConsent\": true,\n    \"customerId\": \"string\",\n    \"language\": \"en\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    },\n    \"metafields\": {\n      \"key_0\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"key_1\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"key_2\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    }\n  },\n  \"terms\": {\n    \"accepted\": true,\n    \"timestamp\": \"string\"\n  },\n  \"prepared\": false,\n  \"pricing\": {\n    \"currency\": \"string\",\n    \"total\": 507584566102289,\n    \"subtotal\": 4356600495110578,\n    \"totalTaxes\": 202832367257754,\n    \"totalDiscounts\": 5190335923350898,\n    \"taxExcluded\": true,\n    \"taxLines\": [\n      {\n        \"price\": -6716059059980332,\n        \"rate\": 4555.299370694652\n      },\n      {\n        \"price\": -4762199086396646,\n        \"rate\": 4484.640471162892\n      }\n    ],\n    \"manualDiscount\": {\n      \"value\": 8381302912227685,\n      \"percentage\": 7\n    },\n    \"discountCodes\": [\n      {\n        \"code\": \"string\",\n        \"quantity\": 2804608167744864,\n        \"value\": 4010492774075101\n      },\n      {\n        \"code\": \"string\",\n        \"quantity\": 2431835067503823,\n        \"value\": 6969903303373245\n      }\n    ],\n    \"deposit\": {\n      \"value\": 1211537213342673,\n      \"type\": \"no-deposit\"\n    }\n  },\n  \"persons\": [\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": false,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": false,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"en\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        }\n      },\n      \"segment\": \"adult\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    },\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": false,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": true,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"lt\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"segment\": \"adult\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    }\n  ],\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 1613999550292427,\n        \"refunded\": 233999600281900,\n        \"authorised\": 8760766897374597,\n        \"cancelled\": 7919679157565269,\n        \"captured\": 5695719953033127\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 5317120581658797,\n        \"subtotal\": 7164231195198837,\n        \"totalTaxes\": 6749496935702431,\n        \"totalDiscounts\": 3381048479169727,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 3633005420079823,\n            \"rate\": 4046.799086666347\n          },\n          {\n            \"price\": -7041327485045929,\n            \"rate\": 7621.253350821697\n          }\n        ],\n        \"listPrice\": 4509862588163045,\n        \"originalListPrice\": 7311517906402938,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 7862371804977635,\n            \"value\": 4977216852051429\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 1977702653260951,\n            \"value\": 5096258816590590\n          }\n        ],\n        \"manualDiscount\": 3344150072346111,\n        \"deposit\": 30909030590749\n      },\n      \"purchaseType\": \"subscription\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": false,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 4830796365181492,\n        \"refunded\": 3964705592295681,\n        \"authorised\": 2217022894634458,\n        \"cancelled\": 1900340783977415,\n        \"captured\": 8502127260888023\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 2342640697492327,\n        \"subtotal\": 5867834902272729,\n        \"totalTaxes\": 2891917888658727,\n        \"totalDiscounts\": 8689244194122517,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": 3236545148502225,\n            \"rate\": 7886.466089034786\n          },\n          {\n            \"price\": -304075790296960,\n            \"rate\": 6341.65455782315\n          }\n        ],\n        \"listPrice\": 8902800867378985,\n        \"originalListPrice\": 8396249253030683,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 1960707781393403,\n            \"value\": 1317157037377024\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 6751870258798365,\n            \"value\": 8717915163085207\n          }\n        ],\n        \"manualDiscount\": 6904392586789386,\n        \"deposit\": 7061681082286428\n      },\n      \"purchaseType\": \"sales\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": false,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        }\n      ]\n    }\n  ],\n  \"returnedDate\": \"string\",\n  \"cancellationPolicy\": [\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    },\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    }\n  ],\n  \"customCheckoutFields\": [\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    },\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    }\n  ],\n  \"staffComment\": \"string\",\n  \"orderNumber\": 4303884601601949,\n  \"externalOrderNumber\": \"string\",\n  \"bookingComment\": {\n    \"label\": {\n      \"def\": \"string\"\n    },\n    \"value\": \"string\"\n  },\n  \"metafields\": {\n    \"skiData\": {\n      \"confirmationNumber\": \"string\"\n    },\n    \"key_0\": {\n      \"key_0\": {}\n    },\n    \"key_1\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  },\n  \"delivery\": {\n    \"name\": {\n      \"def\": \"string\"\n    },\n    \"pricing\": {\n      \"currency\": \"string\",\n      \"total\": 7207851774823393,\n      \"subtotal\": 6492707152842950,\n      \"totalTaxes\": 5640701116764104,\n      \"totalDiscounts\": 1993681880340384,\n      \"taxExcluded\": true,\n      \"taxLines\": [\n        {\n          \"price\": -5274601365087410,\n          \"rate\": 5815.977276373666\n        },\n        {\n          \"price\": 3297428746035471,\n          \"rate\": 9151.599340762741\n        }\n      ],\n      \"listPrice\": 1702594126791728,\n      \"originalListPrice\": 405608781465912,\n      \"discountCodes\": [\n        {\n          \"code\": \"string\",\n          \"quantity\": 6705416741051540,\n          \"value\": 7996826125343806\n        },\n        {\n          \"code\": \"string\",\n          \"quantity\": 1662667321765697,\n          \"value\": 6479217846666931\n        }\n      ],\n      \"manualDiscount\": 5664679598989482,\n      \"deposit\": 217413485994251\n    },\n    \"payment\": {\n      \"paid\": 924581770274553,\n      \"refunded\": 6623291645486565,\n      \"authorised\": 1193447313317987,\n      \"cancelled\": 2643017862662501,\n      \"captured\": 3803267422512211\n    },\n    \"deliveryOptionId\": \"string\",\n    \"to\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 8954805222740464,\n        \"subtotal\": 8347370225421026,\n        \"totalTaxes\": 8296375790421488,\n        \"totalDiscounts\": 3860796523048225,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": -5152709874304338,\n            \"rate\": 8134.993045517145\n          },\n          {\n            \"price\": -7891213101097443,\n            \"rate\": 9789.105627065583\n          }\n        ],\n        \"listPrice\": 362804624744023,\n        \"originalListPrice\": 823663559725545,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 1895668026924042,\n            \"value\": 8076808871970761\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 1487294912150875,\n            \"value\": 8759868901380360\n          }\n        ],\n        \"manualDiscount\": 6923485355321198,\n        \"deposit\": 6070736439284526\n      },\n      \"handlingTimeMinutes\": 5548642447390534,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"from\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 4631104540323782,\n        \"subtotal\": 2822073370684943,\n        \"totalTaxes\": 8336632579310153,\n        \"totalDiscounts\": 808416388831443,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 8935798197091821,\n            \"rate\": 7968.711305093766\n          },\n          {\n            \"price\": -740712886576644,\n            \"rate\": 6518.09069068312\n          }\n        ],\n        \"listPrice\": 6069068414598217,\n        \"originalListPrice\": 45741733769670,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 4038075347346234,\n            \"value\": 4145581904374340\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 5003775502180931,\n            \"value\": 1030697419276195\n          }\n        ],\n        \"manualDiscount\": 6566800606915069,\n        \"deposit\": 667789527542210\n      },\n      \"handlingTimeMinutes\": 4994508302825855,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"returnInstructions\": {\n      \"def\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "473528a1-c29e-4377-968f-a2115ab6d053",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 6327.943204315295,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "839be1fd-02b8-44e6-8844-e8ab5615c9d0",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62ab8ae5-ffef-40c4-a3f1-201569fe976b",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2be3382f-edb8-4c67-8a0c-bac15216e439",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5739e92d-227b-4ec2-a99c-a5b7f6ad8e8c",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c88c9b26-6cc3-4091-a9e0-20023feb4d04",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"staffComment\": \"Customer will arrive 30 minutes late.\",\n  \"prepared\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "babf47f9-3472-44c1-b7d8-d1b26990eaff",
+          "name": "Get all orders",
+          "request": {
+            "name": "Get all orders",
+            "description": {
+              "content": "Retrieves all orders of the authenticated merchant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "How many objects to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "Token to retrieve the next page of results. This is returned in the paged response."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[gt]",
+                  "value": "<string>",
+                  "description": "Filter by order creation date in ISO 8601 format, e.g., `?createdAt[lt]=2023-04-05T20:00:00.000Z`"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[gte]",
+                  "value": "<string>",
+                  "description": "Filter by order creation date in ISO 8601 format, e.g., `?createdAt[lt]=2023-04-05T20:00:00.000Z`"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lt]",
+                  "value": "<string>",
+                  "description": "Filter by order creation date in ISO 8601 format, e.g., `?createdAt[lt]=2023-04-05T20:00:00.000Z`"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt[lte]",
+                  "value": "<string>",
+                  "description": "Filter by order creation date in ISO 8601 format, e.g., `?createdAt[lt]=2023-04-05T20:00:00.000Z`"
+                },
+                {
+                  "disabled": false,
+                  "key": "storeId",
+                  "value": "<string>",
+                  "description": "Comma-separated id of stores to filter by."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c410e1a8-e6b0-49c2-9aca-6090b6ed2225",
+              "name": "Paginated list of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"startDate\": \"string\",\n      \"initialStartDate\": \"string\",\n      \"endDate\": \"string\",\n      \"payment\": {\n        \"paid\": 1740244451676767,\n        \"refunded\": 8680766513880761,\n        \"authorised\": 286684505187691,\n        \"cancelled\": 7519424850414495,\n        \"captured\": 3615555854869039\n      },\n      \"deposit\": {\n        \"paid\": 6628988077652553,\n        \"refunded\": 8247549817229847,\n        \"authorised\": 1124468004502958,\n        \"cancelled\": 7870733541810065,\n        \"captured\": 551496204255549\n      },\n      \"channel\": \"wix\",\n      \"state\": \"cancelled\",\n      \"store\": {\n        \"name\": \"string\",\n        \"storeId\": \"string\",\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"customerDetails\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"marketingConsent\": false,\n        \"customerId\": \"string\",\n        \"language\": \"en\",\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        },\n        \"metafields\": {\n          \"key_0\": {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {}\n          }\n        }\n      },\n      \"terms\": {\n        \"accepted\": true,\n        \"timestamp\": \"string\"\n      },\n      \"prepared\": true,\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 7124847006509560,\n        \"subtotal\": 3158476306614167,\n        \"totalTaxes\": 2692673441224331,\n        \"totalDiscounts\": 3114157733062794,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": -1790706874672060,\n            \"rate\": 8081.601786584966\n          },\n          {\n            \"price\": -6728321767223888,\n            \"rate\": 6194.611221924348\n          }\n        ],\n        \"manualDiscount\": {\n          \"value\": 4056130239725455,\n          \"percentage\": 23\n        },\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 4492374232953432,\n            \"value\": 5528850757854564\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 5460013429228365,\n            \"value\": 2024781461485227\n          }\n        ],\n        \"deposit\": {\n          \"value\": 1976981554004903,\n          \"type\": \"payment\"\n        }\n      },\n      \"persons\": [\n        {\n          \"firstName\": \"string\",\n          \"marketingConsent\": true,\n          \"customerId\": \"string\",\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"isLiableCustomer\": false,\n          \"itemIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"lastName\": \"string\",\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"language\": \"pt\",\n          \"address\": {\n            \"address\": \"string\",\n            \"zipCode\": \"string\",\n            \"city\": \"string\",\n            \"country\": \"string\",\n            \"state\": \"string\",\n            \"details\": \"string\"\n          },\n          \"metafields\": {\n            \"key_0\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            }\n          },\n          \"segment\": \"adult\",\n          \"additionalDetails\": [\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            },\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            }\n          ],\n          \"staffComment\": \"string\"\n        },\n        {\n          \"firstName\": \"string\",\n          \"marketingConsent\": true,\n          \"customerId\": \"string\",\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"isLiableCustomer\": false,\n          \"itemIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"lastName\": \"string\",\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"language\": \"sv\",\n          \"address\": {\n            \"address\": \"string\",\n            \"zipCode\": \"string\",\n            \"city\": \"string\",\n            \"country\": \"string\",\n            \"state\": \"string\",\n            \"details\": \"string\"\n          },\n          \"metafields\": {\n            \"key_0\": {\n              \"key_0\": {}\n            },\n            \"key_1\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            }\n          },\n          \"segment\": \"adult\",\n          \"additionalDetails\": [\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            },\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            }\n          ],\n          \"staffComment\": \"string\"\n        }\n      ],\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"durationPeriod\": \"opening_hours\",\n          \"payment\": {\n            \"paid\": 4373033808605330,\n            \"refunded\": 2665941774360862,\n            \"authorised\": 3737569626482447,\n            \"cancelled\": 4605860895580616,\n            \"captured\": 1252796569576406\n          },\n          \"deposit\": {\n            \"paid\": 8000,\n            \"refunded\": 0,\n            \"authorised\": 10000,\n            \"cancelled\": 0,\n            \"captured\": 10000\n          },\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 2855542487415967,\n            \"subtotal\": 3718812220706020,\n            \"totalTaxes\": 2301380218897453,\n            \"totalDiscounts\": 1853596558760480,\n            \"taxExcluded\": false,\n            \"taxLines\": [\n              {\n                \"price\": -2619362663446298,\n                \"rate\": 2822.2282205850324\n              },\n              {\n                \"price\": -4183443717735708,\n                \"rate\": 1015.6631272530981\n              }\n            ],\n            \"listPrice\": 4353092018697814,\n            \"originalListPrice\": 6719813197059582,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 6193521665221181,\n                \"value\": 6008524433913131\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 4517961720022107,\n                \"value\": 8271413291520583\n              }\n            ],\n            \"manualDiscount\": 5373089855320431,\n            \"deposit\": 3516286904360849\n          },\n          \"purchaseType\": \"rental\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"customDurationLabel\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"cancelled\": true,\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"packageItems\": [\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            },\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"durationPeriod\": \"24h\",\n          \"payment\": {\n            \"paid\": 3691368968517858,\n            \"refunded\": 4127755592054518,\n            \"authorised\": 4671393955179254,\n            \"cancelled\": 4740989240292909,\n            \"captured\": 1854632217627080\n          },\n          \"deposit\": {\n            \"paid\": 8000,\n            \"refunded\": 0,\n            \"authorised\": 10000,\n            \"cancelled\": 0,\n            \"captured\": 10000\n          },\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 7795795066600258,\n            \"subtotal\": 859169654483745,\n            \"totalTaxes\": 3923839097814885,\n            \"totalDiscounts\": 6593861186857171,\n            \"taxExcluded\": false,\n            \"taxLines\": [\n              {\n                \"price\": 6838066621582035,\n                \"rate\": 5581.182707991711\n              },\n              {\n                \"price\": 4921155680629799,\n                \"rate\": 819.2953208117981\n              }\n            ],\n            \"listPrice\": 533137940073159,\n            \"originalListPrice\": 1877801666050078,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 3023224378060743,\n                \"value\": 6270010690623321\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 5654614183069144,\n                \"value\": 846554467888737\n              }\n            ],\n            \"manualDiscount\": 1599851551818706,\n            \"deposit\": 2834335037560491\n          },\n          \"purchaseType\": \"sales\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"customDurationLabel\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"cancelled\": true,\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"packageItems\": [\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            },\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            }\n          ]\n        }\n      ],\n      \"returnedDate\": \"string\",\n      \"cancellationPolicy\": [\n        {\n          \"hoursBefore\": 24,\n          \"refundPercentage\": 50,\n          \"displayAs\": \"days\"\n        },\n        {\n          \"hoursBefore\": 24,\n          \"refundPercentage\": 50,\n          \"displayAs\": \"days\"\n        }\n      ],\n      \"customCheckoutFields\": [\n        {\n          \"label\": {\n            \"def\": \"string\"\n          },\n          \"value\": \"string\"\n        },\n        {\n          \"label\": {\n            \"def\": \"string\"\n          },\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\",\n      \"orderNumber\": 1012034866178477,\n      \"externalOrderNumber\": \"string\",\n      \"bookingComment\": {\n        \"label\": {\n          \"def\": \"string\"\n        },\n        \"value\": \"string\"\n      },\n      \"metafields\": {\n        \"skiData\": {\n          \"confirmationNumber\": \"string\"\n        }\n      },\n      \"delivery\": {\n        \"name\": {\n          \"def\": \"string\"\n        },\n        \"pricing\": {\n          \"currency\": \"string\",\n          \"total\": 3333591565487459,\n          \"subtotal\": 8612939822833255,\n          \"totalTaxes\": 2148686596897476,\n          \"totalDiscounts\": 7896432382718473,\n          \"taxExcluded\": true,\n          \"taxLines\": [\n            {\n              \"price\": -5808659796424534,\n              \"rate\": 7587.456590117089\n            },\n            {\n              \"price\": -5418364479533772,\n              \"rate\": 5032.410347365941\n            }\n          ],\n          \"listPrice\": 1873019316974567,\n          \"originalListPrice\": 8835574147460730,\n          \"discountCodes\": [\n            {\n              \"code\": \"string\",\n              \"quantity\": 7906153006535280,\n              \"value\": 873490524827947\n            },\n            {\n              \"code\": \"string\",\n              \"quantity\": 213531001040346,\n              \"value\": 5311654780530416\n            }\n          ],\n          \"manualDiscount\": 3868056748431869,\n          \"deposit\": 7299230872664670\n        },\n        \"payment\": {\n          \"paid\": 4571753912463067,\n          \"refunded\": 2026747540398757,\n          \"authorised\": 6187081287265028,\n          \"cancelled\": 5153406758924629,\n          \"captured\": 3145546953256317\n        },\n        \"deliveryOptionId\": \"string\",\n        \"to\": {\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 4466873049579122,\n            \"subtotal\": 6003820663047413,\n            \"totalTaxes\": 5238020066073362,\n            \"totalDiscounts\": 8245549666863296,\n            \"taxExcluded\": true,\n            \"taxLines\": [\n              {\n                \"price\": 8244518272823017,\n                \"rate\": 9833.40842068591\n              },\n              {\n                \"price\": -7426917475992389,\n                \"rate\": 9068.628108891678\n              }\n            ],\n            \"listPrice\": 1931890949849176,\n            \"originalListPrice\": 7769028664815601,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 7595623127221881,\n                \"value\": 2387528269735739\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 8126009892722611,\n                \"value\": 5350578880412192\n              }\n            ],\n            \"manualDiscount\": 3433895695359540,\n            \"deposit\": 2863362025181278\n          },\n          \"handlingTimeMinutes\": 472672679443757,\n          \"location\": {\n            \"address\": {\n              \"address\": \"string\",\n              \"zipCode\": \"string\",\n              \"city\": \"string\",\n              \"country\": \"string\",\n              \"state\": \"string\",\n              \"details\": \"string\"\n            }\n          },\n          \"timeslot\": {\n            \"startDate\": \"string\",\n            \"endDate\": \"string\"\n          },\n          \"carrierId\": \"string\",\n          \"carrierName\": {\n            \"def\": \"string\"\n          },\n          \"trackingId\": \"string\"\n        },\n        \"from\": {\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 1714938380548124,\n            \"subtotal\": 957321040562911,\n            \"totalTaxes\": 2652022089609105,\n            \"totalDiscounts\": 3772706309663173,\n            \"taxExcluded\": false,\n            \"taxLines\": [\n              {\n                \"price\": 7055568886793791,\n                \"rate\": 3321.3374828173937\n              },\n              {\n                \"price\": -5006284109697452,\n                \"rate\": 167.68797388020283\n              }\n            ],\n            \"listPrice\": 8320540776814148,\n            \"originalListPrice\": 2602688373726237,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 8086732590698302,\n                \"value\": 1635227099688799\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 7326111132033285,\n                \"value\": 4415974209905233\n              }\n            ],\n            \"manualDiscount\": 500280943174635,\n            \"deposit\": 2563243038837476\n          },\n          \"handlingTimeMinutes\": 6519976685856503,\n          \"location\": {\n            \"address\": {\n              \"address\": \"string\",\n              \"zipCode\": \"string\",\n              \"city\": \"string\",\n              \"country\": \"string\",\n              \"state\": \"string\",\n              \"details\": \"string\"\n            }\n          },\n          \"timeslot\": {\n            \"startDate\": \"string\",\n            \"endDate\": \"string\"\n          },\n          \"carrierId\": \"string\",\n          \"carrierName\": {\n            \"def\": \"string\"\n          },\n          \"trackingId\": \"string\"\n        },\n        \"returnInstructions\": {\n          \"def\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"startDate\": \"string\",\n      \"initialStartDate\": \"string\",\n      \"endDate\": \"string\",\n      \"payment\": {\n        \"paid\": 6245791453950176,\n        \"refunded\": 4469698579955788,\n        \"authorised\": 8263163683840577,\n        \"cancelled\": 867057593612214,\n        \"captured\": 6616637699317241\n      },\n      \"deposit\": {\n        \"paid\": 5452682616091596,\n        \"refunded\": 2014159408788210,\n        \"authorised\": 7100170271852156,\n        \"cancelled\": 1142536300549454,\n        \"captured\": 2913615237907714\n      },\n      \"channel\": \"booking_link\",\n      \"state\": \"booked\",\n      \"store\": {\n        \"name\": \"string\",\n        \"storeId\": \"string\",\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"customerDetails\": {\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"marketingConsent\": true,\n        \"customerId\": \"string\",\n        \"language\": \"lv\",\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        },\n        \"metafields\": {\n          \"key_0\": {\n            \"key_0\": {}\n          },\n          \"key_1\": {\n            \"key_0\": {},\n            \"key_1\": {}\n          },\n          \"key_2\": {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {}\n          }\n        }\n      },\n      \"terms\": {\n        \"accepted\": false,\n        \"timestamp\": \"string\"\n      },\n      \"prepared\": false,\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 2451471183905403,\n        \"subtotal\": 2503944948914720,\n        \"totalTaxes\": 3178211767635668,\n        \"totalDiscounts\": 4177951576402852,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": 8566794836587611,\n            \"rate\": 3968.3223972384176\n          },\n          {\n            \"price\": 5006456680331215,\n            \"rate\": 4094.59938089113\n          }\n        ],\n        \"manualDiscount\": {\n          \"value\": 290440586316083,\n          \"percentage\": 6\n        },\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 4194742127633364,\n            \"value\": 4984108532219508\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 3313572401839110,\n            \"value\": 2685750817036766\n          }\n        ],\n        \"deposit\": {\n          \"value\": 5323968548207761,\n          \"type\": \"payment\"\n        }\n      },\n      \"persons\": [\n        {\n          \"firstName\": \"string\",\n          \"marketingConsent\": true,\n          \"customerId\": \"string\",\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"isLiableCustomer\": false,\n          \"itemIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"lastName\": \"string\",\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"language\": \"br\",\n          \"address\": {\n            \"address\": \"string\",\n            \"zipCode\": \"string\",\n            \"city\": \"string\",\n            \"country\": \"string\",\n            \"state\": \"string\",\n            \"details\": \"string\"\n          },\n          \"metafields\": {\n            \"key_0\": {\n              \"key_0\": {}\n            },\n            \"key_1\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            }\n          },\n          \"segment\": \"kid\",\n          \"additionalDetails\": [\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            },\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            }\n          ],\n          \"staffComment\": \"string\"\n        },\n        {\n          \"firstName\": \"string\",\n          \"marketingConsent\": true,\n          \"customerId\": \"string\",\n          \"id\": \"string\",\n          \"createdAt\": \"string\",\n          \"isLiableCustomer\": false,\n          \"itemIds\": [\n            \"string\",\n            \"string\"\n          ],\n          \"lastName\": \"string\",\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"language\": \"tr\",\n          \"address\": {\n            \"address\": \"string\",\n            \"zipCode\": \"string\",\n            \"city\": \"string\",\n            \"country\": \"string\",\n            \"state\": \"string\",\n            \"details\": \"string\"\n          },\n          \"metafields\": {\n            \"key_0\": {\n              \"key_0\": {}\n            },\n            \"key_1\": {\n              \"key_0\": {},\n              \"key_1\": {}\n            }\n          },\n          \"segment\": \"senior\",\n          \"additionalDetails\": [\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            },\n            {\n              \"name\": \"string\",\n              \"unit\": \"string\",\n              \"value\": \"string\"\n            }\n          ],\n          \"staffComment\": \"string\"\n        }\n      ],\n      \"items\": [\n        {\n          \"id\": \"string\",\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"durationPeriod\": \"opening_hours\",\n          \"payment\": {\n            \"paid\": 2598360802812054,\n            \"refunded\": 5854160990816099,\n            \"authorised\": 994045783766163,\n            \"cancelled\": 4787941589911876,\n            \"captured\": 1539577984173513\n          },\n          \"deposit\": {\n            \"paid\": 8000,\n            \"refunded\": 0,\n            \"authorised\": 10000,\n            \"cancelled\": 0,\n            \"captured\": 10000\n          },\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 4884293654603638,\n            \"subtotal\": 1128770673743208,\n            \"totalTaxes\": 5400799365973730,\n            \"totalDiscounts\": 549433147820778,\n            \"taxExcluded\": false,\n            \"taxLines\": [\n              {\n                \"price\": -6732483533399374,\n                \"rate\": 3837.077198598636\n              },\n              {\n                \"price\": -1073852931055836,\n                \"rate\": 252.8955075800765\n              }\n            ],\n            \"listPrice\": 549177153881175,\n            \"originalListPrice\": 2000567793001307,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 2752265650450470,\n                \"value\": 7478301478120504\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 1145396363786685,\n                \"value\": 2565179314744249\n              }\n            ],\n            \"manualDiscount\": 2670171283572748,\n            \"deposit\": 1063305004577608\n          },\n          \"purchaseType\": \"subscription\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"customDurationLabel\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"cancelled\": false,\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"packageItems\": [\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            },\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"startDate\": \"string\",\n          \"endDate\": \"string\",\n          \"durationPeriod\": \"opening_hours\",\n          \"payment\": {\n            \"paid\": 1936855364062705,\n            \"refunded\": 819222059584732,\n            \"authorised\": 6842534264751009,\n            \"cancelled\": 8151153795920294,\n            \"captured\": 8897482743327837\n          },\n          \"deposit\": {\n            \"paid\": 8000,\n            \"refunded\": 0,\n            \"authorised\": 10000,\n            \"cancelled\": 0,\n            \"captured\": 10000\n          },\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 3894411484708752,\n            \"subtotal\": 1287519250330408,\n            \"totalTaxes\": 6086014254039992,\n            \"totalDiscounts\": 2126333940947277,\n            \"taxExcluded\": true,\n            \"taxLines\": [\n              {\n                \"price\": -2297314701923044,\n                \"rate\": 4846.406851931391\n              },\n              {\n                \"price\": 1201826466097011,\n                \"rate\": 474.6579829590847\n              }\n            ],\n            \"listPrice\": 5547148269677865,\n            \"originalListPrice\": 2296569527268513,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 7940494080453780,\n                \"value\": 7269854925349607\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 2587785182754999,\n                \"value\": 6871754775338046\n              }\n            ],\n            \"manualDiscount\": 7569940061202529,\n            \"deposit\": 76503416421563\n          },\n          \"purchaseType\": \"subscription\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"customDurationLabel\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"cancelled\": true,\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"packageItems\": [\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            },\n            {\n              \"productId\": \"fUNFcX1VMTKHNrEgSOu9\",\n              \"name\": {\n                \"def\": \"Package item name\"\n              },\n              \"itemCodes\": [\n                \"PRD-1\"\n              ],\n              \"variantId\": \"OwH3rwAUOzNAYFySaEZl\",\n              \"variantValues\": [\n                {\n                  \"def\": \"Variant name\"\n                }\n              ],\n              \"startDate\": \"2026-07-20T01:00:00.000Z\",\n              \"endDate\": \"2026-07-21T01:00:00.000Z\",\n              \"durationPeriod\": \"24h\",\n              \"customDurationLabel\": {\n                \"def\": \"1 day\"\n              },\n              \"cancelled\": false,\n              \"payment\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"deposit\": {\n                \"paid\": 8000,\n                \"refunded\": 0,\n                \"authorised\": 10000,\n                \"cancelled\": 0,\n                \"captured\": 10000\n              },\n              \"pricing\": {\n                \"total\": 10000,\n                \"currency\": \"USD\",\n                \"subtotal\": 10000,\n                \"totalTaxes\": 2400,\n                \"totalDiscounts\": 0,\n                \"taxExcluded\": false,\n                \"taxLines\": [\n                  {\n                    \"price\": 2400,\n                    \"rate\": 24\n                  }\n                ],\n                \"manualDiscount\": 0,\n                \"deposit\": 0,\n                \"listPrice\": 10000,\n                \"originalListPrice\": 10000\n              },\n              \"purchaseType\": \"rental\",\n              \"itemSkus\": [\n                {\n                  \"units\": 1,\n                  \"skuId\": \"K8UqrwRKBhuqlQKk8jOg\",\n                  \"type\": \"single\",\n                  \"itemCodes\": [\n                    \"SKU-1\"\n                  ]\n                }\n              ],\n              \"removedFromPackage\": false\n            }\n          ]\n        }\n      ],\n      \"returnedDate\": \"string\",\n      \"cancellationPolicy\": [\n        {\n          \"hoursBefore\": 24,\n          \"refundPercentage\": 50,\n          \"displayAs\": \"days\"\n        },\n        {\n          \"hoursBefore\": 24,\n          \"refundPercentage\": 50,\n          \"displayAs\": \"days\"\n        }\n      ],\n      \"customCheckoutFields\": [\n        {\n          \"label\": {\n            \"def\": \"string\"\n          },\n          \"value\": \"string\"\n        },\n        {\n          \"label\": {\n            \"def\": \"string\"\n          },\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\",\n      \"orderNumber\": 2499791898791165,\n      \"externalOrderNumber\": \"string\",\n      \"bookingComment\": {\n        \"label\": {\n          \"def\": \"string\"\n        },\n        \"value\": \"string\"\n      },\n      \"metafields\": {\n        \"skiData\": {\n          \"confirmationNumber\": \"string\"\n        }\n      },\n      \"delivery\": {\n        \"name\": {\n          \"def\": \"string\"\n        },\n        \"pricing\": {\n          \"currency\": \"string\",\n          \"total\": 5521262611696066,\n          \"subtotal\": 2308521580808622,\n          \"totalTaxes\": 5513474681839435,\n          \"totalDiscounts\": 6360068540363811,\n          \"taxExcluded\": true,\n          \"taxLines\": [\n            {\n              \"price\": 4581457910344711,\n              \"rate\": 1520.598908273617\n            },\n            {\n              \"price\": 3867244388860877,\n              \"rate\": 7387.843256545984\n            }\n          ],\n          \"listPrice\": 8786983719731950,\n          \"originalListPrice\": 3447288665173504,\n          \"discountCodes\": [\n            {\n              \"code\": \"string\",\n              \"quantity\": 8738987725400025,\n              \"value\": 8057595704597624\n            },\n            {\n              \"code\": \"string\",\n              \"quantity\": 7689815222878277,\n              \"value\": 3125245813388077\n            }\n          ],\n          \"manualDiscount\": 819338181407047,\n          \"deposit\": 1954478042899052\n        },\n        \"payment\": {\n          \"paid\": 3342264524971222,\n          \"refunded\": 146085436681402,\n          \"authorised\": 1821400211296517,\n          \"cancelled\": 1008907681823866,\n          \"captured\": 2219223585560406\n        },\n        \"deliveryOptionId\": \"string\",\n        \"to\": {\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 2827106756568831,\n            \"subtotal\": 6507350493315507,\n            \"totalTaxes\": 5784772656252170,\n            \"totalDiscounts\": 422407864597968,\n            \"taxExcluded\": true,\n            \"taxLines\": [\n              {\n                \"price\": -1894521400592010,\n                \"rate\": 4543.243586599293\n              },\n              {\n                \"price\": -3999674116005326,\n                \"rate\": 9811.48860280463\n              }\n            ],\n            \"listPrice\": 669072956152932,\n            \"originalListPrice\": 5535837220246811,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 5307797552490134,\n                \"value\": 3875361919274695\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 112612987662250,\n                \"value\": 4159439161075162\n              }\n            ],\n            \"manualDiscount\": 4578425656021470,\n            \"deposit\": 4815613355008271\n          },\n          \"handlingTimeMinutes\": 2797602714909265,\n          \"location\": {\n            \"address\": {\n              \"address\": \"string\",\n              \"zipCode\": \"string\",\n              \"city\": \"string\",\n              \"country\": \"string\",\n              \"state\": \"string\",\n              \"details\": \"string\"\n            }\n          },\n          \"timeslot\": {\n            \"startDate\": \"string\",\n            \"endDate\": \"string\"\n          },\n          \"carrierId\": \"string\",\n          \"carrierName\": {\n            \"def\": \"string\"\n          },\n          \"trackingId\": \"string\"\n        },\n        \"from\": {\n          \"pricing\": {\n            \"currency\": \"string\",\n            \"total\": 7282158847269843,\n            \"subtotal\": 7725313170048027,\n            \"totalTaxes\": 2464431924747096,\n            \"totalDiscounts\": 8825358339433741,\n            \"taxExcluded\": false,\n            \"taxLines\": [\n              {\n                \"price\": 3140828693800137,\n                \"rate\": 106.6982273440964\n              },\n              {\n                \"price\": 5910353234705593,\n                \"rate\": 741.6775938656627\n              }\n            ],\n            \"listPrice\": 133631599866141,\n            \"originalListPrice\": 7821297402060035,\n            \"discountCodes\": [\n              {\n                \"code\": \"string\",\n                \"quantity\": 215734004391081,\n                \"value\": 7921132641307706\n              },\n              {\n                \"code\": \"string\",\n                \"quantity\": 6111868124706894,\n                \"value\": 5478026739351924\n              }\n            ],\n            \"manualDiscount\": 6485987245878316,\n            \"deposit\": 2683751954571208\n          },\n          \"handlingTimeMinutes\": 6201386496585656,\n          \"location\": {\n            \"address\": {\n              \"address\": \"string\",\n              \"zipCode\": \"string\",\n              \"city\": \"string\",\n              \"country\": \"string\",\n              \"state\": \"string\",\n              \"details\": \"string\"\n            }\n          },\n          \"timeslot\": {\n            \"startDate\": \"string\",\n            \"endDate\": \"string\"\n          },\n          \"carrierId\": \"string\",\n          \"carrierName\": {\n            \"def\": \"string\"\n          },\n          \"trackingId\": \"string\"\n        },\n        \"returnInstructions\": {\n          \"def\": \"string\"\n        }\n      }\n    }\n  ],\n  \"count\": 1106.6216692259434,\n  \"total\": 9261.892283129147,\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02f75ee1-08df-482a-9af1-bcd38d81b136",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 6327.943204315295,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7ac87d7-9441-4b18-9692-bbcf790ee76e",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbc79ac2-f675-4101-9cc8-f6875eb58d36",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a931eb6d-e6e1-4325-acb3-e2faeb891983",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d840ea57-29f9-494f-8b48-62331a8d4667",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7568892e-c405-4716-a462-43aca6d42198",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[gte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lt]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt[lte]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "storeId",
+                      "value": "123,321"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdc0e5b7-920b-4e47-b567-e8c1931b9ae2",
+          "name": "Create order",
+          "request": {
+            "name": "Create order",
+            "description": {
+              "content": "Create a new order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                "key": "x-rentle-version",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"<string>\",\n      \"variantId\": \"<string>\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"<string>\",\n        \"value\": \"<integer>\"\n      },\n      \"packageProductVariantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"productId\": \"<string>\",\n      \"variantId\": \"<string>\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"<string>\",\n        \"value\": \"<integer>\"\n      },\n      \"packageProductVariantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8da912e4-005a-4d37-b19a-bfe333bf89ec",
+              "name": "Order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createdAt\": \"string\",\n  \"startDate\": \"string\",\n  \"initialStartDate\": \"string\",\n  \"endDate\": \"string\",\n  \"payment\": {\n    \"paid\": 2068874777765172,\n    \"refunded\": 3583145125117057,\n    \"authorised\": 8987611647170802,\n    \"cancelled\": 8520610587978319,\n    \"captured\": 7120270412262129\n  },\n  \"deposit\": {\n    \"paid\": 1229449295038524,\n    \"refunded\": 7915424909433670,\n    \"authorised\": 8017068480043411,\n    \"cancelled\": 883666604322476,\n    \"captured\": 4728731787243843\n  },\n  \"channel\": \"wix\",\n  \"state\": \"active\",\n  \"store\": {\n    \"name\": \"string\",\n    \"storeId\": \"string\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    }\n  },\n  \"customerDetails\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"marketingConsent\": true,\n    \"customerId\": \"string\",\n    \"language\": \"en\",\n    \"address\": {\n      \"address\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"state\": \"string\",\n      \"details\": \"string\"\n    },\n    \"metafields\": {\n      \"key_0\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"key_1\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"key_2\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    }\n  },\n  \"terms\": {\n    \"accepted\": true,\n    \"timestamp\": \"string\"\n  },\n  \"prepared\": false,\n  \"pricing\": {\n    \"currency\": \"string\",\n    \"total\": 507584566102289,\n    \"subtotal\": 4356600495110578,\n    \"totalTaxes\": 202832367257754,\n    \"totalDiscounts\": 5190335923350898,\n    \"taxExcluded\": true,\n    \"taxLines\": [\n      {\n        \"price\": -6716059059980332,\n        \"rate\": 4555.299370694652\n      },\n      {\n        \"price\": -4762199086396646,\n        \"rate\": 4484.640471162892\n      }\n    ],\n    \"manualDiscount\": {\n      \"value\": 8381302912227685,\n      \"percentage\": 7\n    },\n    \"discountCodes\": [\n      {\n        \"code\": \"string\",\n        \"quantity\": 2804608167744864,\n        \"value\": 4010492774075101\n      },\n      {\n        \"code\": \"string\",\n        \"quantity\": 2431835067503823,\n        \"value\": 6969903303373245\n      }\n    ],\n    \"deposit\": {\n      \"value\": 1211537213342673,\n      \"type\": \"no-deposit\"\n    }\n  },\n  \"persons\": [\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": false,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": false,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"en\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        }\n      },\n      \"segment\": \"adult\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    },\n    {\n      \"firstName\": \"string\",\n      \"marketingConsent\": false,\n      \"customerId\": \"string\",\n      \"id\": \"string\",\n      \"createdAt\": \"string\",\n      \"isLiableCustomer\": true,\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"lastName\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"language\": \"lt\",\n      \"address\": {\n        \"address\": \"string\",\n        \"zipCode\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"details\": \"string\"\n      },\n      \"metafields\": {\n        \"key_0\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"key_1\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"segment\": \"adult\",\n      \"additionalDetails\": [\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"unit\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"staffComment\": \"string\"\n    }\n  ],\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 1613999550292427,\n        \"refunded\": 233999600281900,\n        \"authorised\": 8760766897374597,\n        \"cancelled\": 7919679157565269,\n        \"captured\": 5695719953033127\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 5317120581658797,\n        \"subtotal\": 7164231195198837,\n        \"totalTaxes\": 6749496935702431,\n        \"totalDiscounts\": 3381048479169727,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 3633005420079823,\n            \"rate\": 4046.799086666347\n          },\n          {\n            \"price\": -7041327485045929,\n            \"rate\": 7621.253350821697\n          }\n        ],\n        \"listPrice\": 4509862588163045,\n        \"originalListPrice\": 7311517906402938,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 7862371804977635,\n            \"value\": 4977216852051429\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 1977702653260951,\n            \"value\": 5096258816590590\n          }\n        ],\n        \"manualDiscount\": 3344150072346111,\n        \"deposit\": 30909030590749\n      },\n      \"purchaseType\": \"subscription\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": false,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"productId\": \"string\",\n      \"name\": {\n        \"def\": \"string\"\n      },\n      \"startDate\": \"string\",\n      \"endDate\": \"string\",\n      \"durationPeriod\": \"24h\",\n      \"payment\": {\n        \"paid\": 4830796365181492,\n        \"refunded\": 3964705592295681,\n        \"authorised\": 2217022894634458,\n        \"cancelled\": 1900340783977415,\n        \"captured\": 8502127260888023\n      },\n      \"deposit\": {\n        \"paid\": 8000,\n        \"refunded\": 0,\n        \"authorised\": 10000,\n        \"cancelled\": 0,\n        \"captured\": 10000\n      },\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 2342640697492327,\n        \"subtotal\": 5867834902272729,\n        \"totalTaxes\": 2891917888658727,\n        \"totalDiscounts\": 8689244194122517,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": 3236545148502225,\n            \"rate\": 7886.466089034786\n          },\n          {\n            \"price\": -304075790296960,\n            \"rate\": 6341.65455782315\n          }\n        ],\n        \"listPrice\": 8902800867378985,\n        \"originalListPrice\": 8396249253030683,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 1960707781393403,\n            \"value\": 1317157037377024\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 6751870258798365,\n            \"value\": 8717915163085207\n          }\n        ],\n        \"manualDiscount\": 6904392586789386,\n        \"deposit\": 7061681082286428\n      },\n      \"purchaseType\": \"sales\",\n      \"itemCodes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"variantId\": \"string\",\n      \"variantValues\": [\n        {\n          \"def\": \"string\"\n        },\n        {\n          \"def\": \"string\"\n        }\n      ],\n      \"customDurationLabel\": {\n        \"def\": \"string\"\n      },\n      \"returnedDate\": \"string\",\n      \"cancelled\": false,\n      \"itemSkus\": [\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        },\n        {\n          \"units\": 1,\n          \"skuId\": \"exvGKhadTANkgYCPStIy\",\n          \"type\": \"bulk\"\n        }\n      ],\n      \"packageItems\": [\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        },\n        {\n          \"productId\": \"string\",\n          \"name\": {\n            \"def\": \"string\"\n          },\n          \"returnedDate\": \"string\",\n          \"itemCodes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"variantId\": \"string\",\n          \"variantValues\": [\n            {\n              \"def\": \"string\"\n            },\n            {\n              \"def\": \"string\"\n            }\n          ],\n          \"itemSkus\": [\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            },\n            {\n              \"units\": 1,\n              \"skuId\": \"exvGKhadTANkgYCPStIy\",\n              \"type\": \"bulk\"\n            }\n          ],\n          \"removedFromPackage\": false\n        }\n      ]\n    }\n  ],\n  \"returnedDate\": \"string\",\n  \"cancellationPolicy\": [\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    },\n    {\n      \"hoursBefore\": 24,\n      \"refundPercentage\": 50,\n      \"displayAs\": \"days\"\n    }\n  ],\n  \"customCheckoutFields\": [\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    },\n    {\n      \"label\": {\n        \"def\": \"string\"\n      },\n      \"value\": \"string\"\n    }\n  ],\n  \"staffComment\": \"string\",\n  \"orderNumber\": 4303884601601949,\n  \"externalOrderNumber\": \"string\",\n  \"bookingComment\": {\n    \"label\": {\n      \"def\": \"string\"\n    },\n    \"value\": \"string\"\n  },\n  \"metafields\": {\n    \"skiData\": {\n      \"confirmationNumber\": \"string\"\n    },\n    \"key_0\": {\n      \"key_0\": {}\n    },\n    \"key_1\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  },\n  \"delivery\": {\n    \"name\": {\n      \"def\": \"string\"\n    },\n    \"pricing\": {\n      \"currency\": \"string\",\n      \"total\": 7207851774823393,\n      \"subtotal\": 6492707152842950,\n      \"totalTaxes\": 5640701116764104,\n      \"totalDiscounts\": 1993681880340384,\n      \"taxExcluded\": true,\n      \"taxLines\": [\n        {\n          \"price\": -5274601365087410,\n          \"rate\": 5815.977276373666\n        },\n        {\n          \"price\": 3297428746035471,\n          \"rate\": 9151.599340762741\n        }\n      ],\n      \"listPrice\": 1702594126791728,\n      \"originalListPrice\": 405608781465912,\n      \"discountCodes\": [\n        {\n          \"code\": \"string\",\n          \"quantity\": 6705416741051540,\n          \"value\": 7996826125343806\n        },\n        {\n          \"code\": \"string\",\n          \"quantity\": 1662667321765697,\n          \"value\": 6479217846666931\n        }\n      ],\n      \"manualDiscount\": 5664679598989482,\n      \"deposit\": 217413485994251\n    },\n    \"payment\": {\n      \"paid\": 924581770274553,\n      \"refunded\": 6623291645486565,\n      \"authorised\": 1193447313317987,\n      \"cancelled\": 2643017862662501,\n      \"captured\": 3803267422512211\n    },\n    \"deliveryOptionId\": \"string\",\n    \"to\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 8954805222740464,\n        \"subtotal\": 8347370225421026,\n        \"totalTaxes\": 8296375790421488,\n        \"totalDiscounts\": 3860796523048225,\n        \"taxExcluded\": false,\n        \"taxLines\": [\n          {\n            \"price\": -5152709874304338,\n            \"rate\": 8134.993045517145\n          },\n          {\n            \"price\": -7891213101097443,\n            \"rate\": 9789.105627065583\n          }\n        ],\n        \"listPrice\": 362804624744023,\n        \"originalListPrice\": 823663559725545,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 1895668026924042,\n            \"value\": 8076808871970761\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 1487294912150875,\n            \"value\": 8759868901380360\n          }\n        ],\n        \"manualDiscount\": 6923485355321198,\n        \"deposit\": 6070736439284526\n      },\n      \"handlingTimeMinutes\": 5548642447390534,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"from\": {\n      \"pricing\": {\n        \"currency\": \"string\",\n        \"total\": 4631104540323782,\n        \"subtotal\": 2822073370684943,\n        \"totalTaxes\": 8336632579310153,\n        \"totalDiscounts\": 808416388831443,\n        \"taxExcluded\": true,\n        \"taxLines\": [\n          {\n            \"price\": 8935798197091821,\n            \"rate\": 7968.711305093766\n          },\n          {\n            \"price\": -740712886576644,\n            \"rate\": 6518.09069068312\n          }\n        ],\n        \"listPrice\": 6069068414598217,\n        \"originalListPrice\": 45741733769670,\n        \"discountCodes\": [\n          {\n            \"code\": \"string\",\n            \"quantity\": 4038075347346234,\n            \"value\": 4145581904374340\n          },\n          {\n            \"code\": \"string\",\n            \"quantity\": 5003775502180931,\n            \"value\": 1030697419276195\n          }\n        ],\n        \"manualDiscount\": 6566800606915069,\n        \"deposit\": 667789527542210\n      },\n      \"handlingTimeMinutes\": 4994508302825855,\n      \"location\": {\n        \"address\": {\n          \"address\": \"string\",\n          \"zipCode\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\",\n          \"details\": \"string\"\n        }\n      },\n      \"timeslot\": {\n        \"startDate\": \"string\",\n        \"endDate\": \"string\"\n      },\n      \"carrierId\": \"string\",\n      \"carrierName\": {\n        \"def\": \"string\"\n      },\n      \"trackingId\": \"string\"\n    },\n    \"returnInstructions\": {\n      \"def\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01076eac-66f7-4c8e-89f5-8c783cf72fbb",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 6327.943204315295,\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"details\": [\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      },\n      {\n        \"path\": [\n          \"string\",\n          \"string\"\n        ],\n        \"message\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67bf9677-798a-4728-b350-7516c5eb5c1d",
+              "name": "Forbidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 403,\n    \"code\": \"FORBIDDEN\",\n    \"message\": \"You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62125f8b-5bee-4ec0-b611-f27b268cd8c5",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 404,\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"Object not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d35ab16-61b0-4aab-af6a-497a83519ce4",
+              "name": "Conflict.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 409,\n    \"code\": \"CONFLICT\",\n    \"message\": \"Conflict error\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89c1a400-7f96-4f6c-91aa-d08bafa31fff",
+              "name": "Quota exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 429,\n    \"code\": \"RATE_LIMIT_HIT\",\n    \"message\": \"Your API key has exceeded the rate limit. Please wait a moment before making new requests.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7268ac3-21f8-45c2-a13a-24b8cf79ff9c",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) API Version, e.g `2023-02-01`. See [versioning](/#tag/versioning) page for more details.",
+                    "key": "x-rentle-version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startDate\": \"<string>\",\n  \"duration\": {\n    \"period\": \"<string>\",\n    \"value\": \"<integer>\"\n  },\n  \"storeId\": \"<string>\",\n  \"customer\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"marketingConsent\": \"<boolean>\",\n    \"language\": \"<string>\",\n    \"address\": {\n      \"address\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"state\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  },\n  \"items\": [\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    },\n    {\n      \"productId\": \"enmSzQbHFtkzNIWp9e19\",\n      \"variantId\": \"26CbdcY1E73Py0fvb4IZ\",\n      \"quantity\": 1,\n      \"duration\": {\n        \"period\": \"days\",\n        \"value\": 1\n      }\n    }\n  ],\n  \"paid\": \"<boolean>\",\n  \"externalOrderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"status\": 500,\n    \"code\": \"INTERNAL_SERVER_ERROR\",\n    \"message\": \"An unexpected error occurred. Please try again later.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.twicecommerce.com/admin",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d39d1520-a605-4bcf-a2f1-f5dc8977abdc",
+    "name": "Twice Admin API Keys Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for Twice Admin API",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Twice Admin API Keys Merchant API",
+    "version": "2023-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merchant",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get merchant account information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.twicecommerce.com/admin/merchant",
+            "headers": [
+              {
+                "name": "x-rentle-version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get details of the authenticated merchant."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
