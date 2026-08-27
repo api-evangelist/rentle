@@ -331,6 +331,26 @@ apis:
     url: data-model/rentle-data-model.yml
   - type: Conformance
     url: conformance/rentle-conformance.yml
+- aid: rentle:rentle-order-api
+  name: Rentle Order API
+  description: The Order API from Rentle — 0 operation(s) for order.
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Order
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-order-api-openapi.yml
+- aid: rentle:rentle-product-api
+  name: Rentle Product API
+  description: The Product API from Rentle — 0 operation(s) for product.
+  humanURL: https://api.rentle.io/admin/
+  baseURL: https://api.twicecommerce.com/admin
+  tags:
+  - Product
+  properties:
+  - type: OpenAPI
+    url: openapi/rentle-product-api-openapi.yml
 common:
 - type: AgentSkill
   url: skills/rentle-create-order.md
