@@ -1,0 +1,238 @@
+openapi: 3.2.0
+info:
+  title: Rentle Order API
+  version: '2023-02-01'
+  contact: {}
+  x-logo:
+    url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/logos%2Ftwice-logo-outline-black-padded.png?alt=media&token=c6731aba-03c9-4ce9-a9f0-a68478924fe0
+  description: 'Operations tagged Order across 11 of this provider''s published API definitions: rentle-api-keys-api-openapi.yml, rentle-categories-api-openapi.yml, rentle-customers-api-openapi.yml, rentle-discount-codes-api-openapi.yml, rentle-inventory-articles-api-openapi.yml, rentle-inventory-skus-api-openapi.yml, rentle-merchant-api-openapi.yml, rentle-orders-api-openapi.yml, rentle-products-api-openapi.yml, rentle-stores-api-openapi.yml, rentle-webhooks-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.twicecommerce.com/admin
+  description: Production API
+tags:
+- name: Order
+paths: {}
+webhooks:
+  orderCreated:
+    post:
+      summary: Order created
+      operationId: orderCreated
+      tags:
+      - Order
+      description: Occurs when a new order is created.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+  orderUpdated:
+    post:
+      summary: Order updated
+      operationId: orderUpdated
+      tags:
+      - Order
+      description: Occurs when an order is updated.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+  orderPrepared:
+    post:
+      summary: Order prepared
+      operationId: orderPrepared
+      tags:
+      - Order
+      description: Occurs when an order is marked as prepared.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+  orderStarted:
+    post:
+      summary: Order started
+      operationId: orderStarted
+      tags:
+      - Order
+      description: Occurs when an order is started.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+  orderReturned:
+    post:
+      summary: Order returned
+      operationId: orderReturned
+      tags:
+      - Order
+      description: Occurs when an order is marked as returned.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+  orderReturning-soon:
+    post:
+      summary: Order returning-soon
+      operationId: orderReturning-soon
+      tags:
+      - Order
+      description: Occurs X time before the order should return.
+      parameters:
+      - name: x-rentle-version
+        in: header
+        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderWebhookDTO'
+      responses:
+        '200':
+          description: Return 200 OK to indicate the data was received successfully
+    servers:
+    - url: https://api.twicecommerce.com/admin
+      description: Production API
+x-refined-from:
+- rentle-api-keys-api-openapi.yml
+- rentle-categories-api-openapi.yml
+- rentle-customers-api-openapi.yml
+- rentle-discount-codes-api-openapi.yml
+- rentle-inventory-articles-api-openapi.yml
+- rentle-inventory-skus-api-openapi.yml
+- rentle-merchant-api-openapi.yml
+- rentle-orders-api-openapi.yml
+- rentle-products-api-openapi.yml
+- rentle-stores-api-openapi.yml
+- rentle-webhooks-api-openapi.yml
+x-tagGroups:
+- name: Introduction
+  tags:
+  - Introduction
+  - Versioning
+  - Authentication
+  - RateLimiting
+  - Responses
+  - Feedback
+- name: Operations
+  tags:
+  - OperationsOverview
+  - API Keys
+  - Categories
+  - Customers
+  - Discount Codes
+  - Inventory Articles
+  - Inventory SKUs
+  - Merchant
+  - Orders
+  - Products
+  - Stores
+  - Webhooks
+- name: Webhooks
+  tags:
+  - WebhooksOverview
+  - Order
+  - Product
+- name: Models
+  tags:
+  - ModelsOverview
+  - ApiKeyDTO
+  - CategoryDTO
+  - CustomerDTO
+  - DiscountCodeDTO
+  - InventoryArticleDTO
+  - MerchantDTO
+  - OrderDTO
+  - OrderWebhookDTO
+  - PagedCategoriesDTO
+  - PagedCustomersDTO
+  - PagedDiscountCodesDTO
+  - PagedInventoryArticlesDTO
+  - PagedOrdersDTO
+  - PagedProductsDTO
+  - PagedSkusDTO
+  - PagedStoresDTO
+  - PagedWebhooksDTO
+  - ProductDTO
+  - ProductWebhookDTO
+  - SkuDTO
+  - StoreDTO
+- name: Errors
+  tags:
+  - ErrorsOverview
+  - BadRequestExceptionDTO
+  - ConflictExceptionDTO
+  - ForbiddenExceptionDTO
+  - InternalServerErrorExceptionDTO
+  - NotFoundExceptionDTO
+  - QuotaExceededExceptionDTO
