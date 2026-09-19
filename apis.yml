@@ -54,7 +54,7 @@ tags:
 - Circular Economy
 - Resale
 - Subscription
-- Bookings
+- Booking
 - Webhook
 - Software-as-a-Service
 tags_raw:
@@ -221,6 +221,8 @@ apis:
   humanURL: https://api.rentle.io/admin/
   baseURL: https://api.twicecommerce.com/admin
   tags:
+  - Merchants
+  tags_raw:
   - Merchant
   properties:
   - type: OpenAPI
