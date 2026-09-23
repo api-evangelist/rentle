@@ -22,7 +22,7 @@ actions:
             HTTP Basic Authentication documented in the Authentication section
             of the reference but absent from the harvested OpenAPI. username =
             API key id, password = API key secret; scoped per merchant.
-notes: >-
+x-notes: >-
   Non-mutating overlay capturing API Evangelist enhancements. The harvested
   OpenAPI declares no securityScheme even though the docs require HTTP Basic;
   this overlay records the real scheme without altering the original spec.

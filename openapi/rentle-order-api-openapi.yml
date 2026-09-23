@@ -5,7 +5,7 @@ info:
   contact: {}
   x-logo:
     url: https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/logos%2Ftwice-logo-outline-black-padded.png?alt=media&token=c6731aba-03c9-4ce9-a9f0-a68478924fe0
-  description: 'Operations tagged Order across 11 of this provider''s published API definitions: rentle-api-keys-api-openapi.yml, rentle-categories-api-openapi.yml, rentle-customers-api-openapi.yml, rentle-discount-codes-api-openapi.yml, rentle-inventory-articles-api-openapi.yml, rentle-inventory-skus-api-openapi.yml, rentle-merchant-api-openapi.yml, rentle-orders-api-openapi.yml, rentle-products-api-openapi.yml, rentle-stores-api-openapi.yml, rentle-webhooks-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Order across 2 of this provider''s published API definitions: rentle-admin-openapi.json, rentle-order-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.twicecommerce.com/admin
   description: Production API
@@ -163,18 +163,1833 @@ webhooks:
     servers:
     - url: https://api.twicecommerce.com/admin
       description: Production API
+components:
+  schemas:
+    OrderWebhookDTO:
+      type: object
+      properties:
+        created:
+          title: ISO 8601 date-time
+          description: Date when the webhook event was first triggered.
+          type: string
+        scope:
+          description: The type of event that is being delivered.
+          type: string
+          enum:
+          - order/created
+          - order/updated
+          - order/prepared
+          - order/started
+          - order/returned
+          - order/returning-soon
+        eventId:
+          description: Unique ID that identifies the webhook event.
+          type: string
+        merchantId:
+          description: The merchant ID.
+          type: string
+        data:
+          description: An object containing the data of the affected resource.
+          type: object
+          properties:
+            id:
+              description: Unique order identifier.
+              type: string
+            createdAt:
+              title: ISO 8601 date-time
+              description: Order creation date.
+              type: string
+            startDate:
+              title: ISO 8601 date-time
+              description: Start date of order.
+              type: string
+            initialStartDate:
+              title: ISO 8601 date-time
+              description: Initial start date of order.
+              type: string
+            endDate:
+              title: ISO 8601 date-time
+              description: End date of order. This will show the initial end date even when the order is returned.
+              type: string
+            returnedDate:
+              description: Date when order was returned. If order is not returned, this field is not present.
+              title: ISO 8601 date-time
+              type: string
+            payment:
+              description: Payment details for the order.
+              type: object
+              properties:
+                paid:
+                  description: Paid amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                refunded:
+                  description: Refunded amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                authorised:
+                  description: Authorised amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                cancelled:
+                  description: Cancelled amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                captured:
+                  description: Captured amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+              required:
+              - paid
+            deposit:
+              description: Deposit details for the order.
+              type: object
+              properties:
+                paid:
+                  description: Paid amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                refunded:
+                  description: Refunded amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                authorised:
+                  description: Authorised amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                cancelled:
+                  description: Cancelled amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                captured:
+                  description: Captured amount.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+              required:
+              - paid
+            cancellationPolicy:
+              description: Order cancellation policy.
+              type: array
+              items:
+                example:
+                  hoursBefore: 24
+                  refundPercentage: 50
+                  displayAs: days
+                type: object
+                properties:
+                  hoursBefore:
+                    description: Hours before the start of the booking when the cancellation is possible.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                  refundPercentage:
+                    description: Percentage of the booking price that will be refunded.
+                    type: integer
+                    minimum: 0
+                    maximum: 100
+                  displayAs:
+                    description: Display unit of the cancellation period.
+                    default: hours
+                    type: string
+                    enum:
+                    - hours
+                    - days
+                    - weeks
+                required:
+                - hoursBefore
+                - refundPercentage
+            channel:
+              description: Channel where the order was created. All orders created via API will have the channel `api`.
+              type: string
+              enum:
+              - admin
+              - check_in
+              - online
+              - booking_link
+              - api
+              - wix
+            state:
+              description: Current state of the order.
+              type: string
+              enum:
+              - booked
+              - active
+              - cancelled
+              - completed
+            store:
+              description: Store where the order belongs to.
+              type: object
+              properties:
+                name:
+                  description: Name of the store.
+                  type: string
+                storeId:
+                  description: ID of the store.
+                  type: string
+                address:
+                  description: Address of the store.
+                  type: object
+                  properties:
+                    address:
+                      description: Street address.
+                      type: string
+                    zipCode:
+                      description: Zip code.
+                      type: string
+                    city:
+                      description: City.
+                      type: string
+                    country:
+                      description: Country.
+                      type: string
+                    state:
+                      description: State.
+                      type: string
+                    details:
+                      description: Additional address details.
+                      type: string
+                  required:
+                  - address
+              required:
+              - name
+              - storeId
+              - address
+            customCheckoutFields:
+              description: Custom checkout fields filled by the customer during checkout.
+              type: array
+              items:
+                type: object
+                properties:
+                  label:
+                    title: Localized field
+                    description: Label of the custom checkout field
+                    allOf:
+                    - additionalProperties:
+                        type: string
+                        description: The property name is the locale code, and the value is the translated text in that locale.
+                      type: object
+                    - type: object
+                      properties:
+                        def:
+                          description: The value in default locale.
+                          type: string
+                      required:
+                      - def
+                  value:
+                    description: Value provided by the customer on checkout. The value can be null if the customer did not fill in a checkout field.
+                    anyOf:
+                    - type:
+                      - string
+                      - 'null'
+                    - type: boolean
+                required:
+                - label
+                - value
+            customerDetails:
+              description: Details of the person who made the order.
+              type: object
+              properties:
+                firstName:
+                  description: First name of the customer.
+                  type: string
+                lastName:
+                  description: Last name of the customer.
+                  type: string
+                phone:
+                  description: Phone number of the customer.
+                  type: string
+                email:
+                  description: Email of the customer.
+                  type: string
+                marketingConsent:
+                  description: Whether the customer has given marketing consent.
+                  type: boolean
+                language:
+                  description: Language of the customer.
+                  type: string
+                  enum:
+                  - fi
+                  - en
+                  - ru
+                  - de
+                  - sk
+                  - sv
+                  - nl
+                  - hu
+                  - 'no'
+                  - fr
+                  - es
+                  - it
+                  - cs
+                  - da
+                  - lt
+                  - et
+                  - pl
+                  - sl
+                  - hr
+                  - pt
+                  - br
+                  - lv
+                  - tr
+                  - uk
+                address:
+                  description: Address of the customer.
+                  type: object
+                  properties:
+                    address:
+                      description: Street address.
+                      type: string
+                    zipCode:
+                      description: Zip code.
+                      type: string
+                    city:
+                      description: City.
+                      type: string
+                    country:
+                      description: Country.
+                      type: string
+                    state:
+                      description: State.
+                      type: string
+                    details:
+                      description: Additional address details.
+                      type: string
+                  required:
+                  - address
+                metafields:
+                  title: Metafields
+                  description: Additional metafields added to the resource. Each key is a namespace for the metafield group, and the value of each key should be an object, including the data for that metafield namespace as key-value pairs.
+                  type: object
+                  additionalProperties:
+                    type: object
+                    additionalProperties: {}
+                customerId:
+                  type:
+                  - string
+                  - 'null'
+                  description: Unique identifier of the customer.
+              required:
+              - firstName
+              - lastName
+              - phone
+              - email
+              - marketingConsent
+              - customerId
+            terms:
+              description: Order terms acceptance information.
+              type: object
+              properties:
+                accepted:
+                  description: Whether the terms were accepted.
+                  type: boolean
+                timestamp:
+                  description: Timestamp when the terms were accepted.
+                  title: ISO 8601 date-time
+                  type: string
+              required:
+              - accepted
+            staffComment:
+              description: Internal comment about the order, added by the store staff.
+              type: string
+            orderNumber:
+              description: Order number. May not be present if the order number has not been generated yet.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+            externalOrderNumber:
+              description: External order number, e.g. from an integrated system. If present, this is typically displayed instead of the internal order number.
+              type: string
+            prepared:
+              description: Whether the order has been marked as prepared.
+              type: boolean
+            pricing:
+              description: Order pricing information.
+              type: object
+              properties:
+                currency:
+                  description: Currency of the price.
+                  type: string
+                total:
+                  description: Total price. Includes taxes and discounts.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                subtotal:
+                  description: Subtotal price. Does not include taxes if pricing has taxes excluded, defined in `taxExcluded`.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                totalTaxes:
+                  description: Total taxes.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                totalDiscounts:
+                  description: Total discounts value.
+                  type: integer
+                  minimum: 0
+                  maximum: 9007199254740991
+                taxExcluded:
+                  description: Whether taxes are excluded from the list prices.
+                  type: boolean
+                taxLines:
+                  description: List of tax lines of the price.
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      price:
+                        description: Price of the tax in minor units
+                        type: integer
+                        minimum: -9007199254740991
+                        maximum: 9007199254740991
+                      rate:
+                        description: Tax rate in decimals
+                        type: number
+                        minimum: 0
+                    required:
+                    - price
+                    - rate
+                manualDiscount:
+                  description: Applied manual discount.
+                  type: object
+                  properties:
+                    percentage:
+                      description: Percentage of the discount, if discount was given as percentage
+                      type: integer
+                      minimum: 0
+                      maximum: 100
+                    value:
+                      description: Discount value in minor units
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                  required:
+                  - value
+                discountCodes:
+                  description: List of discount codes.
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        description: Discount code.
+                        type: string
+                      quantity:
+                        description: How many times the code was used.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      value:
+                        description: Discount value in minor units.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - code
+                    - quantity
+                    - value
+                deposit:
+                  description: Deposit information.
+                  type: object
+                  properties:
+                    value:
+                      description: Deposit value in minor units.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    type:
+                      description: Deposit type.
+                      type: string
+                      enum:
+                      - payment
+                      - other
+                      - no-deposit
+                  required:
+                  - value
+                  - type
+              required:
+              - currency
+              - total
+              - subtotal
+              - totalTaxes
+              - totalDiscounts
+              - taxExcluded
+              - taxLines
+            bookingComment:
+              description: Custom comment field filled during the booking.
+              type: object
+              properties:
+                label:
+                  title: Localized field
+                  description: Label of the comment.
+                  allOf:
+                  - additionalProperties:
+                      type: string
+                      description: The property name is the locale code, and the value is the translated text in that locale.
+                    type: object
+                  - type: object
+                    properties:
+                      def:
+                        description: The value in default locale.
+                        type: string
+                    required:
+                    - def
+                value:
+                  description: Value of the comment.
+                  type: string
+              required:
+              - label
+              - value
+            metafields:
+              allOf:
+              - title: Metafields
+                description: Additional metafields added to the resource. Each key is a namespace for the metafield group, and the value of each key should be an object, including the data for that metafield namespace as key-value pairs.
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties: {}
+              - type: object
+                properties:
+                  skiData:
+                    type: object
+                    properties:
+                      confirmationNumber:
+                        type: string
+            persons:
+              description: List of the persons in the order.
+              type: array
+              items:
+                example:
+                  firstName: John
+                  lastName: Doe
+                  phone: '+1555555555'
+                  email: john@doe.com
+                  marketingConsent: true
+                  language: en
+                  address:
+                    address: 123 Main St
+                    zipCode: '12345'
+                    city: New York
+                    country: United States
+                    state: New York
+                  customerId: bcxIwN2buWMAKmUvrF2m
+                  id: NfjKuaQ9fynvocgMRtb7
+                  createdAt: '2026-07-19T01:04:27.140Z'
+                  isLiableCustomer: true
+                  additionalDetails: []
+                  staffComment: This customer will arrive 15min late
+                  itemIds:
+                  - GNjXy7PiD2nEz2qELgRy
+                type: object
+                properties:
+                  firstName:
+                    description: First name of the person.
+                    type: string
+                  lastName:
+                    description: Last name of the person.
+                    type: string
+                  phone:
+                    description: Phone number of the person.
+                    type: string
+                  email:
+                    description: Email of the person.
+                    type: string
+                  marketingConsent:
+                    description: Whether the person has given marketing consent.
+                    type: boolean
+                  language:
+                    description: Language of the person.
+                    type: string
+                    enum:
+                    - fi
+                    - en
+                    - ru
+                    - de
+                    - sk
+                    - sv
+                    - nl
+                    - hu
+                    - 'no'
+                    - fr
+                    - es
+                    - it
+                    - cs
+                    - da
+                    - lt
+                    - et
+                    - pl
+                    - sl
+                    - hr
+                    - pt
+                    - br
+                    - lv
+                    - tr
+                    - uk
+                  address:
+                    description: Address of the person.
+                    type: object
+                    properties:
+                      address:
+                        description: Street address.
+                        type: string
+                      zipCode:
+                        description: Zip code.
+                        type: string
+                      city:
+                        description: City.
+                        type: string
+                      country:
+                        description: Country.
+                        type: string
+                      state:
+                        description: State.
+                        type: string
+                      details:
+                        description: Additional address details.
+                        type: string
+                    required:
+                    - address
+                  metafields:
+                    title: Metafields
+                    description: Additional metafields added to the resource. Each key is a namespace for the metafield group, and the value of each key should be an object, including the data for that metafield namespace as key-value pairs.
+                    type: object
+                    additionalProperties:
+                      type: object
+                      additionalProperties: {}
+                  customerId:
+                    type:
+                    - string
+                    - 'null'
+                    description: Unique identifier of the customer.
+                  id:
+                    description: Unique ID of the person
+                    type: string
+                  createdAt:
+                    title: ISO 8601 date-time
+                    description: Person creation date
+                    type: string
+                  isLiableCustomer:
+                    description: Whether the person is the liable customer of the order
+                    type: boolean
+                  segment:
+                    description: Segment of the person, if defined
+                    type: string
+                    enum:
+                    - kid
+                    - teen
+                    - adult
+                    - senior
+                  additionalDetails:
+                    description: Additional person details
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        unit:
+                          type:
+                          - string
+                          - 'null'
+                        value:
+                          type: string
+                      required:
+                      - name
+                      - unit
+                      - value
+                  staffComment:
+                    description: Internal comment about the person, added by the store staff.
+                    type: string
+                  itemIds:
+                    description: List of the item IDs of the order that belongs to the person
+                    type: array
+                    items:
+                      type: string
+                required:
+                - firstName
+                - marketingConsent
+                - customerId
+                - id
+                - createdAt
+                - isLiableCustomer
+                - itemIds
+            items:
+              description: List of order items.
+              type: array
+              items:
+                example:
+                  id: GNjXy7PiD2nEz2qELgRy
+                  productId: fUNFcX1VMTKHNrEgSOu9
+                  name:
+                    def: Product name
+                  itemCodes:
+                  - PRD-1
+                  variantId: OwH3rwAUOzNAYFySaEZl
+                  variantValues:
+                  - def: Variant name
+                  startDate: '2026-07-20T01:00:00.000Z'
+                  endDate: '2026-07-21T01:00:00.000Z'
+                  durationPeriod: 24h
+                  customDurationLabel:
+                    def: 1 day
+                  cancelled: false
+                  payment:
+                    paid: 8000
+                    refunded: 0
+                    authorised: 10000
+                    cancelled: 0
+                    captured: 10000
+                  deposit:
+                    paid: 8000
+                    refunded: 0
+                    authorised: 10000
+                    cancelled: 0
+                    captured: 10000
+                  pricing:
+                    total: 10000
+                    currency: USD
+                    subtotal: 10000
+                    totalTaxes: 2400
+                    totalDiscounts: 0
+                    taxExcluded: false
+                    taxLines:
+                    - price: 2400
+                      rate: 24
+                    manualDiscount: 0
+                    deposit: 0
+                    listPrice: 10000
+                    originalListPrice: 10000
+                  purchaseType: rental
+                  itemSkus:
+                  - units: 1
+                    skuId: K8UqrwRKBhuqlQKk8jOg
+                    type: single
+                    itemCodes:
+                    - SKU-1
+                  packageItems:
+                  - id: GNjXy7PiD2nEz2qELgRy
+                    productId: fUNFcX1VMTKHNrEgSOu9
+                    name:
+                      def: Package item name
+                    itemCodes:
+                    - PRD-1
+                    variantId: OwH3rwAUOzNAYFySaEZl
+                    variantValues:
+                    - def: Variant name
+                    startDate: '2026-07-20T01:00:00.000Z'
+                    endDate: '2026-07-21T01:00:00.000Z'
+                    durationPeriod: 24h
+                    customDurationLabel:
+                      def: 1 day
+                    cancelled: false
+                    payment:
+                      paid: 8000
+                      refunded: 0
+                      authorised: 10000
+                      cancelled: 0
+                      captured: 10000
+                    deposit:
+                      paid: 8000
+                      refunded: 0
+                      authorised: 10000
+                      cancelled: 0
+                      captured: 10000
+                    pricing:
+                      total: 10000
+                      currency: USD
+                      subtotal: 10000
+                      totalTaxes: 2400
+                      totalDiscounts: 0
+                      taxExcluded: false
+                      taxLines:
+                      - price: 2400
+                        rate: 24
+                      manualDiscount: 0
+                      deposit: 0
+                      listPrice: 10000
+                      originalListPrice: 10000
+                    purchaseType: rental
+                    itemSkus:
+                    - units: 1
+                      skuId: K8UqrwRKBhuqlQKk8jOg
+                      type: single
+                      itemCodes:
+                      - SKU-1
+                    removedFromPackage: false
+                type: object
+                properties:
+                  id:
+                    description: Unique order item identifier.
+                    type: string
+                  productId:
+                    description: Identifier of the product catalog product.
+                    type: string
+                  name:
+                    title: Localized field
+                    description: Name of the item.
+                    allOf:
+                    - additionalProperties:
+                        type: string
+                        description: The property name is the locale code, and the value is the translated text in that locale.
+                      type: object
+                    - type: object
+                      properties:
+                        def:
+                          description: The value in default locale.
+                          type: string
+                      required:
+                      - def
+                  itemCodes:
+                    description: List of given inventory item codes for the item.
+                    type: array
+                    items:
+                      type: string
+                  variantId:
+                    description: Selected variant id.
+                    type: string
+                  variantValues:
+                    description: Selected variant values.
+                    type: array
+                    items:
+                      title: Localized field
+                      description: Localized text field.
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                  startDate:
+                    title: ISO 8601 date-time
+                    description: Start date of the item.
+                    type: string
+                  endDate:
+                    title: ISO 8601 date-time
+                    description: End date of the item. This will show the initial end date even when the item is returned.
+                    type: string
+                  durationPeriod:
+                    description: Whether duration is using 24h rental period or following store opening hours
+                    type: string
+                    enum:
+                    - 24h
+                    - opening_hours
+                  customDurationLabel:
+                    description: Custom duration label for the item if given
+                    title: Localized field
+                    allOf:
+                    - additionalProperties:
+                        type: string
+                        description: The property name is the locale code, and the value is the translated text in that locale.
+                      type: object
+                    - type: object
+                      properties:
+                        def:
+                          description: The value in default locale.
+                          type: string
+                      required:
+                      - def
+                  returnedDate:
+                    description: Returned date of the item. Does not exist if the item is not returned.
+                    title: ISO 8601 date-time
+                    type: string
+                  cancelled:
+                    description: Whether the item is cancelled.
+                    type: boolean
+                  payment:
+                    description: Payment information for the item.
+                    type: object
+                    properties:
+                      paid:
+                        description: Paid amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      refunded:
+                        description: Refunded amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      authorised:
+                        description: Authorised amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      cancelled:
+                        description: Cancelled amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      captured:
+                        description: Captured amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - paid
+                  deposit:
+                    example:
+                      paid: 8000
+                      refunded: 0
+                      authorised: 10000
+                      cancelled: 0
+                      captured: 10000
+                    type:
+                    - object
+                    - 'null'
+                    properties:
+                      paid:
+                        description: Paid amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      refunded:
+                        description: Refunded amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      authorised:
+                        description: Authorised amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      cancelled:
+                        description: Cancelled amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      captured:
+                        description: Captured amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - paid
+                    description: Deposit information for the item.
+                  pricing:
+                    description: Pricing information for the item.
+                    type: object
+                    properties:
+                      currency:
+                        description: Currency of the price.
+                        type: string
+                      total:
+                        description: Total price. Includes taxes and discounts.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      subtotal:
+                        description: Subtotal price. Does not include taxes if pricing has taxes excluded, defined in `taxExcluded`.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      totalTaxes:
+                        description: Total taxes.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      totalDiscounts:
+                        description: Total discounts value.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      taxExcluded:
+                        description: Whether taxes are excluded from the list prices.
+                        type: boolean
+                      taxLines:
+                        description: List of tax lines of the price.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            price:
+                              description: Price of the tax in minor units
+                              type: integer
+                              minimum: -9007199254740991
+                              maximum: 9007199254740991
+                            rate:
+                              description: Tax rate in decimals
+                              type: number
+                              minimum: 0
+                          required:
+                          - price
+                          - rate
+                      discountCodes:
+                        description: List of discount codes.
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            code:
+                              description: Discount code.
+                              type: string
+                            quantity:
+                              description: How many times the code was used.
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                            value:
+                              description: Discount value in minor units.
+                              type: integer
+                              minimum: 0
+                              maximum: 9007199254740991
+                          required:
+                          - code
+                          - quantity
+                          - value
+                      manualDiscount:
+                        description: Manual discount applied.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      deposit:
+                        description: Deposit amount.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      listPrice:
+                        description: Item price without any discounts. Can be modified by store manually by editing item price.
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                      originalListPrice:
+                        description: Original item price without any discounts or modifications
+                        type: integer
+                        minimum: 0
+                        maximum: 9007199254740991
+                    required:
+                    - currency
+                    - total
+                    - subtotal
+                    - totalTaxes
+                    - totalDiscounts
+                    - taxExcluded
+                    - taxLines
+                    - listPrice
+                    - originalListPrice
+                  purchaseType:
+                    description: Purchase type of the item.
+                    type: string
+                    enum:
+                    - rental
+                    - sales
+                    - subscription
+                  itemSkus:
+                    description: List of inventory items for the item.
+                    type: array
+                    items:
+                      anyOf:
+                      - title: Bulk SKU
+                        example:
+                          units: 1
+                          skuId: exvGKhadTANkgYCPStIy
+                          type: bulk
+                        type: object
+                        properties:
+                          units:
+                            description: Number of units of the SKU.
+                            type: integer
+                            minimum: 0
+                            maximum: 9007199254740991
+                          skuId:
+                            description: SKU ID.
+                            type: string
+                          type:
+                            description: Type of the SKU.
+                            type: string
+                            enum:
+                            - bulk
+                        required:
+                        - units
+                        - skuId
+                        - type
+                      - title: Tracked SKU
+                        example:
+                          units: 1
+                          skuId: oe2M4Ier2GJ2pphSg6ob
+                          type: single
+                          itemCodes:
+                          - E-1
+                        type: object
+                        properties:
+                          units:
+                            description: Number of units of the SKU.
+                            type: integer
+                            minimum: 0
+                            maximum: 9007199254740991
+                          skuId:
+                            description: SKU ID.
+                            type: string
+                          type:
+                            description: Type of the SKU.
+                            type: string
+                            enum:
+                            - single
+                          itemCodes:
+                            description: Item codes of the SKU articles.
+                            type: array
+                            items:
+                              type: string
+                        required:
+                        - units
+                        - skuId
+                        - type
+                        - itemCodes
+                  packageItems:
+                    description: List of package items if the order item is a package
+                    type: array
+                    items:
+                      example:
+                        id: GNjXy7PiD2nEz2qELgRy
+                        productId: fUNFcX1VMTKHNrEgSOu9
+                        name:
+                          def: Package item name
+                        itemCodes:
+                        - PRD-1
+                        variantId: OwH3rwAUOzNAYFySaEZl
+                        variantValues:
+                        - def: Variant name
+                        startDate: '2026-07-20T01:00:00.000Z'
+                        endDate: '2026-07-21T01:00:00.000Z'
+                        durationPeriod: 24h
+                        customDurationLabel:
+                          def: 1 day
+                        cancelled: false
+                        payment:
+                          paid: 8000
+                          refunded: 0
+                          authorised: 10000
+                          cancelled: 0
+                          captured: 10000
+                        deposit:
+                          paid: 8000
+                          refunded: 0
+                          authorised: 10000
+                          cancelled: 0
+                          captured: 10000
+                        pricing:
+                          total: 10000
+                          currency: USD
+                          subtotal: 10000
+                          totalTaxes: 2400
+                          totalDiscounts: 0
+                          taxExcluded: false
+                          taxLines:
+                          - price: 2400
+                            rate: 24
+                          manualDiscount: 0
+                          deposit: 0
+                          listPrice: 10000
+                          originalListPrice: 10000
+                        purchaseType: rental
+                        itemSkus:
+                        - units: 1
+                          skuId: K8UqrwRKBhuqlQKk8jOg
+                          type: single
+                          itemCodes:
+                          - SKU-1
+                        removedFromPackage: false
+                      type: object
+                      properties:
+                        productId:
+                          description: Identifier of the product catalog product.
+                          type: string
+                        name:
+                          title: Localized field
+                          description: Name of the item.
+                          allOf:
+                          - additionalProperties:
+                              type: string
+                              description: The property name is the locale code, and the value is the translated text in that locale.
+                            type: object
+                          - type: object
+                            properties:
+                              def:
+                                description: The value in default locale.
+                                type: string
+                            required:
+                            - def
+                        returnedDate:
+                          description: Returned date of the item. Does not exist if the item is not returned.
+                          title: ISO 8601 date-time
+                          type: string
+                        itemCodes:
+                          description: List of given inventory item codes for the item.
+                          type: array
+                          items:
+                            type: string
+                        variantId:
+                          description: Selected variant id.
+                          type: string
+                        variantValues:
+                          description: Selected variant values.
+                          type: array
+                          items:
+                            title: Localized field
+                            description: Localized text field.
+                            allOf:
+                            - additionalProperties:
+                                type: string
+                                description: The property name is the locale code, and the value is the translated text in that locale.
+                              type: object
+                            - type: object
+                              properties:
+                                def:
+                                  description: The value in default locale.
+                                  type: string
+                              required:
+                              - def
+                        itemSkus:
+                          description: List of inventory items for the item.
+                          type: array
+                          items:
+                            anyOf:
+                            - title: Bulk SKU
+                              example:
+                                units: 1
+                                skuId: exvGKhadTANkgYCPStIy
+                                type: bulk
+                              type: object
+                              properties:
+                                units:
+                                  description: Number of units of the SKU.
+                                  type: integer
+                                  minimum: 0
+                                  maximum: 9007199254740991
+                                skuId:
+                                  description: SKU ID.
+                                  type: string
+                                type:
+                                  description: Type of the SKU.
+                                  type: string
+                                  enum:
+                                  - bulk
+                              required:
+                              - units
+                              - skuId
+                              - type
+                            - title: Tracked SKU
+                              example:
+                                units: 1
+                                skuId: oe2M4Ier2GJ2pphSg6ob
+                                type: single
+                                itemCodes:
+                                - E-1
+                              type: object
+                              properties:
+                                units:
+                                  description: Number of units of the SKU.
+                                  type: integer
+                                  minimum: 0
+                                  maximum: 9007199254740991
+                                skuId:
+                                  description: SKU ID.
+                                  type: string
+                                type:
+                                  description: Type of the SKU.
+                                  type: string
+                                  enum:
+                                  - single
+                                itemCodes:
+                                  description: Item codes of the SKU articles.
+                                  type: array
+                                  items:
+                                    type: string
+                              required:
+                              - units
+                              - skuId
+                              - type
+                              - itemCodes
+                        removedFromPackage:
+                          description: Indicates if the item was removed from the package
+                          type: boolean
+                      required:
+                      - productId
+                      - name
+                required:
+                - id
+                - productId
+                - name
+                - startDate
+                - endDate
+                - durationPeriod
+                - payment
+                - deposit
+                - pricing
+                - purchaseType
+            delivery:
+              description: Order delivery information.
+              type: object
+              properties:
+                name:
+                  title: Localized field
+                  description: Name of the delivery option.
+                  allOf:
+                  - additionalProperties:
+                      type: string
+                      description: The property name is the locale code, and the value is the translated text in that locale.
+                    type: object
+                  - type: object
+                    properties:
+                      def:
+                        description: The value in default locale.
+                        type: string
+                    required:
+                    - def
+                pricing:
+                  description: Pricing of the delivery.
+                  type: object
+                  properties:
+                    currency:
+                      description: Currency of the price.
+                      type: string
+                    total:
+                      description: Total price. Includes taxes and discounts.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    subtotal:
+                      description: Subtotal price. Does not include taxes if pricing has taxes excluded, defined in `taxExcluded`.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    totalTaxes:
+                      description: Total taxes.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    totalDiscounts:
+                      description: Total discounts value.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    taxExcluded:
+                      description: Whether taxes are excluded from the list prices.
+                      type: boolean
+                    taxLines:
+                      description: List of tax lines of the price.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          price:
+                            description: Price of the tax in minor units
+                            type: integer
+                            minimum: -9007199254740991
+                            maximum: 9007199254740991
+                          rate:
+                            description: Tax rate in decimals
+                            type: number
+                            minimum: 0
+                        required:
+                        - price
+                        - rate
+                    discountCodes:
+                      description: List of discount codes.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          code:
+                            description: Discount code.
+                            type: string
+                          quantity:
+                            description: How many times the code was used.
+                            type: integer
+                            minimum: 0
+                            maximum: 9007199254740991
+                          value:
+                            description: Discount value in minor units.
+                            type: integer
+                            minimum: 0
+                            maximum: 9007199254740991
+                        required:
+                        - code
+                        - quantity
+                        - value
+                    manualDiscount:
+                      description: Manual discount applied.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    deposit:
+                      description: Deposit amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    listPrice:
+                      description: Item price without any discounts. Can be modified by store manually by editing item price.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    originalListPrice:
+                      description: Original item price without any discounts or modifications
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                  required:
+                  - currency
+                  - total
+                  - subtotal
+                  - totalTaxes
+                  - totalDiscounts
+                  - taxExcluded
+                  - taxLines
+                  - listPrice
+                  - originalListPrice
+                payment:
+                  description: Payment details of the delivery.
+                  type: object
+                  properties:
+                    paid:
+                      description: Paid amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    refunded:
+                      description: Refunded amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    authorised:
+                      description: Authorised amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    cancelled:
+                      description: Cancelled amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    captured:
+                      description: Captured amount.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                  required:
+                  - paid
+                deliveryOptionId:
+                  description: Unique identifier of the delivery option.
+                  type: string
+                to:
+                  description: Details where delivery should be delivered to.
+                  type: object
+                  properties:
+                    timeslot:
+                      description: Time slot of the delivery.
+                      type: object
+                      properties:
+                        startDate:
+                          title: ISO 8601 date-time
+                          description: Start date of the time slot.
+                          type: string
+                        endDate:
+                          title: ISO 8601 date-time
+                          description: End date of the time slot.
+                          type: string
+                      required:
+                      - startDate
+                      - endDate
+                    pricing:
+                      description: Pricing of the delivery.
+                      type: object
+                      properties:
+                        currency:
+                          description: Currency of the price.
+                          type: string
+                        total:
+                          description: Total price. Includes taxes and discounts.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        subtotal:
+                          description: Subtotal price. Does not include taxes if pricing has taxes excluded, defined in `taxExcluded`.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        totalTaxes:
+                          description: Total taxes.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        totalDiscounts:
+                          description: Total discounts value.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        taxExcluded:
+                          description: Whether taxes are excluded from the list prices.
+                          type: boolean
+                        taxLines:
+                          description: List of tax lines of the price.
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              price:
+                                description: Price of the tax in minor units
+                                type: integer
+                                minimum: -9007199254740991
+                                maximum: 9007199254740991
+                              rate:
+                                description: Tax rate in decimals
+                                type: number
+                                minimum: 0
+                            required:
+                            - price
+                            - rate
+                        discountCodes:
+                          description: List of discount codes.
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                description: Discount code.
+                                type: string
+                              quantity:
+                                description: How many times the code was used.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              value:
+                                description: Discount value in minor units.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - code
+                            - quantity
+                            - value
+                        manualDiscount:
+                          description: Manual discount applied.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        deposit:
+                          description: Deposit amount.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        listPrice:
+                          description: Item price without any discounts. Can be modified by store manually by editing item price.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        originalListPrice:
+                          description: Original item price without any discounts or modifications
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - currency
+                      - total
+                      - subtotal
+                      - totalTaxes
+                      - totalDiscounts
+                      - taxExcluded
+                      - taxLines
+                      - listPrice
+                      - originalListPrice
+                    handlingTimeMinutes:
+                      description: Handling time of the delivery in minutes.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    location:
+                      description: Location of the delivery.
+                      type: object
+                      properties:
+                        address:
+                          description: Address of the delivery.
+                          type: object
+                          properties:
+                            address:
+                              description: Street address.
+                              type: string
+                            zipCode:
+                              description: Zip code.
+                              type: string
+                            city:
+                              description: City.
+                              type: string
+                            country:
+                              description: Country.
+                              type: string
+                            state:
+                              description: State.
+                              type: string
+                            details:
+                              description: Additional address details.
+                              type: string
+                          required:
+                          - address
+                    carrierId:
+                      description: Unique identifier of the carrier.
+                      type: string
+                    carrierName:
+                      description: Name of the carrier.
+                      title: Localized field
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    trackingId:
+                      description: Tracking id of the delivery.
+                      type: string
+                  required:
+                  - pricing
+                  - handlingTimeMinutes
+                  - location
+                from:
+                  description: Details where the delivery should be picked up from.
+                  type: object
+                  properties:
+                    timeslot:
+                      description: Time slot of the delivery.
+                      type: object
+                      properties:
+                        startDate:
+                          title: ISO 8601 date-time
+                          description: Start date of the time slot.
+                          type: string
+                        endDate:
+                          title: ISO 8601 date-time
+                          description: End date of the time slot.
+                          type: string
+                      required:
+                      - startDate
+                      - endDate
+                    pricing:
+                      description: Pricing of the delivery.
+                      type: object
+                      properties:
+                        currency:
+                          description: Currency of the price.
+                          type: string
+                        total:
+                          description: Total price. Includes taxes and discounts.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        subtotal:
+                          description: Subtotal price. Does not include taxes if pricing has taxes excluded, defined in `taxExcluded`.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        totalTaxes:
+                          description: Total taxes.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        totalDiscounts:
+                          description: Total discounts value.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        taxExcluded:
+                          description: Whether taxes are excluded from the list prices.
+                          type: boolean
+                        taxLines:
+                          description: List of tax lines of the price.
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              price:
+                                description: Price of the tax in minor units
+                                type: integer
+                                minimum: -9007199254740991
+                                maximum: 9007199254740991
+                              rate:
+                                description: Tax rate in decimals
+                                type: number
+                                minimum: 0
+                            required:
+                            - price
+                            - rate
+                        discountCodes:
+                          description: List of discount codes.
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              code:
+                                description: Discount code.
+                                type: string
+                              quantity:
+                                description: How many times the code was used.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                              value:
+                                description: Discount value in minor units.
+                                type: integer
+                                minimum: 0
+                                maximum: 9007199254740991
+                            required:
+                            - code
+                            - quantity
+                            - value
+                        manualDiscount:
+                          description: Manual discount applied.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        deposit:
+                          description: Deposit amount.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        listPrice:
+                          description: Item price without any discounts. Can be modified by store manually by editing item price.
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                        originalListPrice:
+                          description: Original item price without any discounts or modifications
+                          type: integer
+                          minimum: 0
+                          maximum: 9007199254740991
+                      required:
+                      - currency
+                      - total
+                      - subtotal
+                      - totalTaxes
+                      - totalDiscounts
+                      - taxExcluded
+                      - taxLines
+                      - listPrice
+                      - originalListPrice
+                    handlingTimeMinutes:
+                      description: Handling time of the delivery in minutes.
+                      type: integer
+                      minimum: 0
+                      maximum: 9007199254740991
+                    location:
+                      description: Location of the delivery.
+                      type: object
+                      properties:
+                        address:
+                          description: Address of the delivery.
+                          type: object
+                          properties:
+                            address:
+                              description: Street address.
+                              type: string
+                            zipCode:
+                              description: Zip code.
+                              type: string
+                            city:
+                              description: City.
+                              type: string
+                            country:
+                              description: Country.
+                              type: string
+                            state:
+                              description: State.
+                              type: string
+                            details:
+                              description: Additional address details.
+                              type: string
+                          required:
+                          - address
+                    carrierId:
+                      description: Unique identifier of the carrier.
+                      type: string
+                    carrierName:
+                      description: Name of the carrier.
+                      title: Localized field
+                      allOf:
+                      - additionalProperties:
+                          type: string
+                          description: The property name is the locale code, and the value is the translated text in that locale.
+                        type: object
+                      - type: object
+                        properties:
+                          def:
+                            description: The value in default locale.
+                            type: string
+                        required:
+                        - def
+                    trackingId:
+                      description: Tracking id of the delivery.
+                      type: string
+                  required:
+                  - pricing
+                  - handlingTimeMinutes
+                  - location
+                returnInstructions:
+                  description: Instructions for returning the delivery.
+                  title: Localized field
+                  allOf:
+                  - additionalProperties:
+                      type: string
+                      description: The property name is the locale code, and the value is the translated text in that locale.
+                    type: object
+                  - type: object
+                    properties:
+                      def:
+                        description: The value in default locale.
+                        type: string
+                    required:
+                    - def
+              required:
+              - name
+              - pricing
+              - payment
+              - deliveryOptionId
+          required:
+          - id
+          - createdAt
+          - startDate
+          - initialStartDate
+          - endDate
+          - payment
+          - deposit
+          - channel
+          - state
+          - store
+          - customerDetails
+          - terms
+          - prepared
+          - pricing
+          - persons
+          - items
+      required:
+      - created
+      - scope
+      - eventId
+      - merchantId
+      - data
+      title: Order webhook
 x-refined-from:
-- rentle-api-keys-api-openapi.yml
-- rentle-categories-api-openapi.yml
-- rentle-customers-api-openapi.yml
-- rentle-discount-codes-api-openapi.yml
-- rentle-inventory-articles-api-openapi.yml
-- rentle-inventory-skus-api-openapi.yml
-- rentle-merchant-api-openapi.yml
-- rentle-orders-api-openapi.yml
-- rentle-products-api-openapi.yml
-- rentle-stores-api-openapi.yml
-- rentle-webhooks-api-openapi.yml
+- rentle-admin-openapi.json
+- rentle-order-api-openapi.yml
 x-tagGroups:
 - name: Introduction
   tags:

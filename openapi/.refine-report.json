@@ -1,17 +1,9 @@
 {
   "provider": "rentle",
   "sources": [
-    "rentle-api-keys-api-openapi.yml",
-    "rentle-categories-api-openapi.yml",
-    "rentle-customers-api-openapi.yml",
-    "rentle-discount-codes-api-openapi.yml",
-    "rentle-inventory-articles-api-openapi.yml",
-    "rentle-inventory-skus-api-openapi.yml",
-    "rentle-merchant-api-openapi.yml",
-    "rentle-orders-api-openapi.yml",
-    "rentle-products-api-openapi.yml",
-    "rentle-stores-api-openapi.yml",
-    "rentle-webhooks-api-openapi.yml"
+    "_original/rentle-admin-openapi.json",
+    "rentle-order-api-openapi.yml",
+    "rentle-product-api-openapi.yml"
   ],
   "outputs": [
     "rentle-api-keys-api-openapi.yml",
@@ -21,14 +13,40 @@
     "rentle-inventory-articles-api-openapi.yml",
     "rentle-inventory-skus-api-openapi.yml",
     "rentle-merchant-api-openapi.yml",
+    "rentle-order-api-openapi.yml",
     "rentle-orders-api-openapi.yml",
+    "rentle-product-api-openapi.yml",
     "rentle-products-api-openapi.yml",
     "rentle-stores-api-openapi.yml",
     "rentle-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "rentle-order-api-openapi.yml: previously refined output kept for 6 operation(s) no archived document covers (e.g. webhook:orderCreated post, webhook:orderPrepared post, webhook:orderReturned post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "rentle-product-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. webhook:productCreated post, webhook:productDeleted post, webhook:productUpdated post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rentle-admin-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0; promoted x-webhooks (9) to the standard `webhooks` key",
+    "rentle-admin-openapi.json: declared missing tag: Inventory SKUs",
+    "rentle-admin-openapi.json: declared missing tag: Order",
+    "rentle-admin-openapi.json: declared missing tag: Product",
+    "tag 'Order' spans 2 source specs (rentle-admin-openapi.json, rentle-order-api-openapi.yml): per-path servers applied",
+    "tag 'Product' spans 2 source specs (rentle-admin-openapi.json, rentle-product-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rentle-api-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-discount-codes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-inventory-articles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-inventory-skus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-merchant-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-stores-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rentle-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

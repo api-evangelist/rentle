@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Twice Admin API Keys Products API
+  title: Twice Admin Products API
   description: API documentation for Twice Admin API
   version: '2023-02-01'
   contact: {}
@@ -264,50 +264,6 @@ components:
           status: 409
           code: CONFLICT
           message: Conflict error
-    NotFoundExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Not Found
-      example:
-        error:
-          status: 404
-          code: NOT_FOUND
-          message: Object not found
     QuotaExceededExceptionDTO:
       type: object
       properties:
@@ -352,50 +308,6 @@ components:
           status: 429
           code: RATE_LIMIT_HIT
           message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
-    ForbiddenExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Forbidden
-      example:
-        error:
-          status: 403
-          code: FORBIDDEN
-          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
     BadRequestExceptionDTO:
       type: object
       properties:
@@ -491,6 +403,94 @@ components:
           status: 500
           code: INTERNAL_SERVER_ERROR
           message: An unexpected error occurred. Please try again later.
+    NotFoundExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Not Found
+      example:
+        error:
+          status: 404
+          code: NOT_FOUND
+          message: Object not found
+    ForbiddenExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
     PagedProductsDTO:
       type: object
       properties:
@@ -836,9 +836,8 @@ components:
                                             intervalMinutes:
                                               description: The time in minutes between each start time
                                               type: integer
-                                              exclusiveMinimum: true
                                               maximum: 9007199254740991
-                                              minimum: 0
+                                              exclusiveMinimum: 0
                                           required:
                                           - intervalMinutes
                                       required:
@@ -870,7 +869,6 @@ components:
                                       required:
                                       - type
                                       - value
-                                    nullable: true
                                 required:
                                 - weekDays
                                 - startTimes
@@ -911,9 +909,8 @@ components:
                                             intervalMinutes:
                                               description: The time in minutes between each start time
                                               type: integer
-                                              exclusiveMinimum: true
                                               maximum: 9007199254740991
-                                              minimum: 0
+                                              exclusiveMinimum: 0
                                           required:
                                           - intervalMinutes
                                       required:
@@ -945,7 +942,6 @@ components:
                                       required:
                                       - type
                                       - value
-                                    nullable: true
                                 required:
                                 - dates
                                 - startTimes
@@ -953,11 +949,12 @@ components:
                             - type
                             - value
                       maxOrdersPerStartTime:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: -9007199254740991
                         maximum: 9007199254740991
                         description: The maximum number of orders that can be placed for a single start time
-                        nullable: true
                     required:
                     - value
                     - maxOrdersPerStartTime
@@ -1486,9 +1483,8 @@ components:
                                                   intervalMinutes:
                                                     description: The time in minutes between each start time
                                                     type: integer
-                                                    exclusiveMinimum: true
                                                     maximum: 9007199254740991
-                                                    minimum: 0
+                                                    exclusiveMinimum: 0
                                                 required:
                                                 - intervalMinutes
                                             required:
@@ -1520,7 +1516,6 @@ components:
                                             required:
                                             - type
                                             - value
-                                          nullable: true
                                       required:
                                       - weekDays
                                       - startTimes
@@ -1561,9 +1556,8 @@ components:
                                                   intervalMinutes:
                                                     description: The time in minutes between each start time
                                                     type: integer
-                                                    exclusiveMinimum: true
                                                     maximum: 9007199254740991
-                                                    minimum: 0
+                                                    exclusiveMinimum: 0
                                                 required:
                                                 - intervalMinutes
                                             required:
@@ -1595,7 +1589,6 @@ components:
                                             required:
                                             - type
                                             - value
-                                          nullable: true
                                       required:
                                       - dates
                                       - startTimes
@@ -1603,11 +1596,12 @@ components:
                                   - type
                                   - value
                             maxOrdersPerStartTime:
-                              type: integer
+                              type:
+                              - integer
+                              - 'null'
                               minimum: -9007199254740991
                               maximum: 9007199254740991
                               description: The maximum number of orders that can be placed for a single start time
-                              nullable: true
                           required:
                           - value
                           - maxOrdersPerStartTime
@@ -2178,9 +2172,8 @@ components:
                                       intervalMinutes:
                                         description: The time in minutes between each start time
                                         type: integer
-                                        exclusiveMinimum: true
                                         maximum: 9007199254740991
-                                        minimum: 0
+                                        exclusiveMinimum: 0
                                     required:
                                     - intervalMinutes
                                 required:
@@ -2212,7 +2205,6 @@ components:
                                 required:
                                 - type
                                 - value
-                              nullable: true
                           required:
                           - weekDays
                           - startTimes
@@ -2253,9 +2245,8 @@ components:
                                       intervalMinutes:
                                         description: The time in minutes between each start time
                                         type: integer
-                                        exclusiveMinimum: true
                                         maximum: 9007199254740991
-                                        minimum: 0
+                                        exclusiveMinimum: 0
                                     required:
                                     - intervalMinutes
                                 required:
@@ -2287,7 +2278,6 @@ components:
                                 required:
                                 - type
                                 - value
-                              nullable: true
                           required:
                           - dates
                           - startTimes
@@ -2295,11 +2285,12 @@ components:
                       - type
                       - value
                 maxOrdersPerStartTime:
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                   minimum: -9007199254740991
                   maximum: 9007199254740991
                   description: The maximum number of orders that can be placed for a single start time
-                  nullable: true
               required:
               - value
               - maxOrdersPerStartTime
@@ -2828,9 +2819,8 @@ components:
                                             intervalMinutes:
                                               description: The time in minutes between each start time
                                               type: integer
-                                              exclusiveMinimum: true
                                               maximum: 9007199254740991
-                                              minimum: 0
+                                              exclusiveMinimum: 0
                                           required:
                                           - intervalMinutes
                                       required:
@@ -2862,7 +2852,6 @@ components:
                                       required:
                                       - type
                                       - value
-                                    nullable: true
                                 required:
                                 - weekDays
                                 - startTimes
@@ -2903,9 +2892,8 @@ components:
                                             intervalMinutes:
                                               description: The time in minutes between each start time
                                               type: integer
-                                              exclusiveMinimum: true
                                               maximum: 9007199254740991
-                                              minimum: 0
+                                              exclusiveMinimum: 0
                                           required:
                                           - intervalMinutes
                                       required:
@@ -2937,7 +2925,6 @@ components:
                                       required:
                                       - type
                                       - value
-                                    nullable: true
                                 required:
                                 - dates
                                 - startTimes
@@ -2945,11 +2932,12 @@ components:
                             - type
                             - value
                       maxOrdersPerStartTime:
-                        type: integer
+                        type:
+                        - integer
+                        - 'null'
                         minimum: -9007199254740991
                         maximum: 9007199254740991
                         description: The maximum number of orders that can be placed for a single start time
-                        nullable: true
                     required:
                     - value
                     - maxOrdersPerStartTime
@@ -3373,205 +3361,6 @@ components:
           - - skuId: SKU-2
               units: 1
               type: single
-x-webhooks:
-  productCreated:
-    post:
-      summary: Product created
-      operationId: productCreated
-      tags:
-      - Product
-      description: Occurs when a new product is created.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  productUpdated:
-    post:
-      summary: Product updated
-      operationId: productUpdated
-      tags:
-      - Product
-      description: Occurs when a product is updated.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  productDeleted:
-    post:
-      summary: Product deleted
-      operationId: productDeleted
-      tags:
-      - Product
-      description: Occurs when a product is deleted.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderCreated:
-    post:
-      summary: Order created
-      operationId: orderCreated
-      tags:
-      - Order
-      description: Occurs when a new order is created.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderUpdated:
-    post:
-      summary: Order updated
-      operationId: orderUpdated
-      tags:
-      - Order
-      description: Occurs when an order is updated.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderPrepared:
-    post:
-      summary: Order prepared
-      operationId: orderPrepared
-      tags:
-      - Order
-      description: Occurs when an order is marked as prepared.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderStarted:
-    post:
-      summary: Order started
-      operationId: orderStarted
-      tags:
-      - Order
-      description: Occurs when an order is started.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderReturned:
-    post:
-      summary: Order returned
-      operationId: orderReturned
-      tags:
-      - Order
-      description: Occurs when an order is marked as returned.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderReturning-soon:
-    post:
-      summary: Order returning-soon
-      operationId: orderReturning-soon
-      tags:
-      - Order
-      description: Occurs X time before the order should return.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
 x-tagGroups:
 - name: Introduction
   tags:

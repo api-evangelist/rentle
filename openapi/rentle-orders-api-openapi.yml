@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Twice Admin API Keys Orders API
+  title: Twice Admin Orders API
   description: API documentation for Twice Admin API
   version: '2023-02-01'
   contact: {}
@@ -361,6 +361,362 @@ components:
           status: 409
           code: CONFLICT
           message: Conflict error
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    CreateOrderDTO:
+      type: object
+      properties:
+        startDate:
+          title: ISO 8601 date-time
+          description: Start date of the order.
+          type: string
+        duration:
+          description: Duration of the order.
+          type: object
+          properties:
+            period:
+              description: Period of the duration.
+              type: string
+              enum:
+              - minutes
+              - hours
+              - days
+              - weeks
+              - months
+              - days_within_opening_hours
+              - years
+            value:
+              description: Value of the duration.
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+          required:
+          - period
+          - value
+        storeId:
+          description: Store ID where the booking is made to.
+          type: string
+        customer:
+          description: Customer details.
+          type: object
+          properties:
+            firstName:
+              description: First name of the customer.
+              type: string
+            lastName:
+              description: Last name of the customer.
+              type: string
+            phone:
+              description: Phone number of the customer.
+              type: string
+            email:
+              description: Email of the customer.
+              type: string
+            marketingConsent:
+              description: Whether the customer has given marketing consent.
+              type: boolean
+            language:
+              description: Language of the customer.
+              type: string
+              enum:
+              - fi
+              - en
+              - ru
+              - de
+              - sk
+              - sv
+              - nl
+              - hu
+              - 'no'
+              - fr
+              - es
+              - it
+              - cs
+              - da
+              - lt
+              - et
+              - pl
+              - sl
+              - hr
+              - pt
+              - br
+              - lv
+              - tr
+              - uk
+            address:
+              description: Address of the customer.
+              type: object
+              properties:
+                address:
+                  description: Street address.
+                  type: string
+                zipCode:
+                  description: Zip code.
+                  type: string
+                city:
+                  description: City.
+                  type: string
+                country:
+                  description: Country.
+                  type: string
+                state:
+                  description: State.
+                  type: string
+                details:
+                  description: Additional address details.
+                  type: string
+              required:
+              - address
+          required:
+          - firstName
+          - lastName
+          - phone
+          - email
+          - marketingConsent
+        items:
+          description: Items in the order.
+          type: array
+          items:
+            example:
+              productId: enmSzQbHFtkzNIWp9e19
+              variantId: 26CbdcY1E73Py0fvb4IZ
+              quantity: 1
+              duration:
+                period: days
+                value: 1
+            type: object
+            properties:
+              productId:
+                description: Product ID of the item.
+                type: string
+              variantId:
+                description: Chosen variant ID of the item. If not specificed, and product has multiple variants, the first variant is used.
+                type: string
+              quantity:
+                description: Quantity of the items. Defaults to 1.
+                default: 1
+                type: integer
+                minimum: 0
+                maximum: 9007199254740991
+              duration:
+                description: You can define a different duration of each item by setting a duration here. If not specified, the provided order duration is used.
+                type: object
+                properties:
+                  period:
+                    description: Period of the duration.
+                    type: string
+                    enum:
+                    - minutes
+                    - hours
+                    - days
+                    - weeks
+                    - months
+                    - days_within_opening_hours
+                    - years
+                  value:
+                    description: Value of the duration.
+                    type: integer
+                    minimum: 0
+                    maximum: 9007199254740991
+                required:
+                - period
+                - value
+              packageProductVariantIds:
+                description: If the product is a package, you can define which variants are selected for each package product in the package by providing their IDs here. If some variants are not specified, and package product has multiple variants, the first variant is used.
+                type: array
+                items:
+                  type: string
+            required:
+            - productId
+        paid:
+          description: Whether the order should be marked as paid or not.
+          type: boolean
+        externalOrderId:
+          description: Reference to potential external order ID
+          type: string
+      required:
+      - startDate
+      - duration
+      - storeId
+      - customer
+      - items
+      example:
+        startDate: '2026-07-19T01:04:27.150Z'
+        duration:
+          period: days
+          value: 1
+        storeId: G0YFPi1GDccdi1JyqsKR
+        customer:
+          firstName: John
+          lastName: Doe
+          phone: '+1555555555'
+          email: john@doe.com
+          marketingConsent: true
+          language: en
+          address:
+            address: 123 Main St
+            zipCode: '12345'
+            city: New York
+            country: United States
+            state: New York
+        items:
+        - productId: enmSzQbHFtkzNIWp9e19
+          variantId: 26CbdcY1E73Py0fvb4IZ
+          quantity: 1
+          duration:
+            period: days
+            value: 1
+        paid: true
+        externalOrderId: 1234-5678-9012
+    UpdateOrderDTO:
+      type: object
+      properties:
+        staffComment:
+          description: Internal comment about the order
+          type: string
+        prepared:
+          description: Whether the order has been marked as prepared
+          type: boolean
+      example:
+        staffComment: Customer will arrive 30 minutes late.
+        prepared: true
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
     OrderDTO:
       type: object
       properties:
@@ -560,8 +916,9 @@ components:
               value:
                 description: Value provided by the customer on checkout. The value can be null if the customer did not fill in a checkout field.
                 anyOf:
-                - type: string
-                  nullable: true
+                - type:
+                  - string
+                  - 'null'
                 - type: boolean
             required:
             - label
@@ -645,9 +1002,10 @@ components:
                 type: object
                 additionalProperties: {}
             customerId:
-              type: string
+              type:
+              - string
+              - 'null'
               description: Unique identifier of the customer.
-              nullable: true
           required:
           - firstName
           - lastName
@@ -938,9 +1296,10 @@ components:
                   type: object
                   additionalProperties: {}
               customerId:
-                type: string
+                type:
+                - string
+                - 'null'
                 description: Unique identifier of the customer.
-                nullable: true
               id:
                 description: Unique ID of the person
                 type: string
@@ -968,8 +1327,9 @@ components:
                     name:
                       type: string
                     unit:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                     value:
                       type: string
                   required:
@@ -1218,7 +1578,9 @@ components:
                   authorised: 10000
                   cancelled: 0
                   captured: 10000
-                type: object
+                type:
+                - object
+                - 'null'
                 properties:
                   paid:
                     description: Paid amount.
@@ -1248,7 +1610,6 @@ components:
                 required:
                 - paid
                 description: Deposit information for the item.
-                nullable: true
               pricing:
                 description: Pricing information for the item.
                 type: object
@@ -2466,7 +2827,7 @@ components:
           status: 404
           code: NOT_FOUND
           message: Object not found
-    QuotaExceededExceptionDTO:
+    ForbiddenExceptionDTO:
       type: object
       properties:
         error:
@@ -2504,12 +2865,12 @@ components:
           - message
       required:
       - error
-      title: Quota Exceeded
+      title: Forbidden
       example:
         error:
-          status: 429
-          code: RATE_LIMIT_HIT
-          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
     PagedOrdersDTO:
       type: object
       properties:
@@ -2990,8 +3351,9 @@ components:
                     value:
                       description: Value provided by the customer on checkout. The value can be null if the customer did not fill in a checkout field.
                       anyOf:
-                      - type: string
-                        nullable: true
+                      - type:
+                        - string
+                        - 'null'
                       - type: boolean
                   required:
                   - label
@@ -3075,9 +3437,10 @@ components:
                       type: object
                       additionalProperties: {}
                   customerId:
-                    type: string
+                    type:
+                    - string
+                    - 'null'
                     description: Unique identifier of the customer.
-                    nullable: true
                 required:
                 - firstName
                 - lastName
@@ -3368,9 +3731,10 @@ components:
                         type: object
                         additionalProperties: {}
                     customerId:
-                      type: string
+                      type:
+                      - string
+                      - 'null'
                       description: Unique identifier of the customer.
-                      nullable: true
                     id:
                       description: Unique ID of the person
                       type: string
@@ -3398,8 +3762,9 @@ components:
                           name:
                             type: string
                           unit:
-                            type: string
-                            nullable: true
+                            type:
+                            - string
+                            - 'null'
                           value:
                             type: string
                         required:
@@ -3648,7 +4013,9 @@ components:
                         authorised: 10000
                         cancelled: 0
                         captured: 10000
-                      type: object
+                      type:
+                      - object
+                      - 'null'
                       properties:
                         paid:
                           description: Paid amount.
@@ -3678,7 +4045,6 @@ components:
                       required:
                       - paid
                       description: Deposit information for the item.
-                      nullable: true
                     pricing:
                       description: Pricing information for the item.
                       type: object
@@ -4591,561 +4957,6 @@ components:
       - count
       - total
       title: Paginated list of orders
-    CreateOrderDTO:
-      type: object
-      properties:
-        startDate:
-          title: ISO 8601 date-time
-          description: Start date of the order.
-          type: string
-        duration:
-          description: Duration of the order.
-          type: object
-          properties:
-            period:
-              description: Period of the duration.
-              type: string
-              enum:
-              - minutes
-              - hours
-              - days
-              - weeks
-              - months
-              - days_within_opening_hours
-              - years
-            value:
-              description: Value of the duration.
-              type: integer
-              minimum: 0
-              maximum: 9007199254740991
-          required:
-          - period
-          - value
-        storeId:
-          description: Store ID where the booking is made to.
-          type: string
-        customer:
-          description: Customer details.
-          type: object
-          properties:
-            firstName:
-              description: First name of the customer.
-              type: string
-            lastName:
-              description: Last name of the customer.
-              type: string
-            phone:
-              description: Phone number of the customer.
-              type: string
-            email:
-              description: Email of the customer.
-              type: string
-            marketingConsent:
-              description: Whether the customer has given marketing consent.
-              type: boolean
-            language:
-              description: Language of the customer.
-              type: string
-              enum:
-              - fi
-              - en
-              - ru
-              - de
-              - sk
-              - sv
-              - nl
-              - hu
-              - 'no'
-              - fr
-              - es
-              - it
-              - cs
-              - da
-              - lt
-              - et
-              - pl
-              - sl
-              - hr
-              - pt
-              - br
-              - lv
-              - tr
-              - uk
-            address:
-              description: Address of the customer.
-              type: object
-              properties:
-                address:
-                  description: Street address.
-                  type: string
-                zipCode:
-                  description: Zip code.
-                  type: string
-                city:
-                  description: City.
-                  type: string
-                country:
-                  description: Country.
-                  type: string
-                state:
-                  description: State.
-                  type: string
-                details:
-                  description: Additional address details.
-                  type: string
-              required:
-              - address
-          required:
-          - firstName
-          - lastName
-          - phone
-          - email
-          - marketingConsent
-        items:
-          description: Items in the order.
-          type: array
-          items:
-            example:
-              productId: enmSzQbHFtkzNIWp9e19
-              variantId: 26CbdcY1E73Py0fvb4IZ
-              quantity: 1
-              duration:
-                period: days
-                value: 1
-            type: object
-            properties:
-              productId:
-                description: Product ID of the item.
-                type: string
-              variantId:
-                description: Chosen variant ID of the item. If not specificed, and product has multiple variants, the first variant is used.
-                type: string
-              quantity:
-                description: Quantity of the items. Defaults to 1.
-                default: 1
-                type: integer
-                minimum: 0
-                maximum: 9007199254740991
-              duration:
-                description: You can define a different duration of each item by setting a duration here. If not specified, the provided order duration is used.
-                type: object
-                properties:
-                  period:
-                    description: Period of the duration.
-                    type: string
-                    enum:
-                    - minutes
-                    - hours
-                    - days
-                    - weeks
-                    - months
-                    - days_within_opening_hours
-                    - years
-                  value:
-                    description: Value of the duration.
-                    type: integer
-                    minimum: 0
-                    maximum: 9007199254740991
-                required:
-                - period
-                - value
-              packageProductVariantIds:
-                description: If the product is a package, you can define which variants are selected for each package product in the package by providing their IDs here. If some variants are not specified, and package product has multiple variants, the first variant is used.
-                type: array
-                items:
-                  type: string
-            required:
-            - productId
-        paid:
-          description: Whether the order should be marked as paid or not.
-          type: boolean
-        externalOrderId:
-          description: Reference to potential external order ID
-          type: string
-      required:
-      - startDate
-      - duration
-      - storeId
-      - customer
-      - items
-      example:
-        startDate: '2026-07-19T01:04:27.150Z'
-        duration:
-          period: days
-          value: 1
-        storeId: G0YFPi1GDccdi1JyqsKR
-        customer:
-          firstName: John
-          lastName: Doe
-          phone: '+1555555555'
-          email: john@doe.com
-          marketingConsent: true
-          language: en
-          address:
-            address: 123 Main St
-            zipCode: '12345'
-            city: New York
-            country: United States
-            state: New York
-        items:
-        - productId: enmSzQbHFtkzNIWp9e19
-          variantId: 26CbdcY1E73Py0fvb4IZ
-          quantity: 1
-          duration:
-            period: days
-            value: 1
-        paid: true
-        externalOrderId: 1234-5678-9012
-    ForbiddenExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Forbidden
-      example:
-        error:
-          status: 403
-          code: FORBIDDEN
-          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
-    BadRequestExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Bad Request
-      example:
-        error:
-          status: 400
-          code: INVALID_ARGUMENTS
-          details:
-          - path:
-            - startDate
-            message: Required
-          - path:
-            - duration
-            message: Required
-          message: Your request contained invalid arguments
-    InternalServerErrorExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Internal Server Error
-      example:
-        error:
-          status: 500
-          code: INTERNAL_SERVER_ERROR
-          message: An unexpected error occurred. Please try again later.
-    UpdateOrderDTO:
-      type: object
-      properties:
-        staffComment:
-          description: Internal comment about the order
-          type: string
-        prepared:
-          description: Whether the order has been marked as prepared
-          type: boolean
-      example:
-        staffComment: Customer will arrive 30 minutes late.
-        prepared: true
-x-webhooks:
-  productCreated:
-    post:
-      summary: Product created
-      operationId: productCreated
-      tags:
-      - Product
-      description: Occurs when a new product is created.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  productUpdated:
-    post:
-      summary: Product updated
-      operationId: productUpdated
-      tags:
-      - Product
-      description: Occurs when a product is updated.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  productDeleted:
-    post:
-      summary: Product deleted
-      operationId: productDeleted
-      tags:
-      - Product
-      description: Occurs when a product is deleted.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProductWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderCreated:
-    post:
-      summary: Order created
-      operationId: orderCreated
-      tags:
-      - Order
-      description: Occurs when a new order is created.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderUpdated:
-    post:
-      summary: Order updated
-      operationId: orderUpdated
-      tags:
-      - Order
-      description: Occurs when an order is updated.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderPrepared:
-    post:
-      summary: Order prepared
-      operationId: orderPrepared
-      tags:
-      - Order
-      description: Occurs when an order is marked as prepared.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderStarted:
-    post:
-      summary: Order started
-      operationId: orderStarted
-      tags:
-      - Order
-      description: Occurs when an order is started.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderReturned:
-    post:
-      summary: Order returned
-      operationId: orderReturned
-      tags:
-      - Order
-      description: Occurs when an order is marked as returned.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
-  orderReturning-soon:
-    post:
-      summary: Order returning-soon
-      operationId: orderReturning-soon
-      tags:
-      - Order
-      description: Occurs X time before the order should return.
-      parameters:
-      - name: x-rentle-version
-        in: header
-        description: API Version, e.g '2023-02-01'. See [versioning](#tag/Versioning) page for more details.
-        required: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrderWebhookDTO'
-      responses:
-        '200':
-          description: Return 200 OK to indicate the data was received successfully
 x-tagGroups:
 - name: Introduction
   tags:
