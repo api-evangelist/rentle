@@ -150,293 +150,6 @@ paths:
       - Categories
 components:
   schemas:
-    ConflictExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Conflict
-      example:
-        error:
-          status: 409
-          code: CONFLICT
-          message: Conflict error
-    QuotaExceededExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Quota Exceeded
-      example:
-        error:
-          status: 429
-          code: RATE_LIMIT_HIT
-          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
-    BadRequestExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Bad Request
-      example:
-        error:
-          status: 400
-          code: INVALID_ARGUMENTS
-          details:
-          - path:
-            - startDate
-            message: Required
-          - path:
-            - duration
-            message: Required
-          message: Your request contained invalid arguments
-    InternalServerErrorExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Internal Server Error
-      example:
-        error:
-          status: 500
-          code: INTERNAL_SERVER_ERROR
-          message: An unexpected error occurred. Please try again later.
-    CategoryDTO:
-      type: object
-      properties:
-        id:
-          description: Unique identifier of the category.
-          type: string
-        name:
-          title: Localized field
-          description: Category name.
-          allOf:
-          - additionalProperties:
-              type: string
-              description: The property name is the locale code, and the value is the translated text in that locale.
-            type: object
-          - type: object
-            properties:
-              def:
-                description: The value in default locale.
-                type: string
-            required:
-            - def
-        description:
-          description: Category description.
-          title: Localized field
-          allOf:
-          - additionalProperties:
-              type: string
-              description: The property name is the locale code, and the value is the translated text in that locale.
-            type: object
-          - type: object
-            properties:
-              def:
-                description: The value in default locale.
-                type: string
-            required:
-            - def
-        images:
-          description: List of category image URLs.
-          type: array
-          items:
-            type: string
-            format: uri
-        order:
-          description: Order of the category compared to other categories. Smaller number means higher priority.
-          type: integer
-          minimum: 0
-          maximum: 9007199254740991
-        bookingBuffer:
-          title: Booking buffer
-          description: Defines how far in advance a booking can be made.
-          example:
-            daysBefore: 1
-            latestTime: 18
-          type: object
-          properties:
-            daysBefore:
-              description: The number of days before a booking can be made
-              type: integer
-              minimum: 0
-              maximum: 9007199254740991
-            minutesBefore:
-              description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
-              type: integer
-              minimum: 0
-              maximum: 60
-            latestTime:
-              description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
-              example: 18
-              type: integer
-              minimum: 0
-              maximum: 23
-          required:
-          - daysBefore
-        terms:
-          description: Category-specific terms.
-          type: object
-          properties:
-            name:
-              description: File name
-              type: string
-            url:
-              description: File URL
-              type: string
-              format: uri
-          required:
-          - name
-          - url
-      required:
-      - id
-      - name
-      - images
-      - order
-      title: Category
-      example:
-        id: cQeLIOAZdOElKFEWYaYo
-        name:
-          def: Bicycles
-          en: Bicycles
-        description:
-          def: Great bicycles to get around town
-          en: Great bicycles to get around town
-        images:
-        - url_string
-        order: 1
     NotFoundExceptionDTO:
       type: object
       properties:
@@ -525,6 +238,57 @@ components:
           status: 403
           code: FORBIDDEN
           message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
     PagedCategoriesDTO:
       type: object
       properties:
@@ -649,6 +413,242 @@ components:
       - count
       - total
       title: Paginated list of categories
+    CategoryDTO:
+      type: object
+      properties:
+        id:
+          description: Unique identifier of the category.
+          type: string
+        name:
+          title: Localized field
+          description: Category name.
+          allOf:
+          - additionalProperties:
+              type: string
+              description: The property name is the locale code, and the value is the translated text in that locale.
+            type: object
+          - type: object
+            properties:
+              def:
+                description: The value in default locale.
+                type: string
+            required:
+            - def
+        description:
+          description: Category description.
+          title: Localized field
+          allOf:
+          - additionalProperties:
+              type: string
+              description: The property name is the locale code, and the value is the translated text in that locale.
+            type: object
+          - type: object
+            properties:
+              def:
+                description: The value in default locale.
+                type: string
+            required:
+            - def
+        images:
+          description: List of category image URLs.
+          type: array
+          items:
+            type: string
+            format: uri
+        order:
+          description: Order of the category compared to other categories. Smaller number means higher priority.
+          type: integer
+          minimum: 0
+          maximum: 9007199254740991
+        bookingBuffer:
+          title: Booking buffer
+          description: Defines how far in advance a booking can be made.
+          example:
+            daysBefore: 1
+            latestTime: 18
+          type: object
+          properties:
+            daysBefore:
+              description: The number of days before a booking can be made
+              type: integer
+              minimum: 0
+              maximum: 9007199254740991
+            minutesBefore:
+              description: The number of minutes before a booking can be made. If daysBefore is more than 0, the minutesBefore are not taken into account.
+              type: integer
+              minimum: 0
+              maximum: 60
+            latestTime:
+              description: The latest time of day a booking can be made, in 24 hour format. If daysBefore is 0, the latestTime is not taken into account.
+              example: 18
+              type: integer
+              minimum: 0
+              maximum: 23
+          required:
+          - daysBefore
+        terms:
+          description: Category-specific terms.
+          type: object
+          properties:
+            name:
+              description: File name
+              type: string
+            url:
+              description: File URL
+              type: string
+              format: uri
+          required:
+          - name
+          - url
+      required:
+      - id
+      - name
+      - images
+      - order
+      title: Category
+      example:
+        id: cQeLIOAZdOElKFEWYaYo
+        name:
+          def: Bicycles
+          en: Bicycles
+        description:
+          def: Great bicycles to get around town
+          en: Great bicycles to get around town
+        images:
+        - url_string
+        order: 1
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    ConflictExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Conflict
+      example:
+        error:
+          status: 409
+          code: CONFLICT
+          message: Conflict error
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
 x-tagGroups:
 - name: Introduction
   tags:
