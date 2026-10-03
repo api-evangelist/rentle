@@ -265,48 +265,50 @@ paths:
       - Webhooks
 components:
   schemas:
-    CreateWebhookDTO:
+    ForbiddenExceptionDTO:
       type: object
       properties:
-        label:
-          description: Label of the Webhook
-          type: string
-        urls:
-          description: URLs to send the Webhook to
-          type: array
-          items:
-            type: string
-            format: uri
-        event:
-          description: Webhook event
-          type: string
-          enum:
-          - order/created
-          - order/updated
-          - order/prepared
-          - order/started
-          - order/returned
-          - order/returning-soon
-          - product/created
-          - product/updated
-          - product/deleted
-        apiVersion:
-          description: API version used in the Webhook payload
-          type: string
-          enum:
-          - '2023-02-01'
-        configuration:
+        error:
           type: object
           properties:
-            triggerBeforeMinutes:
+            status:
+              description: HTTP status code of the response.
               type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
           required:
-          - triggerBeforeMinutes
+          - status
+          - code
+          - message
       required:
-      - label
-      - urls
-      - event
-      - apiVersion
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
     WebhookDTO:
       anyOf:
       - title: Legacy webhook
@@ -412,6 +414,136 @@ components:
         - event
         - apiVersion
         - createdAt
+    ConflictExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Conflict
+      example:
+        error:
+          status: 409
+          code: CONFLICT
+          message: Conflict error
+    CreateWebhookDTO:
+      type: object
+      properties:
+        label:
+          description: Label of the Webhook
+          type: string
+        urls:
+          description: URLs to send the Webhook to
+          type: array
+          items:
+            type: string
+            format: uri
+        event:
+          description: Webhook event
+          type: string
+          enum:
+          - order/created
+          - order/updated
+          - order/prepared
+          - order/started
+          - order/returned
+          - order/returning-soon
+          - product/created
+          - product/updated
+          - product/deleted
+        apiVersion:
+          description: API version used in the Webhook payload
+          type: string
+          enum:
+          - '2023-02-01'
+        configuration:
+          type: object
+          properties:
+            triggerBeforeMinutes:
+              type: number
+          required:
+          - triggerBeforeMinutes
+      required:
+      - label
+      - urls
+      - event
+      - apiVersion
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
     NotFoundExceptionDTO:
       type: object
       properties:
@@ -581,6 +713,50 @@ components:
       - count
       - total
       title: Paginated list of webhooks
+    InternalServerErrorExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Internal Server Error
+      example:
+        error:
+          status: 500
+          code: INTERNAL_SERVER_ERROR
+          message: An unexpected error occurred. Please try again later.
     BadRequestExceptionDTO:
       type: object
       properties:
@@ -632,182 +808,6 @@ components:
             - duration
             message: Required
           message: Your request contained invalid arguments
-    ForbiddenExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Forbidden
-      example:
-        error:
-          status: 403
-          code: FORBIDDEN
-          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
-    QuotaExceededExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Quota Exceeded
-      example:
-        error:
-          status: 429
-          code: RATE_LIMIT_HIT
-          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
-    ConflictExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Conflict
-      example:
-        error:
-          status: 409
-          code: CONFLICT
-          message: Conflict error
-    InternalServerErrorExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Internal Server Error
-      example:
-        error:
-          status: 500
-          code: INTERNAL_SERVER_ERROR
-          message: An unexpected error occurred. Please try again later.
 x-tagGroups:
 - name: Introduction
   tags:

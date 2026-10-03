@@ -153,6 +153,50 @@ paths:
       - Stores
 components:
   schemas:
+    ForbiddenExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Forbidden
+      example:
+        error:
+          status: 403
+          code: FORBIDDEN
+          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
     PagedStoresDTO:
       type: object
       properties:
@@ -230,101 +274,6 @@ components:
       - count
       - total
       title: Paginated list of stores
-    ForbiddenExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Forbidden
-      example:
-        error:
-          status: 403
-          code: FORBIDDEN
-          message: You are do not have permission to perform this action. The problem could be missing API scopes or an expired/invalid API token.
-    BadRequestExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Bad Request
-      example:
-        error:
-          status: 400
-          code: INVALID_ARGUMENTS
-          details:
-          - path:
-            - startDate
-            message: Required
-          - path:
-            - duration
-            message: Required
-          message: Your request contained invalid arguments
     StoreDTO:
       type: object
       properties:
@@ -382,94 +331,6 @@ components:
       - address
       - isDefault
       title: Store
-    NotFoundExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Not Found
-      example:
-        error:
-          status: 404
-          code: NOT_FOUND
-          message: Object not found
-    QuotaExceededExceptionDTO:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            status:
-              description: HTTP status code of the response.
-              type: number
-            code:
-              description: Internal text code that represents the type of error.
-              type: string
-            message:
-              description: Human-friendly description of the error
-              type: string
-            details:
-              description: Details about errors in the request body
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    description: Path to the key in the request body, splitted by parts.
-                    type: array
-                    items:
-                      type: string
-                  message:
-                    description: Specific errors in the value of the field.
-                    type: string
-                required:
-                - path
-                - message
-          required:
-          - status
-          - code
-          - message
-      required:
-      - error
-      title: Quota Exceeded
-      example:
-        error:
-          status: 429
-          code: RATE_LIMIT_HIT
-          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
     ConflictExceptionDTO:
       type: object
       properties:
@@ -514,6 +375,94 @@ components:
           status: 409
           code: CONFLICT
           message: Conflict error
+    QuotaExceededExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Quota Exceeded
+      example:
+        error:
+          status: 429
+          code: RATE_LIMIT_HIT
+          message: Your API key has exceeded the rate limit. Please wait a moment before making new requests.
+    NotFoundExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Not Found
+      example:
+        error:
+          status: 404
+          code: NOT_FOUND
+          message: Object not found
     InternalServerErrorExceptionDTO:
       type: object
       properties:
@@ -558,6 +507,57 @@ components:
           status: 500
           code: INTERNAL_SERVER_ERROR
           message: An unexpected error occurred. Please try again later.
+    BadRequestExceptionDTO:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              description: HTTP status code of the response.
+              type: number
+            code:
+              description: Internal text code that represents the type of error.
+              type: string
+            message:
+              description: Human-friendly description of the error
+              type: string
+            details:
+              description: Details about errors in the request body
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    description: Path to the key in the request body, splitted by parts.
+                    type: array
+                    items:
+                      type: string
+                  message:
+                    description: Specific errors in the value of the field.
+                    type: string
+                required:
+                - path
+                - message
+          required:
+          - status
+          - code
+          - message
+      required:
+      - error
+      title: Bad Request
+      example:
+        error:
+          status: 400
+          code: INVALID_ARGUMENTS
+          details:
+          - path:
+            - startDate
+            message: Required
+          - path:
+            - duration
+            message: Required
+          message: Your request contained invalid arguments
 x-tagGroups:
 - name: Introduction
   tags:
