@@ -1,0 +1,58 @@
+slug: rentle
+provider: Rentle
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Discount Codes
+  spec_file: rentle-discount-codes-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.85
+  evidence: POST /discount-codes discountCodes_create Create discount code; schema CreateDiscountCodeParameters,
+    DiscountCodeDTO
+  reason: Full CRUD over discount codes used to grant price reductions to customers — plainly Discount
+    & Promotion Management within Pricing Management.
+- tag: Customers
+  spec_file: rentle-customers-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: GET /customers customers_list Get all customers; GET /customers/search customers_search Search
+    customers; schema CustomerDTO
+  reason: Operations retrieve and search merchant customer records (CustomerDTO), i.e. customer master
+    data access — Customer Data Management. No lifecycle/loyalty operations, so the narrower data-management
+    sub-capability fits.
+- tag: Webhooks
+  spec_file: rentle-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: POST /webhooks webhooks_create Create webhook; DELETE /webhooks/{id} webhooks_remove Delete
+    webhook; schema CreateWebhookDTO, WebhookDTO
+  reason: Lifecycle management of outbound webhook subscriptions that integrators register against the
+    platform — matches Webhook & Event Subscription Management in the developer-platform capability. Although
+    webhooks are often plumbing, the frame has an explicit capability for exactly this surface.
+- tag: Inventory Articles
+  spec_file: rentle-inventory-articles-api-openapi.yml
+  capability_id: BC-530
+  capability_id_l1: BC-530
+  capability_name: Inventory Management
+  confidence: 0.7
+  evidence: GET /inventory-articles inventoryArticles_list Get inventory articles; schema InventoryArticleDTO,
+    PagedInventoryArticlesDTO
+  reason: Exposes the merchant's inventory article records for a rental/resale platform — inventory stock
+    data. Read-only listing does not identify a specific sub-capability (stock levels vs allocation),
+    so L1 only.

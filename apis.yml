@@ -367,6 +367,9 @@ apis:
   - type: OpenAPI
     url: openapi/rentle-product-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/rentle-capability-edges.yml
+  name: Rentle Business Capability Map
 - type: AgentSkill
   url: skills/rentle-create-order.md
 - type: X-MCPServerCandidate
