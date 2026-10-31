@@ -64,6 +64,148 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Rentle is a company surfaced as a portfolio company of anthemis and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Rentle, now operating as Twice Commerce, is a Helsinki-founded (2018) circular-commerce platform that lets merchants run rentals, resale, and subscriptions from one system. Its Twice Admin API (OpenAPI 3.0.0, date-based version 2023-02-01) exposes categories, customers, inventory articles, SKUs, products, orders, stores, merchant details, discount codes, API keys, and webhooks over a REST interface authenticated with HTTP Basic API keys. Outbound webhooks cover nine order and product lifecycle events. This profile was enriched by the API Evangelist pipeline from Rentle/Twice Commerce public developer surfaces.
 
-Backed by: anthemis
+**Areas:** Company · Rentals · Commerce · E-Commerce · Circular Economy · Resale · Subscription · Booking · Webhook · Software-as-a-Service
+
+## Rentle on APIs.io
+
+Everything profiled for Rentle is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rentle/](https://apis.io/providers/rentle/)** — or go straight to one of the APIs or properties below.
+
+### APIs (13)
+
+- [Rentle API Keys API](https://apis.io/apis/rentle/rentle-api-keys-api/) — API Key-related queries
+- [Rentle Categories API](https://apis.io/apis/rentle/rentle-categories-api/) — Category-related queries
+- [Rentle Customers API](https://apis.io/apis/rentle/rentle-customers-api/) — Customer-related queries
+- [Rentle Discount Codes API](https://apis.io/apis/rentle/rentle-discount-codes-api/) — Discount code-related queries
+- [Rentle Inventory Articles API](https://apis.io/apis/rentle/rentle-inventory-articles-api/) — Inventory-related queries
+- [Rentle Inventory SKUs API](https://apis.io/apis/rentle/rentle-inventory-skus-api/) — The Inventory SKUs API from Rentle — 2 operation(s) for inventory skus.
+- [Rentle Merchant API](https://apis.io/apis/rentle/rentle-merchant-api/) — Merchant-related queries
+- [Rentle Orders API](https://apis.io/apis/rentle/rentle-orders-api/) — Order-related queries
+- [Rentle Products API](https://apis.io/apis/rentle/rentle-products-api/) — Product-related queries
+- [Rentle Stores API](https://apis.io/apis/rentle/rentle-stores-api/) — Store-related queries
+- [Rentle Webhooks API](https://apis.io/apis/rentle/rentle-webhooks-api/) — This section describes API endpoints you can use to configure webhooks. Check the [webhook events section](#tag/WebhooksOverview) for more inforation…
+- [Rentle Order API](https://apis.io/apis/rentle/rentle-order-api/) — The Order API from Rentle — 0 operation(s) for order.
+- [Rentle Product API](https://apis.io/apis/rentle/rentle-product-api/) — The Product API from Rentle — 0 operation(s) for product.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Rentle Webhooks](https://apis.io/asyncapis/rentle/rentle-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [rentle-admin](https://apis.io/servers/rentle/rentle-admin/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Rentle Agentic Access](https://apis.io/agentic-access/rentle/rentle-agentic-access/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [Twice Admin API Keys API](https://apis.io/collections/rentle/open-rentle-api-keys-api/)
+- [Twice Admin API Keys Categories API](https://apis.io/collections/rentle/open-rentle-categories-api/)
+- [Twice Admin API Keys Customers API](https://apis.io/collections/rentle/open-rentle-customers-api/)
+- [Twice Admin API Keys Discount Codes API](https://apis.io/collections/rentle/open-rentle-discount-codes-api/)
+- [Twice Admin API Keys Inventory Articles API](https://apis.io/collections/rentle/open-rentle-inventory-articles-api/)
+- [Twice Admin API Keys Inventory SKUs API](https://apis.io/collections/rentle/open-rentle-inventory-skus-api/)
+- [Twice Admin API Keys Merchant API](https://apis.io/collections/rentle/open-rentle-merchant-api/)
+- [Twice Admin API Keys Orders API](https://apis.io/collections/rentle/open-rentle-orders-api/)
+- [Twice Admin API Keys Products API](https://apis.io/collections/rentle/open-rentle-products-api/)
+- [Twice Admin API Keys Stores API](https://apis.io/collections/rentle/open-rentle-stores-api/)
+- [Twice Admin API Keys Webhooks API](https://apis.io/collections/rentle/open-rentle-webhooks-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Rentle Admin Overlay](https://apis.io/overlays/rentle/rentle-admin-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rentle Authentication](https://apis.io/security/rentle/rentle-authentication/)
+- [Rentle Domain Security](https://apis.io/security/rentle/rentle-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.twicecommerce.com/)
+- [Documentation](https://www.twicecommerce.com/docs/overview)
+- [API reference](https://api.rentle.io/admin/)
+- [Pricing](https://www.twicecommerce.com/pricing)
+- [Sign up](https://admin.twicecommerce.com/signup)
+- [Support](https://support.twicecommerce.com)
+- [Blog](https://www.twicecommerce.com/blog)
+- [Terms of service](https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/rentle-tos-pricing%2Ftos%2FTwice%20Commerce%20Terms%20and%20Conditions%20v.6.4.pdf?alt=media&token=eb7ee536-cb6c-4476-84fd-277e45e4a304)
+- [Privacy policy](https://www.twicecommerce.com/privacy)
+- [GitHub](https://github.com/rentle)
+- [Status](https://status.twicecommerce.com)
+
+## API Evangelist rating
+
+**Kin Score 40.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 52.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 28.0 |
+| Access clarity | 38.2 |
+
+**Agent readiness 32.1** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rentle/](https://apis.io/providers/rentle/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rentle: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rentle/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
