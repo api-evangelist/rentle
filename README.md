@@ -150,7 +150,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 - [Sign up](https://admin.twicecommerce.com/signup)
 - [Support](https://support.twicecommerce.com)
 - [Blog](https://www.twicecommerce.com/blog)
-- [Terms of service](https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/rentle-tos-pricing%2Ftos%2FTwice%20Commerce%20Terms%20and%20Conditions%20v.6.4.pdf?alt=media&token=eb7ee536-cb6c-4476-84fd-277e45e4a304)
+- [Terms of service](https://firebasestorage.googleapis.com/v0/b/rentle-prod.appspot.com/o/rentle-tos-pricing%2Ftos%2FTwice%20Commerce%20Terms%20and%20Conditions%20v.6.4.pdf?alt=media)
 - [Privacy policy](https://www.twicecommerce.com/privacy)
 - [GitHub](https://github.com/rentle)
 - [Status](https://status.twicecommerce.com)
